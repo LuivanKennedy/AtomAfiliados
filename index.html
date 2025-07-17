@@ -694,7 +694,7 @@
             
             // Define o src do iframe com autoplay, mute, loop e playsinline para melhor compatibilidade
             // Adicione &controls=0&modestbranding=1&rel=0 para remover os controles e sugestões de vídeos
-            videoFrame.src = https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=1&modestbranding=1&rel=0;
+            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=1&modestbranding=1&rel=0`;
         });
 
         // Opcional: Rastreamento de cliques no CTA (exemplo para Google Analytics)
