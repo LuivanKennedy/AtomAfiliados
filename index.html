@@ -5,79 +5,716 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universidade Atom: O Caminho para Operar com o Capital da Maior Mesa Proprietária!</title>
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
-    <link rel="canonical" href="https://atomtrader.github.io/Afiliados/">
+    <link rel="canonical" href="[SUA_URL_DA_BRIDGE_PAGE_AQUI]">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        /* ... (todo o CSS anterior) ... */
-        .video-overlay {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            z-index: 2;
-            pointer-events: none;
+        :root {
+            --primary-color: #0056b3; /* Azul Atom */
+            --secondary-color: #28a745; /* Verde Sucesso */
+            --accent-color: #ffc107; /* Amarelo Destaque */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --white: #fff;
+            --red-alert: #dc3545;
         }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #003366);
+            color: var(--white);
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .cta-small-text {
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+        }
+
+        /* Sections General */
+        section {
+            padding: 50px 20px;
+            background-color: var(--white);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        section h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        /* Oportunidade Revelada */
+        .opportunity-section {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .opportunity-section p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* O Que Você Vai Conquistar */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item i {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .benefit-item p {
+            font-size: 0.95em;
+        }
+
+        /* Quem Está Por Trás */
+        .mentor-section {
+            text-align: center;
+        }
+
+        /* Flexbox para alinhar as imagens dos mentores */
+        .mentor-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Espaçamento entre as imagens */
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Quebra de linha em telas menores */
+        }
+
+        .mentor-image-wrapper {
+            text-align: center;
+        }
+
+        .mentor-image-wrapper img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .mentor-image-wrapper h4 {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .mentor-section p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            margin-top: 20px; /* Adiciona espaço acima do parágrafo geral */
+        }
+
+        /* Prova Social */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-item {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-item::before {
+            content: "“";
+            font-size: 3em;
+            color: var(--accent-color);
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        .testimonial-item p {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .testimonial-item .author {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 10px;
+            display: block;
+            text-align: right;
+            font-style: normal;
+        }
+
+        /* Investimento Inteligente */
+        .investment-section {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .investment-section h3 {
+            color: var(--accent-color);
+        }
+
+        .investment-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .price-box {
+            background-color: var(--white);
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .price-box .old-price {
+            text-decoration: line-through;
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        .price-box .current-price {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .price-box .installments {
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        /* Garantia */
+        .guarantee-section {
+            background-color: #e6f7ff; /* Um azul mais claro */
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .guarantee-section i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .guarantee-section p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background-color: var(--light-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #004085;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background-color: var(--white);
+        }
+
+        .faq-answer p {
+            padding-bottom: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Ajuste conforme o conteúdo */
+            padding: 15px 20px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .disclaimer {
+            font-size: 0.8em;
+            color: rgba(255,255,255,0.6);
+            margin-top: 20px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .floating-cta {
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: var(--secondary-color);
-                color: var(--white);
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero h2 {
+                font-size: 1.2em;
+            }
+            .cta-button {
+                font-size: 1.2em;
                 padding: 15px 25px;
-                font-size: 1.1em;
-                font-weight: 600;
-                border-radius: 50px;
-                text-decoration: none;
-                z-index: 9999;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-                display: inline-block;
+            }
+            section h3 {
+                font-size: 1.7em;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .mentor-images {
+                flex-direction: column; /* Pilha as imagens em telas pequenas */
+                gap: 20px;
             }
         }
     </style>
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1292311741985312'); // SEU ID DE PIXEL JÁ ESTÁ AQUI!
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1292311741985312&ev=PageView&noscript=1"
+    /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SRTZNPH8ET'); // SUA TAG DO GOOGLE ANALYTICS 4 JÁ ESTÁ AQUI!
+      // A linha do Google Ads foi removida, conforme sua solicitação.
+    </script>
 </head>
 <body>
+
     <header class="hero">
         <div class="container">
             <div class="video-wrapper">
-                <iframe frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="video-overlay">
-                    🔊 Toque no vídeo para ativar o som
-                </div>
+                <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
             <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária da América Latina!</h1>
             <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong style="text-decoration: underline;">sem arriscar seu próprio capital.</strong></h2>
+            
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
             <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garanta o seu!</p>
         </div>
     </header>
 
-    <!-- ... (todo o restante da estrutura HTML permanece o mesmo) ... -->
+    <section class="opportunity-section">
+        <div class="container">
+            <h3>A Grande Oportunidade Revelada: Opere com o Capital da Atom!</h3>
+            <p>Milhares de pessoas sonham em viver do mercado financeiro, mas esbarram na falta de conhecimento ou, principalmente, na falta de capital. A UNIVERSIDADE ATOM foi criada para superar essas barreiras.</p>
+            <p>Mais do que um curso, é sua chance de se tornar um trader profissional, aprender com os maiores nomes do mercado e, o mais importante, ter a <strong style="text-decoration: underline;">OPORTUNIDADE de operar com o dinheiro da Atom, a maior mesa proprietária da América Latina, sem arriscar do seu próprio bolso!</strong></p>
+        </div>
+    </section>
 
-    <a href="https://go.hotmart.com/M100311843U?dp=1" class="floating-cta">QUERO ESSA OPORTUNIDADE!</a>
+    <section>
+        <div class="container">
+            <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Do Zero ao Avançado</h4>
+                    <p>Aprenda a operar no mercado financeiro, desde os conceitos mais básicos até as estratégias mais complexas.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4>Capital da Atom</h4>
+                    <p>Passe por 2 avaliações e, sendo aprovado, opere com o capital da Atom. 80% dos lucros são seus, 100% dos riscos são da Atom!</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Treinamento Prático</h4>
+                    <p>Aulas focadas na prática com a plataforma Profit Pro para você dominar as operações.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Conteúdo Exclusivo</h4>
+                    <p>Day trade, swing trade, mini índice, mini dólar, opções e muito mais para diversificar suas estratégias.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Mentorias ao Vivo</h4>
+                    <p>Aprenda diretamente com Carol e Joaquim Paiffer em sessões exclusivas e interativas.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h4>Salas de Dúvidas</h4>
+                    <p>Suporte em tempo real, todas as Segundas, Quartas e Sextas (16h e 20h), para tirar suas dúvidas.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-book-open"></i>
+                    <h4>Material Complementar</h4>
+                    <p>Aprofunde seu conhecimento com PDFs e planilhas em Excel de apoio.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-brain"></i>
+                    <h4>Bônus de Mindset</h4>
+                    <p>Cursos de Psicologia do Trader e Mindset (Atom Talks) para blindar sua mente contra os desafios do mercado.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO SABER MAIS E VER A CURRÍCULO COMPLETO!</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="mentor-section">
+        <div class="container">
+            <h3>Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
+            <div class="mentor-images">
+                <div class="mentor-image-wrapper">
+                    <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
+                    <h4>Carol Paiffer</h4>
+                </div>
+                <div class="mentor-image-wrapper">
+                    <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
+                    <h4>Joaquim Paiffer</h4>
+                </div>
+            </div>
+            <p>Aprenda com quem realmente faz o mercado!</p>
+            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
+            <p>Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h3>Transformando Vidas: Depoimentos de Quem Já Está no Jogo!</h3>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <p>"Eu não tinha nenhuma experiência e a Universidade Atom me abriu um mundo. As aulas são claras e a oportunidade de operar com o capital deles é inacreditável. Estou focado na qualificação!"</p>
+                    <span class="author">- Ana P., Aluna da Universidade Atom</span>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Sempre quis viver de trade, mas o capital era um problema. O que a Atom oferece é único! O curso é top e as mentorias com os Paiffer são um diferencial gigante."</p>
+                    <span class="author">- Carlos D., Trader em Evolução</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">"Na página oficial da Hotmart, você encontrará mais depoimentos e cases de sucesso de alunos da Universidade Atom!"</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">VER MAIS DEPOIMENTOS E DETALHES NA PÁGINA OFICIAL!</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="investment-section">
+        <div class="container">
+            <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
+            <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
+            <div class="price-box">
+                <p class="current-price">Apenas R$ 2.399,00 à vista no Pix</p>
+                <p class="installments">Ou em até 12x de R$ 199,92 no cartão de crédito</p>
+            </div>
+            <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
+            <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="container">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Sua Decisão Sem Riscos: Garantia de Satisfação Total!</h3>
+            <p>Temos total confiança na qualidade e no potencial transformador da UNIVERSIDADE ATOM. Por isso, sua inscrição é protegida por uma garantia incondicional de 7 dias.</p>
+            <p>Se, por qualquer motivo, você não estiver satisfeito ou o curso não atender às suas expectativas, basta solicitar o reembolso na Hotmart dentro deste período e 100% do seu investimento será devolvido, sem burocracia. Seu sucesso é nosso compromisso!</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h3>Perguntas Frequentes (FAQ)</h3>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P: Eu sou iniciante no mercado financeiro. A Universidade Atom é para mim?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>R: Sim! A Universidade Atom é perfeita para quem está começando do zero. O curso cobre desde os conceitos mais básicos até as estratégias avançadas, tudo de forma clara e prática.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P: Como funciona a oportunidade de operar com o capital da Atom?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>R: A Universidade Atom oferece 2 avaliações bônus. Ao ser aprovado(a), você terá a chance de operar com o capital da Atom, onde 80% dos lucros são seus e a Atom assume 100% dos riscos! Detalhes completos na página oficial da Hotmart.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P: O curso aborda apenas mini índice e mini dólar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>R: Não! A Universidade Atom é completa e aborda Day Trade, Swing Trade, mini índice, mini dólar, opções, e muito mais, oferecendo uma visão ampla do mercado.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P: Por quanto tempo terei acesso às aulas e mentorias?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>R: Você terá 1 ano de acesso completo a todas as aulas e conteúdos da Universidade Atom, incluindo as mentorias ao vivo e salas de dúvidas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P: Onde eu acesso o curso após a compra?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>R: Após a confirmação do pagamento, você receberá um e-mail da Hotmart com todas as instruções para acessar a plataforma de ensino da Universidade Atom.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">GARANTIR MINHA VAGA NA UNIVERSIDADE ATOM AGORA!</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Atom Trader Afiliado. Todos os direitos reservados.</p>
+            <p>
+                <a href="mailto:movimentodigital2025@gmail.com">Contato</a>
+            </p>
+            <p class="disclaimer">
+                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart. Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
+            </p>
+        </div>
+    </footer>
 
     <script>
+        // Smooth Scroll para botões de CTA (se houver âncoras na página)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.parentNode;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Script para garantir que o vídeo do YouTube auto-play e mute
         window.addEventListener('load', function() {
             const videoFrame = document.querySelector('.video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY';
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=1&modestbranding=1&rel=0`;
+            // O ID do seu vídeo do YouTube foi inserido aqui:
+            const youtubeVideoId = 'akPvLjxuGLY'; 
+            
+            // Define o src do iframe com autoplay, mute, loop e playsinline para melhor compatibilidade
+            // Adicione &controls=0&modestbranding=1&rel=0 para remover os controles e sugestões de vídeos
+            videoFrame.src = https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=1&modestbranding=1&rel=0;
+        });
 
-            // Desmutar ao clique
-            videoFrame.addEventListener('click', () => {
-                const currentSrc = videoFrame.src;
-                if (currentSrc.includes('mute=1')) {
-                    const newSrc = currentSrc.replace('mute=1', 'mute=0');
-                    videoFrame.src = newSrc;
+        // Opcional: Rastreamento de cliques no CTA (exemplo para Google Analytics)
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'click_cta_hotmart', {
+                        'event_category': 'Call to Action',
+                        'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
+                    });
+                }
+                // Para Meta Pixel (Facebook), você pode adicionar um evento personalizado
+                if (typeof fbq === 'function') {
+                    fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
+                        button_text: this.innerText
+                    });
                 }
             });
         });
+
     </script>
 </body>
 </html>
