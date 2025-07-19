@@ -81,7 +81,7 @@
             border: 0;
         }
 
-        /* SURPRESA 1: Ícone de Desmutar mais moderno e animado */
+        /* Ícone de Desmutar com Texto */
         .mute-button {
             position: absolute;
             top: 50%;
@@ -90,26 +90,44 @@
             cursor: pointer;
             z-index: 10;
             display: none; /* Inicialmente oculto, JS o mostra */
-            font-size: 3.5em; /* Ícone grande */
-            color: var(--white); /* Cor do ícone */
+            
+            /* Ajustes para o botão e seu conteúdo */
+            width: 140px; /* Largura do círculo maior para caber texto e ícone */
+            height: 140px; /* Altura do círculo */
             background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
             border-radius: 50%; /* Redondo */
-            width: 90px; /* Largura do círculo */
-            height: 90px; /* Altura do círculo */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
             border: 2px solid var(--accent-color); /* Borda destacada */
             box-shadow: 0 0 15px rgba(255,193,7,0.8); /* Sombra que "pulsa" */
             transition: background-color 0.3s ease, transform 0.2s ease;
             animation: pulse 1.5s infinite ease-in-out; /* Animação de pulso */
+
+            /* Flexbox para alinhar ícone e texto verticalmente */
+            display: flex;
+            flex-direction: column; /* Organiza itens em coluna */
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 10px; /* Espaçamento interno */
         }
 
         .mute-button:hover {
             background-color: rgba(0, 0, 0, 0.9);
             transform: translate(-50%, -50%) scale(1.05); /* Pequeno aumento ao passar o mouse */
             animation: none; /* Para a animação ao passar o mouse */
+        }
+
+        .mute-button i {
+            font-size: 3em; /* Tamanho do ícone */
+            color: var(--white); /* Cor do ícone */
+            margin-bottom: 5px; /* Espaço entre ícone e texto */
+        }
+
+        .mute-button .text {
+            font-size: 0.9em; /* Tamanho do texto */
+            color: var(--white); /* Cor do texto */
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
         }
 
         /* Keyframes para a animação de pulso */
@@ -139,7 +157,7 @@
             transform: translateY(-2px);
         }
 
-        /* Contador Regressivo - SURPRESA 3 */
+        /* Contador Regressivo */
         .countdown-timer {
             margin-top: 25px;
             background-color: rgba(255, 255, 255, 0.15);
@@ -207,7 +225,7 @@
             line-height: 1.8;
         }
 
-        /* Testimonials Grid (Textual) - SURPRESA 2: Efeito de Flutuação */
+        /* Testimonials Grid (Textual) - Efeito de Flutuação */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -241,7 +259,7 @@
             color: var(--primary-color);
         }
 
-        /* Benefits Grid - SURPRESA 2: Efeito de Flutuação */
+        /* Benefits Grid - Efeito de Flutuação */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -495,9 +513,14 @@
                 width: 120px; /* Ajusta o tamanho da imagem em mobile */
             }
             .mute-button {
-                width: 70px; /* Ajusta tamanho do botão em mobile */
-                height: 70px;
-                font-size: 3em; /* Ajusta tamanho do ícone em mobile */
+                width: 120px; /* Ajusta tamanho do botão em mobile */
+                height: 120px;
+            }
+            .mute-button i {
+                font-size: 2.5em; /* Ajusta tamanho do ícone em mobile */
+            }
+            .mute-button .text {
+                font-size: 0.8em; /* Ajusta tamanho do texto em mobile */
             }
             .countdown-timer {
                 font-size: 1.2em;
@@ -511,26 +534,32 @@
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal (mantenho o exemplo se não houver um novo fornecido)
-            // É importante usar o domínio correto para embeds do YouTube
+            // Corrigido: Usar o domínio oficial do YouTube para embeds
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
-        // SURPRESA 1: Mudar o ícone e desmutar
+        // Mudar o ícone e desmutar
         function unmuteVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const muteButton = document.querySelector('.mute-button');
+            const muteIcon = muteButton.querySelector('i'); // Seleciona o ícone dentro do botão
+            const muteText = muteButton.querySelector('.text'); // Seleciona o texto dentro do botão
             
             // Envia mensagem para o player do YouTube desmutar
             videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
             
             // Troca o ícone de "mute" para "volume"
-            muteButton.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
-            muteButton.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
-            muteButton.style.display = 'none'; // Oculta o botão de desmutar após o clique
-            muteButton.style.animation = 'none'; // Para a animação após clicar
+            muteIcon.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
+            muteIcon.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
+            
+            // Oculta o botão de desmutar após um pequeno delay para a transição do ícone
+            setTimeout(() => {
+                muteButton.style.display = 'none'; 
+                muteButton.style.animation = 'none'; // Para a animação após clicar
+            }, 300); // 300ms de delay
         }
 
-        // SURPRESA 3: Contador Regressivo
+        // Contador Regressivo
         function startCountdown() {
             // Definir a data e hora do fim da promoção (ex: hoje + 24 horas)
             const endTime = new Date();
@@ -568,16 +597,16 @@
         window.addEventListener('load', function() {
             loadMainYouTubeVideo(); // Carrega o vídeo principal
 
-            // SURPRESA 1: Ícone de desmutar
+            // Ícone de desmutar
             const muteButton = document.querySelector('.mute-button');
             // Timeout para garantir que o player esteja pronto antes de tentar mostrar o botão.
             setTimeout(() => {
-                muteButton.style.display = 'flex'; // Usa flex para centralizar o ícone
+                muteButton.style.display = 'flex'; // Usa flex para centralizar o ícone e texto
             }, 1000); // Exibe após 1 segundo
 
             muteButton.addEventListener('click', unmuteVideo); // Adiciona evento de clique para desmutar
 
-            // SURPRESA 3: Iniciar o contador regressivo
+            // Iniciar o contador regressivo
             startCountdown();
         });
 
@@ -622,8 +651,12 @@
     <header class="hero">
         <div class="container">
             <div class="video-wrapper">
-                <iframe src="http://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <i class="fas fa-volume-xmark mute-button" title="Clique para ativar o som"></i>
+                <iframe src="https://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="mute-button" title="Clique para ativar o som">
+                    <i class="fas fa-volume-xmark"></i>
+                    <span class="text">Toque Aqui!</span>
+                </div>
             </div>
 
             <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária da América Latina!</h1>
@@ -724,13 +757,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="http://www.youtube.com/embed/NvMNeM7mj9I?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="http://www.youtube.com/embed/KXvyvdJrEbo?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="http://www.youtube.com/embed/PrH072wnmro?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -759,7 +792,7 @@
             <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
             <div class="price-box">
                 <p class="current-price">Apenas R$ 2.399,00 à vista no Pix</p>
-                <p class="installments">Ou em até 12x de R$ 199,92 no cartão de crédito</p>
+                <p class="installments">Em até 12x de R$ 199,92 no cartão de crédito</p>
             </div>
             <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
