@@ -369,17 +369,20 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .price-box .current-price {
-            font-size: 1.3em; /* Tamanho menor para o valor à vista (Pix) */
-            font-weight: 700;
+        /* Ajustes para a nova ordem e destaque */
+        .price-box .installments { /* Agora esta é a principal */
+            font-size: 2.2em;
+            font-weight: 700; /* Destaque maior */
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .price-box .current-price { /* Agora esta é a secundária */
+            font-size: 1.3em;
+            font-weight: 400; /* Menos destaque */
             margin-bottom: 5px;
         }
 
-        .price-box .installments {
-            font-size: 2.2em; /* Tamanho maior para o valor parcelado */
-            font-weight: 400;
-            margin-top: 5px;
-        }
 
         /* Guarantee Section */
         .guarantee-section {
@@ -538,7 +541,7 @@
         // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal (mantenho o exemplo se não houver um novo fornecido)
+            const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal
             // Corrigido: Usar o domínio oficial do YouTube para embeds
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
@@ -762,13 +765,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DO_DEPOIMENTO_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DO_DEPOIMENTO_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DO_DEPOIMENTO_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -796,8 +799,8 @@
             <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
             <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
             <div class="price-box">
-                <p class="current-price">Apenas R$ 2.399,00 à vista no Pix</p>
-                <p class="installments">Ou em 12x de R$ 199,92 no cartão de crédito</p>
+                <p class="installments">12x de R$ 199,92 no cartão de crédito</p>
+                <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
             </div>
             <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
