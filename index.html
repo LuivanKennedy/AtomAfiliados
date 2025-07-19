@@ -286,17 +286,19 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
+        /* ALTERAÇÃO FEITA AQUI: Invertendo os tamanhos das fontes */
         .price-box .current-price {
-            font-size: 2.2em;
+            font-size: 1.3em; /* Tamanho menor para o valor à vista (Pix) */
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .price-box .installments {
-            font-size: 1.3em;
+            font-size: 2.2em; /* Tamanho maior para o valor parcelado */
             font-weight: 400;
             margin-top: 5px;
         }
+        /* FIM DA ALTERAÇÃO */
 
         /* Guarantee Section */
         .guarantee-section {
@@ -441,6 +443,7 @@
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal
+            // É importante usar o domínio correto para embeds do YouTube
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
         }
 
@@ -524,7 +527,7 @@
     </section>
 
     <section>
-        <div class="container">       
+        <div class="container">        
             <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
             <div class="benefits-grid">
                 <div class="benefit-item">
@@ -599,13 +602,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=01" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=02" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=03" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -723,6 +726,7 @@
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal
+            // É importante usar o domínio correto para embeds do YouTube
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
         }
 
