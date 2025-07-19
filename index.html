@@ -6,9 +6,7 @@
     <title>Universidade Atom: O Caminho para Operar com o Capital da Maior Mesa Proprietária!</title>
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
     <link rel="canonical" href="[SUA_URL_DA_BRIDGE_PAGE_AQUI]">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -83,6 +81,16 @@
             border: 0;
         }
 
+        .mute-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 10;
+            display: none; /* Inicialmente oculto */
+        }
+
         .cta-button {
             display: inline-block;
             background-color: var(--secondary-color);
@@ -101,13 +109,6 @@
         .cta-button:hover {
             background-color: #218838;
             transform: translateY(-2px);
-        }
-
-        .cta-small-text {
-            font-size: 0.9em;
-            margin-top: 10px;
-            color: rgba(255,255,255,0.8);
-            font-weight: 600;
         }
 
         /* Sections General */
@@ -152,188 +153,6 @@
             line-height: 1.8;
         }
 
-        /* O Que Você Vai Conquistar */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit-item {
-            background-color: var(--light-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .benefit-item i {
-            font-size: 2.5em;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        .benefit-item h4 {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .benefit-item p {
-            font-size: 0.95em;
-        }
-
-        /* Quem Está Por Trás */
-        .mentor-section {
-            text-align: center;
-        }
-
-        /* Flexbox para alinhar as imagens dos mentores */
-        .mentor-images {
-            display: flex;
-            justify-content: center;
-            gap: 30px; /* Espaçamento entre as imagens */
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Quebra de linha em telas menores */
-        }
-
-        .mentor-image-wrapper {
-            text-align: center;
-        }
-
-        .mentor-image-wrapper img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            margin-bottom: 10px;
-        }
-
-        .mentor-image-wrapper h4 {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .mentor-section p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1em;
-            margin-top: 20px; /* Adiciona espaço acima do parágrafo geral */
-        }
-
-        /* Prova Social */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-item {
-            background-color: var(--light-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-item::before {
-            content: "“";
-            font-size: 3em;
-            color: var(--accent-color);
-            position: absolute;
-            top: 5px;
-            left: 10px;
-            opacity: 0.3;
-        }
-
-        .testimonial-item p {
-            margin-top: 20px;
-            font-size: 0.95em;
-        }
-
-        .testimonial-item .author {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-top: 10px;
-            display: block;
-            text-align: right;
-            font-style: normal;
-        }
-
-        /* Investimento Inteligente */
-        .investment-section {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .investment-section h3 {
-            color: var(--accent-color);
-        }
-
-        .investment-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .price-box {
-            background-color: var(--white);
-            color: var(--text-color);
-            border-radius: 10px;
-            padding: 30px;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
-        }
-
-        .price-box .old-price {
-            text-decoration: line-through;
-            font-size: 1.1em;
-            color: #777;
-        }
-
-        .price-box .current-price {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        .price-box .installments {
-            font-size: 1.2em;
-            color: var(--primary-color);
-        }
-
-        /* Garantia */
-        .guarantee-section {
-            background-color: #e6f7ff; /* Um azul mais claro */
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .guarantee-section i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .guarantee-section p {
-            font-size: 1.1em;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
         /* FAQ */
         .faq-item {
             background-color: var(--light-bg);
@@ -358,10 +177,6 @@
 
         .faq-question:hover {
             background-color: #004085;
-        }
-
-        .faq-question i {
-            transition: transform 0.3s ease;
         }
 
         .faq-answer {
@@ -429,38 +244,33 @@
             section h3 {
                 font-size: 1.7em;
             }
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-            .mentor-images {
-                flex-direction: column; /* Pilha as imagens em telas pequenas */
-                gap: 20px;
-            }
         }
     </style>
 
     <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1292311741985312'); // SEU ID DE PIXEL JÁ ESTÁ AQUI!
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1292311741985312&ev=PageView&noscript=1"
-    /></noscript>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SRTZNPH8ET'); // SUA TAG DO GOOGLE ANALYTICS 4 JÁ ESTÁ AQUI!
-      // A linha do Google Ads foi removida, conforme sua solicitação.
+        // Função para carregar o vídeo do YouTube
+        function loadYouTubeVideo() {
+            const videoFrame = document.querySelector('.video-wrapper iframe');
+            const youtubeVideoId = 'akPvLjxuGLY'; 
+            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0`;
+        }
+
+        // Função para desmutar o vídeo
+        function unmuteVideo() {
+            const videoFrame = document.querySelector('.video-wrapper iframe');
+            const muteButton = document.querySelector('.mute-button');
+            videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            muteButton.style.display = 'none'; // Oculta o botão de desmutar
+        }
+
+        window.addEventListener('load', function() {
+            loadYouTubeVideo();
+
+            const muteButton = document.querySelector('.mute-button');
+            muteButton.style.display = 'block'; // Exibe o botão de desmutar
+
+            muteButton.addEventListener('click', unmuteVideo);
+        });
     </script>
 </head>
 <body>
@@ -469,6 +279,7 @@
         <div class="container">
             <div class="video-wrapper">
                 <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img src="path/to/sound-icon.png" alt="Desmutar" class="mute-button" />
             </div>
 
             <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária da América Latina!</h1>
@@ -689,12 +500,8 @@
         // Script para garantir que o vídeo do YouTube auto-play e mute
         window.addEventListener('load', function() {
             const videoFrame = document.querySelector('.video-wrapper iframe');
-            // O ID do seu vídeo do YouTube foi inserido aqui:
             const youtubeVideoId = 'akPvLjxuGLY'; 
-            
-            // Define o src do iframe com autoplay, mute, loop e playsinline para melhor compatibilidade
-            // Adicione &controls=0&modestbranding=1&rel=0 para remover os controles e sugestões de vídeos
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=1&modestbranding=1&rel=0`;
+            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0`;
         });
 
         // Opcional: Rastreamento de cliques no CTA (exemplo para Google Analytics)
@@ -714,7 +521,6 @@
                 }
             });
         });
-
     </script>
 </body>
 </html>
