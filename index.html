@@ -7,7 +7,7 @@
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
     <link rel="canonical" href="https://atom-afiliados.vercel.app/">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9R2iW42q9FjI9S+W4w6t5oN7r2F5B6Xz7hFm+q+uQ8J+K0iPz2N7l7i2/v1W8zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -81,6 +81,7 @@
             border: 0;
         }
 
+        /* INÍCIO DA ALTERAÇÃO - AJUSTE DO BOTÃO DE DESMUTAR */
         .mute-button {
             position: absolute;
             top: 50%;
@@ -88,8 +89,21 @@
             transform: translate(-50%, -50%);
             cursor: pointer;
             z-index: 10;
-            display: none; /* Inicialmente oculto */
+            display: none; /* Inicialmente oculto, JS o mostra */
+            width: 80px; /* Largura ajustada para o ícone */
+            height: 80px; /* Altura ajustada para o ícone */
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para destaque */
+            border-radius: 50%; /* Deixa ele redondo */
+            padding: 10px; /* Espaçamento interno se a imagem for menor que o container */
+            box-sizing: border-box; /* Garante que padding não aumente o tamanho total */
+            object-fit: contain; /* Garante que a imagem se ajuste dentro do contêiner */
         }
+
+        .mute-button:hover {
+            opacity: 0.8;
+        }
+        /* FIM DA ALTERAÇÃO - AJUSTE DO BOTÃO DE DESMUTAR */
+
 
         .cta-button {
             display: inline-block;
@@ -287,13 +301,13 @@
         }
 
         .price-box .current-price {
-            font-size: 2.2em;
+            font-size: 1.3em; /* Tamanho menor para o valor à vista (Pix) */
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .price-box .installments {
-            font-size: 1.3em;
+            font-size: 2.2em; /* Tamanho maior para o valor parcelado */
             font-weight: 400;
             margin-top: 5px;
         }
@@ -440,8 +454,10 @@
         // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
+            const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal (mantenho o exemplo se não houver um novo fornecido)
+            // É importante usar o domínio correto para embeds do YouTube
+            // Adicionado `controls=0` e `showinfo=0` para um look mais limpo
+            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
         // Função para desmutar o vídeo principal
@@ -458,7 +474,12 @@
             loadMainYouTubeVideo(); // Carrega o vídeo principal
 
             const muteButton = document.querySelector('.mute-button');
-            muteButton.style.display = 'block'; // Exibe o botão de desmutar
+            // Timeout para garantir que o player esteja pronto antes de tentar mostrar o botão.
+            // Isso evita que o botão apareça e suma rapidamente se o vídeo carregar muito rápido.
+            setTimeout(() => {
+                muteButton.style.display = 'block'; // Exibe o botão de desmutar
+            }, 1000); // Exibe após 1 segundo
+
             muteButton.addEventListener('click', unmuteVideo); // Adiciona evento de clique para desmutar
         });
 
@@ -503,7 +524,7 @@
     <header class="hero">
         <div class="container">
             <div class="video-wrapper">
-                <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <img src="clique-para-desmutar.png" alt="Clique para ativar som" class="mute-button" />
             </div>
 
@@ -524,7 +545,7 @@
     </section>
 
     <section>
-        <div class="container">       
+        <div class="container">        
             <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
             <div class="benefits-grid">
                 <div class="benefit-item">
@@ -599,13 +620,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=01" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=02" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID_2?autoplay=0&mute=1&loop=0&playsinline=1&controls=1&modestbranding=1&rel=03" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PrH072wnmro?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -633,8 +654,8 @@
             <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
             <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
             <div class="price-box">
-                <p class="current-price">Apenas 12x de R$ 199,92 no cartão de crédito</p>
-                <p class="installments">Ou R$ 2.399,00 à vista no Pix </p>
+                <p class="current-price">Em até 12x de R$ 199,92</p>
+                <p class="installments">Ou por Apenas R$ 2.399,00 à vista no Pix</p>
             </div>
             <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
@@ -717,67 +738,5 @@
             </p>
         </div>
     </footer>
-
-    <script>
-        // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
-        function loadMainYouTubeVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
-        }
-
-        // Função para desmutar o vídeo principal
-        function unmuteVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const muteButton = document.querySelector('.mute-button');
-            // Envia mensagem para o player do YouTube desmutar
-            videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-            muteButton.style.display = 'none'; // Oculta o botão de desmutar após o clique
-        }
-
-        // Event Listeners quando a página carrega
-        window.addEventListener('load', function() {
-            loadMainYouTubeVideo(); // Carrega o vídeo principal
-
-            const muteButton = document.querySelector('.mute-button');
-            muteButton.style.display = 'block'; // Exibe o botão de desmutar
-            muteButton.addEventListener('click', unmuteVideo); // Adiciona evento de clique para desmutar
-        });
-
-        // Smooth Scroll para botões de CTA (se houver âncoras na página)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const faqItem = item.parentNode;
-                faqItem.classList.toggle('active');
-            });
-        });
-
-        // Opcional: Rastreamento de cliques no CTA (exemplo para Google Analytics/Meta Pixel)
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'click_cta_hotmart', {
-                        'event_category': 'Call to Action',
-                        'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
-                    });
-                }
-                if (typeof fbq === 'function') {
-                    fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
-                        button_text: this.innerText
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
