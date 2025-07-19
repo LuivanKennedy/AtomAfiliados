@@ -81,7 +81,7 @@
             border: 0;
         }
 
-        /* INÍCIO DA ALTERAÇÃO - AJUSTE DO BOTÃO DE DESMUTAR */
+        /* SURPRESA 1: Ícone de Desmutar mais moderno e animado */
         .mute-button {
             position: absolute;
             top: 50%;
@@ -90,20 +90,34 @@
             cursor: pointer;
             z-index: 10;
             display: none; /* Inicialmente oculto, JS o mostra */
-            width: 80px; /* Largura ajustada para o ícone */
-            height: 80px; /* Altura ajustada para o ícone */
-            background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para destaque */
-            border-radius: 50%; /* Deixa ele redondo */
-            padding: 10px; /* Espaçamento interno se a imagem for menor que o container */
-            box-sizing: border-box; /* Garante que padding não aumente o tamanho total */
-            object-fit: contain; /* Garante que a imagem se ajuste dentro do contêiner */
+            font-size: 3.5em; /* Ícone grande */
+            color: var(--white); /* Cor do ícone */
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+            border-radius: 50%; /* Redondo */
+            width: 90px; /* Largura do círculo */
+            height: 90px; /* Altura do círculo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            border: 2px solid var(--accent-color); /* Borda destacada */
+            box-shadow: 0 0 15px rgba(255,193,7,0.8); /* Sombra que "pulsa" */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            animation: pulse 1.5s infinite ease-in-out; /* Animação de pulso */
         }
 
         .mute-button:hover {
-            opacity: 0.8;
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: translate(-50%, -50%) scale(1.05); /* Pequeno aumento ao passar o mouse */
+            animation: none; /* Para a animação ao passar o mouse */
         }
-        /* FIM DA ALTERAÇÃO - AJUSTE DO BOTÃO DE DESMUTAR */
 
+        /* Keyframes para a animação de pulso */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
+            50% { box-shadow: 0 0 20px rgba(255,193,7,1), 0 0 30px rgba(255,193,7,0.8); }
+            100% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
+        }
 
         .cta-button {
             display: inline-block;
@@ -123,6 +137,32 @@
         .cta-button:hover {
             background-color: #218838;
             transform: translateY(-2px);
+        }
+
+        /* Contador Regressivo - SURPRESA 3 */
+        .countdown-timer {
+            margin-top: 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            color: var(--accent-color);
+            font-size: 1.6em;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .countdown-timer span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .countdown-timer .label {
+            font-size: 0.5em;
+            display: block;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Sections General */
@@ -167,7 +207,7 @@
             line-height: 1.8;
         }
 
-        /* Testimonials Grid (Textual) */
+        /* Testimonials Grid (Textual) - SURPRESA 2: Efeito de Flutuação */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -181,6 +221,12 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-8px); /* Sobe um pouco */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
         }
 
         .testimonial-item p {
@@ -195,7 +241,7 @@
             color: var(--primary-color);
         }
 
-        /* Benefits Grid */
+        /* Benefits Grid - SURPRESA 2: Efeito de Flutuação */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -209,11 +255,12 @@
             border-radius: 8px;
             background-color: var(--light-bg);
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
         }
 
         .benefit-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px); /* Sobe um pouco */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
         }
 
         .benefit-item i {
@@ -447,6 +494,15 @@
             .mentor-image-wrapper {
                 width: 120px; /* Ajusta o tamanho da imagem em mobile */
             }
+            .mute-button {
+                width: 70px; /* Ajusta tamanho do botão em mobile */
+                height: 70px;
+                font-size: 3em; /* Ajusta tamanho do ícone em mobile */
+            }
+            .countdown-timer {
+                font-size: 1.2em;
+                padding: 10px 15px;
+            }
         }
     </style>
 
@@ -456,31 +512,73 @@
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID do vídeo principal (mantenho o exemplo se não houver um novo fornecido)
             // É importante usar o domínio correto para embeds do YouTube
-            // Adicionado `controls=0` e `showinfo=0` para um look mais limpo
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
-        // Função para desmutar o vídeo principal
+        // SURPRESA 1: Mudar o ícone e desmutar
         function unmuteVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const muteButton = document.querySelector('.mute-button');
+            
             // Envia mensagem para o player do YouTube desmutar
             videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            
+            // Troca o ícone de "mute" para "volume"
+            muteButton.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
+            muteButton.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
             muteButton.style.display = 'none'; // Oculta o botão de desmutar após o clique
+            muteButton.style.animation = 'none'; // Para a animação após clicar
         }
+
+        // SURPRESA 3: Contador Regressivo
+        function startCountdown() {
+            // Definir a data e hora do fim da promoção (ex: hoje + 24 horas)
+            const endTime = new Date();
+            endTime.setDate(endTime.getDate() + 1); // Adiciona 1 dia (ajuste como quiser)
+            endTime.setHours(23, 59, 59, 0); // Ajusta para o final do dia (23:59:59)
+
+            const countdownElement = document.getElementById('countdown-timer');
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = endTime.getTime() - now;
+
+                if (distance < 0) {
+                    countdownElement.innerHTML = "Oferta Expirada!";
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `
+                    <span>${hours.toString().padStart(2, '0')}<span class="label">HORAS</span></span>:
+                    <span>${minutes.toString().padStart(2, '0')}<span class="label">MINUTOS</span></span>:
+                    <span>${seconds.toString().padStart(2, '0')}<span class="label">SEGUNDOS</span></span>
+                `;
+            };
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown(); // Chama uma vez para exibir imediatamente
+        }
+
 
         // Event Listeners quando a página carrega
         window.addEventListener('load', function() {
             loadMainYouTubeVideo(); // Carrega o vídeo principal
 
+            // SURPRESA 1: Ícone de desmutar
             const muteButton = document.querySelector('.mute-button');
             // Timeout para garantir que o player esteja pronto antes de tentar mostrar o botão.
-            // Isso evita que o botão apareça e suma rapidamente se o vídeo carregar muito rápido.
             setTimeout(() => {
-                muteButton.style.display = 'block'; // Exibe o botão de desmutar
+                muteButton.style.display = 'flex'; // Usa flex para centralizar o ícone
             }, 1000); // Exibe após 1 segundo
 
             muteButton.addEventListener('click', unmuteVideo); // Adiciona evento de clique para desmutar
+
+            // SURPRESA 3: Iniciar o contador regressivo
+            startCountdown();
         });
 
         // Smooth Scroll para botões de CTA (se houver âncoras na página)
@@ -524,8 +622,8 @@
     <header class="hero">
         <div class="container">
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <img src="clique-para-desmutar.png" alt="Clique para ativar som" class="mute-button" />
+                <iframe src="http://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <i class="fas fa-volume-xmark mute-button" title="Clique para ativar o som"></i>
             </div>
 
             <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária da América Latina!</h1>
@@ -533,6 +631,12 @@
             
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
             <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garanta o seu!</p>
+            
+            <div class="countdown-timer" id="countdown-timer">
+                <span>00<span class="label">HORAS</span></span>:
+                <span>00<span class="label">MINUTOS</span></span>:
+                <span>00<span class="label">SEGUNDOS</span></span>
+            </div>
         </div>
     </header>
 
@@ -620,13 +724,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/NvMNeM7mj9I?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/KXvyvdJrEbo?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/PrH072wnmro?controls=1&modestbranding=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/PrH072wnmro?controls=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -654,8 +758,8 @@
             <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
             <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
             <div class="price-box">
-                <p class="current-price">Em até 12x de R$ 199,92</p>
-                <p class="installments">Ou por Apenas R$ 2.399,00 à vista no Pix</p>
+                <p class="current-price">Apenas R$ 2.399,00 à vista no Pix</p>
+                <p class="installments">Ou em até 12x de R$ 199,92 no cartão de crédito</p>
             </div>
             <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
