@@ -593,40 +593,34 @@
         // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            // IMPORTANTE: SUBSTITUA 'YOUR_MAIN_VIDEO_ID_HERE' PELO ID REAL DO SEU VÍDEO DO YOUTUBE
-            const youtubeVideoId = 'YOUR_MAIN_VIDEO_ID_HERE'; 
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
+            const youtubeVideoId = 'akPvLjxuGLY'; 
+            videoFrame.src = `http://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
         // Mudar o ícone e desmutar
         function unmuteVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const muteButton = document.querySelector('.mute-button');
-            const muteIcon = muteButton.querySelector('i'); // Seleciona o ícone dentro do botão
+            const muteIcon = muteButton.querySelector('i');
             
-            // Verifica se o iframe existe e tem um contentWindow
             if (videoFrame && videoFrame.contentWindow) {
-                // Envia mensagem para o player do YouTube desmutar
                 videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
                 
-                // Troca o ícone de "mute" para "volume"
-                muteIcon.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
-                muteIcon.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
+                muteIcon.classList.remove('fa-volume-xmark');
+                muteIcon.classList.add('fa-volume-high');
                 
-                // Oculta o botão de desmutar após um pequeno delay para a transição do ícone
                 setTimeout(() => {
                     muteButton.style.display = 'none'; 
-                    muteButton.style.animation = 'none'; // Para a animação após clicar
-                }, 300); // 300ms de delay
+                    muteButton.style.animation = 'none';
+                }, 300);
             }
         }
 
         // Contador Regressivo
         function startCountdown() {
-            // Definir a data e hora do fim da promoção (ex: hoje + 24 horas)
             const endTime = new Date();
-            endTime.setDate(endTime.getDate() + 1); // Adiciona 1 dia (ajuste como quiser)
-            endTime.setHours(23, 59, 59, 0); // Ajusta para o final do dia (23:59:59)
+            endTime.setDate(endTime.getDate() + 1);
+            endTime.setHours(23, 59, 59, 0);
 
             const countdownElement = document.getElementById('countdown-timer');
 
@@ -651,28 +645,22 @@
             };
 
             setInterval(updateCountdown, 1000);
-            updateCountdown(); // Chama uma vez para exibir imediatamente
+            updateCountdown();
         }
 
-
-        // Event Listeners quando a página carrega
         window.addEventListener('load', function() {
-            loadMainYouTubeVideo(); // Carrega o vídeo principal
+            loadMainYouTubeVideo();
 
-            // Ícone de desmutar
             const muteButton = document.querySelector('.mute-button');
-            // Timeout para garantir que o player esteja pronto antes de tentar mostrar o botão.
             setTimeout(() => {
-                muteButton.style.display = 'flex'; // Usa flex para centralizar o ícone e texto
-            }, 1000); // Exibe após 1 segundo
+                muteButton.style.display = 'flex';
+            }, 1000);
 
-            muteButton.addEventListener('click', unmuteVideo); // Adiciona evento de clique para desmutar
+            muteButton.addEventListener('click', unmuteVideo);
 
-            // Iniciar o contador regressivo
             startCountdown();
         });
 
-        // Smooth Scroll para botões de CTA (se houver âncoras na página)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -685,10 +673,9 @@
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', event => {
-                const faqItem = item.closest('.faq-item'); // Garante que pegamos o elemento pai correto
+                const faqItem = item.closest('.faq-item');
                 faqItem.classList.toggle('active');
 
-                // Adicionar/Remover atributos ARIA para acessibilidade
                 const isExpanded = faqItem.classList.contains('active');
                 item.setAttribute('aria-expanded', isExpanded);
                 const answer = faqItem.querySelector('.faq-answer');
@@ -698,7 +685,6 @@
             });
         });
 
-        // Opcional: Rastreamento de cliques no CTA (exemplo para Google Analytics/Meta Pixel)
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', function() {
                 if (typeof gtag === 'function') {
@@ -827,13 +813,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="http://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
