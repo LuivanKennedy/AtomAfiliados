@@ -433,6 +433,7 @@
             font-weight: 600;
             font-size: 1.15em; /* Aumentado o tamanho da fonte */
             transition: background-color 0.3s ease, color 0.3s ease; /* Transição para background e cor */
+            box-sizing: border-box; /* Adicionado */
         }
 
         .faq-question:hover {
@@ -452,6 +453,7 @@
             background-color: var(--faq-answer-bg); /* Fundo azul claro para a resposta */
             color: var(--text-color); /* Garante que o texto tenha a cor correta */
             transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out, background-color 0.4s ease; /* Transição mais longa e suave, e para o fundo */
+            box-sizing: border-box; /* Adicionado */
         }
 
         .faq-answer p {
@@ -475,7 +477,7 @@
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px; /* Um valor alto para garantir que o conteúdo caiba */
+            max-height: 2000px; /* Aumentado o valor para garantir que o conteúdo caiba */
             padding-top: 15px; /* Adiciona padding ao expandir */
             padding-bottom: 15px; /* Adiciona padding ao expandir */
         }
