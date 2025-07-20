@@ -309,7 +309,7 @@
             justify-content: center;
             gap: 30px;
             margin-top: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 60px; /* Ajustado para dar mais espaço e evitar sobreposição */
             flex-wrap: wrap; /* Permite que as imagens quebrem a linha em telas menores */
         }
 
@@ -543,7 +543,7 @@
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID DO VÍDEO PRINCIPAL INSERIDO AQUI
             // Formato CORRETO para embeds do YouTube
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
+            videoFrame.src = `https://www.youtube.com/embed/$${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
         // Mudar o ícone e desmutar
