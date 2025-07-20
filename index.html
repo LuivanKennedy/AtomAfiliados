@@ -661,6 +661,21 @@
             muteButton.addEventListener('click', unmuteVideo);
 
             startCountdown();
+
+            // FAQ Accordion - MOVIDO PARA DENTRO DO load EVENT
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', event => {
+                    const faqItem = item.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+
+                    const isExpanded = faqItem.classList.contains('active');
+                    item.setAttribute('aria-expanded', isExpanded);
+                    const answer = faqItem.querySelector('.faq-answer');
+                    if (answer) {
+                        answer.setAttribute('aria-hidden', !isExpanded);
+                    }
+                });
+            });
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -669,21 +684,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const faqItem = item.closest('.faq-item');
-                faqItem.classList.toggle('active');
-
-                const isExpanded = faqItem.classList.contains('active');
-                item.setAttribute('aria-expanded', isExpanded);
-                const answer = faqItem.querySelector('.faq-answer');
-                if (answer) {
-                    answer.setAttribute('aria-hidden', !isExpanded);
-                }
             });
         });
 
