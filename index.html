@@ -593,8 +593,8 @@
         // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; // ID DO VÍDEO PRINCIPAL INSERIDO AQUI
-            // Formato CORRETO para embeds do YouTube
+            // IMPORTANTE: SUBSTITUA 'YOUR_MAIN_VIDEO_ID_HERE' PELO ID REAL DO SEU VÍDEO DO YOUTUBE
+            const youtubeVideoId = 'YOUR_MAIN_VIDEO_ID_HERE'; 
             videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
@@ -827,13 +827,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
