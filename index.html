@@ -416,7 +416,7 @@
         }
 
         .faq-question {
-            padding: 18px 25px; /* Aumentado o padding */
+            padding: 15px 20px;
             background-color: var(--primary-color);
             color: var(--white);
             cursor: pointer;
@@ -424,7 +424,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1.15em; /* Aumentado o tamanho da fonte */
+            font-size: 1.1em;
             transition: background-color 0.3s ease;
         }
 
@@ -432,41 +432,25 @@
             background-color: #004085;
         }
 
-        /* Estilo para a pergunta ativa */
-        .faq-item.active .faq-question {
-            background-color: #003366; /* Cor mais escura para a pergunta ativa */
-            border-bottom: 2px solid var(--accent-color); /* Linha abaixo da pergunta ativa */
-        }
-
         .faq-answer {
-            padding: 0 25px; /* Ajustado o padding para corresponder à pergunta */
+            padding: 0 20px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Transição mais longa */
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
             background-color: var(--white);
-            color: var(--text-color); /* Garante que o texto tenha a cor correta */
         }
 
         .faq-answer p {
-            padding-top: 15px; /* Espaçamento superior para o parágrafo */
             padding-bottom: 15px;
-            margin: 0; /* Remove a margem padrão do parágrafo */
-            line-height: 1.7; /* Melhorar legibilidade */
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px; /* Um valor alto para garantir que o conteúdo caiba */
-            padding-top: 15px; /* Adiciona padding ao expandir */
-            padding-bottom: 15px; /* Adiciona padding ao expandir */
+            max-height: 200px; /* Ajuste conforme o conteúdo */
+            padding: 15px 20px;
         }
 
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
-        }
-
-        .faq-question i {
-            font-size: 0.9em; /* Ícone um pouco menor */
-            transition: transform 0.3s ease;
         }
 
         /* Footer */
@@ -550,18 +534,6 @@
                 font-size: 1.2em;
                 padding: 10px 15px;
             }
-            /* FAQ em mobile */
-            .faq-question {
-                font-size: 1em; /* Ajusta o tamanho da fonte da pergunta em mobile */
-                padding: 15px 20px;
-            }
-            .faq-answer {
-                padding: 0 20px;
-            }
-            .faq-answer p {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
         }
     </style>
 
@@ -571,7 +543,7 @@
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; // ID DO VÍDEO PRINCIPAL INSERIDO AQUI
             // Formato CORRETO para embeds do YouTube
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
+            videoFrame.src = `https://www.youtube.com/embed/$${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
         // Mudar o ícone e desmutar
@@ -579,22 +551,20 @@
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const muteButton = document.querySelector('.mute-button');
             const muteIcon = muteButton.querySelector('i'); // Seleciona o ícone dentro do botão
+            const muteText = muteButton.querySelector('.text'); // Seleciona o texto dentro do botão
             
-            // Verifica se o iframe existe e tem um contentWindow
-            if (videoFrame && videoFrame.contentWindow) {
-                // Envia mensagem para o player do YouTube desmutar
-                videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                
-                // Troca o ícone de "mute" para "volume"
-                muteIcon.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
-                muteIcon.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
-                
-                // Oculta o botão de desmutar após um pequeno delay para a transição do ícone
-                setTimeout(() => {
-                    muteButton.style.display = 'none'; 
-                    muteButton.style.animation = 'none'; // Para a animação após clicar
-                }, 300); // 300ms de delay
-            }
+            // Envia mensagem para o player do YouTube desmutar
+            videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            
+            // Troca o ícone de "mute" para "volume"
+            muteIcon.classList.remove('fa-volume-xmark'); // Remove o ícone de mudo
+            muteIcon.classList.add('fa-volume-high'); // Adiciona o ícone de volume alto
+            
+            // Oculta o botão de desmutar após um pequeno delay para a transição do ícone
+            setTimeout(() => {
+                muteButton.style.display = 'none'; 
+                muteButton.style.animation = 'none'; // Para a animação após clicar
+            }, 300); // 300ms de delay
         }
 
         // Contador Regressivo
@@ -661,16 +631,8 @@
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', event => {
-                const faqItem = item.closest('.faq-item'); // Garante que pegamos o elemento pai correto
+                const faqItem = item.parentNode;
                 faqItem.classList.toggle('active');
-
-                // Adicionar/Remover atributos ARIA para acessibilidade
-                const isExpanded = faqItem.classList.contains('active');
-                item.setAttribute('aria-expanded', isExpanded);
-                const answer = faqItem.querySelector('.faq-answer');
-                if (answer) {
-                    answer.setAttribute('aria-hidden', !isExpanded);
-                }
             });
         });
 
@@ -697,7 +659,7 @@
     <header class="hero">
         <div class="container">
             <div class="video-wrapper">
-                <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/akPvLjxuGLY?autoplay=1&mute=1&loop=1&playlist=akPvLjxuGLY&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 
                 <div class="mute-button" title="Clique para ativar o som">
                     <i class="fas fa-volume-xmark"></i>
@@ -803,13 +765,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_DEPOIMENTO_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -859,47 +821,47 @@
             <h3>Perguntas Frequentes (FAQ)</h3>
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-1">
+                    <div class="faq-question">
                         <span>P: Eu sou iniciante no mercado financeiro. A Universidade Atom é para mim?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Sim! A Universidade Atom é perfeita para quem está começando do zero. O curso cobre desde os conceitos mais básicos até as estratégias avançadas, tudo de forma clara e prática.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-2">
+                    <div class="faq-question">
                         <span>P: Como funciona a oportunidade de operar com o capital da Atom?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: A Universidade Atom oferece 2 avaliações bônus. Ao ser aprovado(a), você terá a chance de operar com o capital da Atom, onde 80% dos lucros são seus e a Atom assume 100% dos riscos! Detalhes completos na página oficial da Hotmart.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-3">
+                    <div class="faq-question">
                         <span>P: O curso aborda apenas mini índice e mini dólar?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Não! A Universidade Atom é completa e aborda Day Trade, Swing Trade, mini índice, mini dólar, opções, e muito mais, oferecendo uma visão ampla do mercado.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-4">
+                    <div class="faq-question">
                         <span>P: Por quanto tempo terei acesso às aulas e mentorias?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Você terá 1 ano de acesso completo a todas as aulas e conteúdos da Universidade Atom, incluindo as mentorias ao vivo e salas de dúvidas.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-5">
+                    <div class="faq-question">
                         <span>P: Onde eu acesso o curso após a compra?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-5" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Após a confirmação do pagamento, você receberá um e-mail da Hotmart com todas as instruções para acessar a plataforma de ensino da Universidade Atom.</p>
                     </div>
                 </div>
