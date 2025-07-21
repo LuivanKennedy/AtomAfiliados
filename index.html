@@ -346,7 +346,7 @@
             border-radius: 50%; /* Imagens circulares */
             border: 4px solid var(--accent-color);
             object-fit: cover; /* ESSENCIAL: Garante que a imagem preencha o contêiner mantendo a proporção, cortando o que exceder */
-            object-position: center; /* Centraliza a imagem dentro do contêiner */
+            object-position: 50% 35%; /* Ajuste para o posicionamento da imagem, movendo o foco verticalmente para cima */
             transition: transform 0.3s ease; /* Transição para o hover */
         }
         
@@ -554,7 +554,7 @@
         }
         .atom-stat-item {
             background-color: var(--white); /* Fundo branco para os itens */
-            padding: 30px 20px; /* Mais padding */
+            padding: 35px 20px; /* Aumentado o padding vertical */
             border-radius: 12px; /* Mais arredondado */
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
             text-align: center;
@@ -603,7 +603,7 @@
             font-weight: 600;
             position: relative; /* Para ficar acima do ::before */
             z-index: 1;
-            line-height: 1.3; /* Ajustado para não cortar escrita */
+            line-height: 1.4; /* Aumentado para dar mais espaço e evitar corte */
         }
 
         /* FAQ */
@@ -810,7 +810,7 @@
             }
             .atom-stat-item span {
                 font-size: 1em;
-                line-height: 1.3; /* Garantir que não corte em mobile */
+                line-height: 1.4; /* Garantir que não corte em mobile */
             }
         }
     </style>
