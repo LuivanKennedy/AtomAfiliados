@@ -584,7 +584,8 @@
             font-size: 2.5em; /* Maior */
             font-weight: 800; /* Mais negrito */
             color: var(--primary-color); /* Cor principal para os números */
-            margin-bottom: 8px;
+            margin-bottom: 0px; /* Ajustado para não cortar escrita */
+            line-height: 1.1; /* Ajustado para não cortar escrita */
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
             position: relative; /* Para ficar acima do ::before */
             z-index: 1;
@@ -595,6 +596,7 @@
             font-weight: 600;
             position: relative; /* Para ficar acima do ::before */
             z-index: 1;
+            line-height: 1.3; /* Ajustado para não cortar escrita */
         }
 
         /* FAQ */
@@ -796,9 +798,12 @@
             }
             .atom-stat-item strong {
                 font-size: 2em;
+                line-height: 1.1; /* Garantir que não corte em mobile */
+                margin-bottom: 0px;
             }
             .atom-stat-item span {
                 font-size: 1em;
+                line-height: 1.3; /* Garantir que não corte em mobile */
             }
         }
     </style>
