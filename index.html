@@ -570,7 +570,7 @@
         }
         .atom-stat-item {
             background-color: var(--white); /* Fundo branco para os itens */
-            padding: 35px 20px; /* Aumentado o padding vertical */
+            padding: 35px 20px 25px 20px; /* Aumentado o padding vertical, adicionado bottom padding */
             border-radius: 12px; /* Mais arredondado */
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
             text-align: center;
@@ -619,7 +619,8 @@
             font-weight: 600;
             position: relative; /* Para ficar acima do ::before */
             z-index: 1;
-            line-height: 1.4; /* Aumentado para dar mais espaço e evitar corte */
+            line-height: 1.5; /* Aumentado para dar mais espaço e evitar corte */
+            padding-bottom: 5px; /* Adicionado padding bottom para evitar corte */
         }
 
         /* FAQ */
@@ -828,6 +829,7 @@
             .atom-stat-item span {
                 font-size: 1em;
                 line-height: 1.4; /* Garantir que não corte em mobile */
+                padding-bottom: 0px; /* Removido em mobile se não for necessário */
             }
         }
     </style>
@@ -1098,13 +1100,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
