@@ -347,6 +347,50 @@
             background: linear-gradient(135deg, #f0f0f0, var(--light-bg));
         }
 
+        .price-details {
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+
+        .price-details ul {
+            list-style: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 20px auto 15px auto;
+            text-align: left;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .price-details ul li {
+            padding: 10px 20px;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-details ul li:last-child {
+            border-bottom: none;
+        }
+
+        .price-details ul li .value {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .price-details .total-original {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--red-alert);
+            text-decoration: line-through;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
         .price-box {
             background-color: var(--primary-color);
             color: var(--white);
@@ -409,6 +453,39 @@
 
         .guarantee-section h3::after {
             background-color: var(--secondary-color);
+        }
+
+        /* Atom Stats Section */
+        .atom-stats-section {
+            background-color: var(--light-bg);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .atom-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .atom-stat-item {
+            background-color: var(--white);
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .atom-stat-item strong {
+            display: block;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .atom-stat-item span {
+            font-size: 1em;
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         /* FAQ */
@@ -591,6 +668,9 @@
             }
             .faq-answer ul {
                 padding-left: 20px; /* Ajusta padding para listas em mobile */
+            }
+            .atom-stats-grid {
+                grid-template-columns: 1fr; /* Empilha as estatísticas em telas menores */
             }
         }
     </style>
@@ -794,6 +874,38 @@
         </div>
     </section>
 
+    <section class="atom-stats-section">
+        <div class="container">
+            <h3>Atom em Números: Uma História de Sucesso e Transformação!</h3>
+            <div class="atom-stats-grid">
+                <div class="atom-stat-item">
+                    <strong>9 Anos</strong>
+                    <span>De Empresa</span>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>80.000+</strong>
+                    <span>Alunos Formados</span>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>1ª Mesa Proprietária</strong>
+                    <span>Do Brasil</span>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>1 Milhão+</strong>
+                    <span>Pessoas Impactadas</span>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>800+</strong>
+                    <span>Aulas Disponíveis</span>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>Alunos de Todo o Brasil</strong>
+                    <span>Online e Intuitivo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="mentor-section">
         <div class="container">
             <h3>Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
@@ -806,9 +918,13 @@
                     <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
                     <h4>Joaquim Paiffer</h4>
                 </div>
+                <div class="mentor-image-wrapper">
+                    <img src="priscila_atom.jpg" alt="Priscila"> <h4>Priscila</h4>
+                    <p style="font-size: 0.8em; margin-top: 5px; color: var(--text-color);">Especialista em Mindset</p>
+                </div>
             </div>
             <p>Aprenda com quem realmente faz o mercado!</p>
-            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
+            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a <strong style="text-decoration: underline;">Priscila, focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
             <p>Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
         </div>
     </section>
@@ -819,13 +935,13 @@
             
             <div class="video-testimonials-grid" style="margin-bottom: 50px;">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
@@ -852,6 +968,18 @@
         <div class="container">
             <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
             <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
+            
+            <div class="price-details">
+                <p>Veja tudo o que você terá acesso na Universidade Atom:</p>
+                <ul>
+                    <li>Mentorias com Investidores <span class="value">R$1.997,00</span></li>
+                    <li>Duas Avaliações da Atom <span class="value">R$1.960,00</span></li>
+                    <li>Acesso à Universidade Atom por 12 meses <span class="value">R$750,00</span></li>
+                    <li>Três meses de acesso ao Profit Chart <span class="value">R$750,00</span></li>
+                </ul>
+                <p class="total-original">Valor total original: R$6.407,00</p>
+            </div>
+
             <div class="price-box">
                 <p class="installments">12x de R$ 199,92 no cartão de crédito</p>
                 <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
@@ -951,7 +1079,12 @@
                 <a href="mailto:movimentodigital2025@gmail.com">Contato</a>
             </p>
             <p class="disclaimer">
-                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart. Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
+                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart.<br>
+                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.
+                <br>
+                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.
+                <br>
+                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
             </p>
         </div>
     </footer>
