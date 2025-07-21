@@ -327,13 +327,17 @@
         }
 
         .mentor-image-wrapper {
-            display: flex; /* Adicionado: Torna o wrapper um container flexível */
-            flex-direction: column; /* Adicionado: Empilha os itens em coluna */
-            justify-content: center; /* Adicionado: Centraliza verticalmente */
-            align-items: center; /* Adicionado: Centraliza horizontalmente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            width: 150px; /* Tamanho fixo para as imagens dos mentores */
+            width: 150px; /* Tamanho fixo para o contêiner, garantindo consistência */
             height: 150px; 
+            overflow: hidden; /* Garante que nada saia do wrapper */
+            border-radius: 50%; /* Garante que o wrapper também é circular */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra no wrapper */
+            background-color: var(--light-bg); /* Fundo para o wrapper */
         }
 
         .mentor-image-wrapper img {
@@ -341,9 +345,14 @@
             height: 100%; 
             border-radius: 50%; /* Imagens circulares */
             border: 4px solid var(--accent-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             object-fit: cover; /* ESSENCIAL: Garante que a imagem preencha o contêiner mantendo a proporção, cortando o que exceder */
             object-position: center; /* Centraliza a imagem dentro do contêiner */
+            transition: transform 0.3s ease; /* Transição para o hover */
+        }
+        
+        .mentor-image-wrapper:hover img {
+            transform: scale(1.05); /* Pequeno zoom no hover */
+            border-color: var(--primary-color); /* Muda a cor da borda no hover */
         }
 
         .mentor-image-wrapper h4 {
@@ -404,13 +413,24 @@
             align-items: center;
             font-size: 1em;
             position: relative;
+            background-color: rgba(255,255,255,0.05); /* Fundo ligeiramente visível */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
         }
+
+        .price-details ul li:hover {
+            background-color: rgba(255,255,255,0.15); /* Fundo mais visível no hover */
+            transform: translateY(-3px); /* Pequena flutuação */
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais intensa */
+        }
+
         .price-details ul li::before {
             content: "\f00c"; /* Ícone de check */
             font-family: "Font Awesome 5 Free"; /* Certifique-se de que a fonte está carregada */
             font-weight: 900;
             color: var(--secondary-color); /* Cor verde para o check */
             margin-right: 15px; /* Espaço para o check */
+            font-size: 1.2em; /* Ícone um pouco maior */
+            text-shadow: 0 0 5px rgba(40,167,69,0.5); /* Sombra no check */
         }
 
         .price-details ul li:last-child {
@@ -421,6 +441,7 @@
             font-weight: 700;
             color: var(--accent-color); /* Cor de destaque */
             font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra no valor */
         }
 
         .price-details .total-original {
@@ -444,6 +465,13 @@
             position: relative;
             overflow: hidden;
             border: 3px solid var(--white); /* Borda branca para destacar */
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .price-box:hover {
+            transform: scale(1.02); /* Levemente maior no hover */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px var(--accent-color); /* Sombra e brilho mais intensos */
         }
 
         .price-box::before {
@@ -469,6 +497,7 @@
             margin-top: 10px;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
+            color: var(--primary-color); /* Cor de destaque para o preço principal */
         }
 
         .price-box .current-price { /* Agora esta é a secundária */
