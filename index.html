@@ -20,6 +20,10 @@
             --white: #fff;
             --red-alert: #dc3545;
             --faq-answer-bg: #e0f2ff; /* Um azul muito claro para o fundo da resposta */
+            --premium-dark-bg: #212529; /* Novo: Um cinza bem escuro para seções premium */
+            --premium-light-bg: #e9ecef; /* Novo: Um cinza claro para seções premium */
+            --gradient-blue: linear-gradient(135deg, #0056b3, #003366);
+            --gradient-gold: linear-gradient(135deg, #ffc107, #e0a800);
         }
 
         body {
@@ -40,7 +44,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), #003366);
+            background: var(--gradient-blue); /* Usando variável de gradiente */
             color: var(--white);
             padding: 50px 20px;
             text-align: center;
@@ -213,10 +217,17 @@
 
         /* Oportunidade Revelada */
         .opportunity-section {
-            background-color: var(--dark-bg);
+            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
             color: var(--white);
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px; /* Mais padding */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
+        }
+        .opportunity-section h3 {
+            color: var(--accent-color); /* Título em destaque */
+        }
+        .opportunity-section h3::after {
+            background-color: var(--white); /* Linha branca sob o título */
         }
 
         .opportunity-section p {
@@ -224,6 +235,7 @@
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.8;
+            color: rgba(255,255,255,0.9);
         }
 
         /* Testimonials Grid (Textual) - Efeito de Flutuação */
@@ -341,36 +353,64 @@
             font-size: 1.1em;
         }
 
-        /* Investment Section */
+        /* Investment Section - ESTILOS REVISADOS PARA PREMIUM */
         .investment-section {
             text-align: center;
-            background: linear-gradient(135deg, #f0f0f0, var(--light-bg));
+            background: var(--premium-dark-bg); /* Fundo escuro premium */
+            color: var(--white);
+            padding: 60px 20px; /* Mais padding */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
+        }
+
+        .investment-section h3 {
+            color: var(--accent-color); /* Título em destaque */
+        }
+        .investment-section h3::after {
+            background-color: var(--white); /* Linha branca sob o título */
+        }
+
+        .investment-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
         }
 
         .price-details {
-            margin-bottom: 25px;
+            margin-bottom: 40px; /* Aumentar margem */
             font-size: 1.1em;
-            color: var(--text-color);
+            color: var(--white);
         }
 
         .price-details ul {
             list-style: none;
             padding: 0;
-            max-width: 400px;
+            max-width: 500px; /* Aumentado para melhor legibilidade */
             margin: 20px auto 15px auto;
             text-align: left;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            background-color: var(--white);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background-color: rgba(255,255,255,0.08); /* Fundo transparente */
+            border-radius: 12px; /* Mais arredondado */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Sombra mais intensa */
+            overflow: hidden; /* Para garantir bordas arredondadas */
+            backdrop-filter: blur(5px); /* Efeito de vidro fosco, se o browser suportar */
+            border: 1px solid rgba(255,255,255,0.2); /* Borda sutil */
         }
 
         .price-details ul li {
-            padding: 10px 20px;
-            border-bottom: 1px dashed #eee;
+            padding: 15px 25px; /* Mais padding */
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1em;
+            position: relative;
+        }
+        .price-details ul li::before {
+            content: "\f00c"; /* Ícone de check */
+            font-family: "Font Awesome 5 Free"; /* Certifique-se de que a fonte está carregada */
+            font-weight: 900;
+            color: var(--secondary-color); /* Cor verde para o check */
+            margin-right: 15px; /* Espaço para o check */
         }
 
         .price-details ul li:last-child {
@@ -378,58 +418,64 @@
         }
 
         .price-details ul li .value {
-            font-weight: 600;
-            color: var(--primary-color);
+            font-weight: 700;
+            color: var(--accent-color); /* Cor de destaque */
+            font-size: 1.1em;
         }
 
         .price-details .total-original {
-            font-size: 1.2em;
+            font-size: 1.4em; /* Maior destaque */
             font-weight: 700;
             color: var(--red-alert);
             text-decoration: line-through;
-            margin-top: 15px;
-            margin-bottom: 10px;
+            margin-top: 25px; /* Mais espaço */
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Sombra no texto */
         }
 
         .price-box {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            margin: 30px auto;
-            max-width: 400px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: var(--gradient-gold); /* Gradiente dourado para destaque */
+            color: var(--premium-dark-bg); /* Texto escuro no fundo claro */
+            padding: 35px; /* Mais padding */
+            border-radius: 15px; /* Mais arredondado */
+            margin: 40px auto; /* Mais margem */
+            max-width: 450px; /* Maior */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-color); /* Sombra intensa e brilho */
             position: relative;
             overflow: hidden;
+            border: 3px solid var(--white); /* Borda branca para destacar */
         }
 
         .price-box::before {
-            content: 'OFERTA ESPECIAL';
+            content: 'OFERTA EXCLUSIVA!'; /* Texto mais premium */
             position: absolute;
-            top: 10px;
-            left: -30px;
-            background-color: var(--accent-color);
-            color: var(--dark-bg);
-            padding: 5px 30px;
+            top: 15px; /* Ajuste da posição */
+            left: -40px; /* Ajuste da posição */
+            background-color: var(--primary-color); /* Cor diferente */
+            color: var(--white);
+            padding: 8px 40px; /* Mais padding */
             font-weight: 700;
-            font-size: 0.9em;
+            font-size: 1em; /* Tamanho maior */
             transform: rotate(-45deg);
             transform-origin: 0% 0%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px; /* Espaçamento entre letras */
         }
 
         /* Ajustes para a nova ordem e destaque */
         .price-box .installments { /* Agora esta é a principal */
-            font-size: 2.2em;
-            font-weight: 700; /* Destaque maior */
-            margin-top: 5px;
-            margin-bottom: 10px;
+            font-size: 2.8em; /* Aumento significativo */
+            font-weight: 800; /* Mais negrito */
+            margin-top: 10px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
         }
 
         .price-box .current-price { /* Agora esta é a secundária */
-            font-size: 1.3em;
-            font-weight: 400; /* Menos destaque */
-            margin-bottom: 5px;
+            font-size: 1.6em; /* Aumento */
+            font-weight: 600; /* Mais negrito */
+            margin-bottom: 10px;
+            color: rgba(0,0,0,0.7); /* Cor mais suave */
         }
 
 
@@ -455,37 +501,71 @@
             background-color: var(--secondary-color);
         }
 
-        /* Atom Stats Section */
+        /* Atom Stats Section - ESTILOS REVISADOS PARA PREMIUM */
         .atom-stats-section {
-            background-color: var(--light-bg);
-            padding: 50px 20px;
+            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
+            padding: 60px 20px; /* Mais padding */
             text-align: center;
+            color: var(--white); /* Texto branco */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
         }
+        .atom-stats-section h3 {
+            color: var(--accent-color); /* Título em destaque */
+        }
+        .atom-stats-section h3::after {
+            background-color: var(--white); /* Linha branca sob o título */
+        }
+
         .atom-stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Minmax ligeiramente maior */
+            gap: 25px; /* Mais espaçamento */
             margin-top: 40px;
         }
         .atom-stat-item {
-            background-color: var(--white);
-            padding: 25px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background-color: var(--white); /* Fundo branco para os itens */
+            padding: 30px 20px; /* Mais padding */
+            border-radius: 12px; /* Mais arredondado */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
             text-align: center;
-            border-bottom: 4px solid var(--primary-color);
+            border-bottom: 5px solid var(--primary-color); /* Borda mais grossa */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Adicionando transição para borda */
+            color: var(--text-color); /* Restaura cor do texto dentro do item */
+            position: relative;
+            overflow: hidden;
+        }
+        .atom-stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,86,179,0.05), rgba(255,193,7,0.05)); /* Gradiente sutil */
+            z-index: 0;
+        }
+
+        .atom-stat-item:hover {
+            transform: translateY(-8px); /* Levanta mais */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3); /* Sombra mais intensa no hover */
+            border-color: var(--accent-color); /* Borda muda para amarelo */
         }
         .atom-stat-item strong {
             display: block;
-            font-size: 2.2em;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 5px;
+            font-size: 2.5em; /* Maior */
+            font-weight: 800; /* Mais negrito */
+            color: var(--primary-color); /* Cor principal para os números */
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            position: relative; /* Para ficar acima do ::before */
+            z-index: 1;
         }
         .atom-stat-item span {
-            font-size: 1em;
-            color: var(--text-color);
+            font-size: 1.1em; /* Ligeiramente maior */
+            color: var(--dark-bg); /* Cor mais escura para o texto */
             font-weight: 600;
+            position: relative; /* Para ficar acima do ::before */
+            z-index: 1;
         }
 
         /* FAQ */
@@ -672,6 +752,25 @@
             .atom-stats-grid {
                 grid-template-columns: 1fr; /* Empilha as estatísticas em telas menores */
             }
+            /* Ajustes para telas menores nas seções premium */
+            .price-box {
+                padding: 25px;
+            }
+            .price-box .installments {
+                font-size: 2.2em;
+            }
+            .price-box .current-price {
+                font-size: 1.2em;
+            }
+            .price-details ul li {
+                padding: 12px 20px;
+            }
+            .atom-stat-item strong {
+                font-size: 2em;
+            }
+            .atom-stat-item span {
+                font-size: 1em;
+            }
         }
     </style>
 
@@ -801,7 +900,7 @@
                 </div>
             </div>
 
-            <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária da América Latina!</h1>
+            <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária!</h1>
             <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong style="text-decoration: underline;">sem arriscar seu próprio capital.</strong></h2>
             
             <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
@@ -924,7 +1023,7 @@
                 </div>
             </div>
             <p>Aprenda com quem realmente faz o mercado!</p>
-            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a <strong style="text-decoration: underline;">Priscila, focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
+            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a <strong style="text-decoration: underline;">Priscila, focada no seu autocontrol e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
             <p>Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
         </div>
     </section>
