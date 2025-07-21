@@ -408,9 +408,9 @@
         .price-details ul li {
             padding: 15px 25px; /* Mais padding */
             border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
-            display: flex;
+            display: flex; /* Usar flexbox para alinhar ícone e texto */
+            align-items: center; /* Alinha verticalmente */
             justify-content: space-between;
-            align-items: center;
             font-size: 1em;
             position: relative;
             background-color: rgba(255,255,255,0.05); /* Fundo ligeiramente visível */
@@ -425,12 +425,13 @@
 
         .price-details ul li::before {
             content: "\f00c"; /* Ícone de check */
-            font-family: "Font Awesome 5 Free"; /* Certifique-se de que a fonte está carregada */
-            font-weight: 900;
+            font-family: "Font Awesome 6 Free"; /* Certifique-se de que a fonte está carregada e que é a versão 6 */
+            font-weight: 900; /* Para ícones sólidos */
             color: var(--secondary-color); /* Cor verde para o check */
             margin-right: 15px; /* Espaço para o check */
             font-size: 1.2em; /* Ícone um pouco maior */
             text-shadow: 0 0 5px rgba(40,167,69,0.5); /* Sombra no check */
+            flex-shrink: 0; /* Impede que o ícone encolha */
         }
 
         .price-details ul li:last-child {
@@ -562,6 +563,12 @@
             color: var(--text-color); /* Restaura cor do texto dentro do item */
             position: relative;
             overflow: hidden;
+            
+            /* Ajustes para centralização de conteúdo */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza horizontalmente o conteúdo flex */
+            justify-content: center; /* Centraliza verticalmente o conteúdo flex */
         }
         .atom-stat-item::before {
             content: '';
