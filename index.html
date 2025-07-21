@@ -326,6 +326,15 @@
             flex-wrap: wrap; /* Permite que as imagens quebrem a linha em telas menores */
         }
 
+        /* Novo estilo para cada cartão de mentor */
+        .mentor-card {
+            display: flex;
+            flex-direction: column; /* Empilha o conteúdo (imagem, nome, descrição) verticalmente */
+            align-items: center; /* Centraliza horizontalmente o conteúdo */
+            text-align: center; /* Centraliza o texto */
+            margin-bottom: 20px; /* Espaço entre os cartões quando há quebra de linha */
+        }
+
         .mentor-image-wrapper {
             display: flex;
             flex-direction: column;
@@ -355,11 +364,18 @@
             border-color: var(--primary-color); /* Muda a cor da borda no hover */
         }
 
-        .mentor-image-wrapper h4 {
-            margin-top: 15px;
+        /* Estilos para o h4 e p DENTRO do mentor-card */
+        .mentor-card h4 {
+            margin-top: 15px; /* Espaço acima do nome */
             margin-bottom: 5px;
             color: var(--primary-color);
             font-size: 1.1em;
+        }
+
+        .mentor-card p {
+            font-size: 0.8em;
+            margin-top: 5px; /* Espaço acima da descrição */
+            color: var(--text-color);
         }
 
         /* Investment Section - ESTILOS REVISADOS PARA PREMIUM */
@@ -750,8 +766,9 @@
             section h3 {
                 font-size: 1.7em;
             }
+            /* No mobile, mentor-images já é column, então mentor-card não precisa mudar */
             .mentor-images {
-                flex-direction: column; /* Empilha as imagens dos mentores em telas pequenas */
+                flex-direction: column; /* Empilha os cartões de mentores em telas pequenas */
                 align-items: center;
             }
             .mentor-image-wrapper {
@@ -1050,19 +1067,25 @@
         <div class="container">
             <h3>Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
             <div class="mentor-images">
-                <div class="mentor-image-wrapper">
-                    <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
+                <div class="mentor-card">
+                    <div class="mentor-image-wrapper">
+                        <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
+                    </div>
+                    <h4>Carol Paiffer</h4>
                 </div>
-                <h4>Carol Paiffer</h4>
-                <div class="mentor-image-wrapper">
-                    <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
+                <div class="mentor-card">
+                    <div class="mentor-image-wrapper">
+                        <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
+                    </div>
+                    <h4>Joaquim Paiffer</h4>
                 </div>
-                <h4>Joaquim Paiffer</h4>
-                <div class="mentor-image-wrapper">
-                    <img src="priscila_atom.jpg" alt="Priscila">
+                <div class="mentor-card">
+                    <div class="mentor-image-wrapper">
+                        <img src="priscila_atom.jpg" alt="Priscila">
+                    </div>
+                    <h4>Priscila</h4>
+                    <p>Especialista em Mindset</p>
                 </div>
-                <h4>Priscila</h4>
-                <p style="font-size: 0.8em; margin-top: 5px; color: var(--text-color);">Especialista em Mindset</p>
             </div>
             <p>Aprenda com quem realmente faz o mercado!</p>
             <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a <strong style="text-decoration: underline;">Priscila, focada no seu autocontrol e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
@@ -1221,11 +1244,9 @@
             </p>
             <p class="disclaimer">
                 <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart.<br>
-                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.
-                <br>
-                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.
-                <br>
-                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
+                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.<br>
+                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.<br>
+                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.<br>
             </p>
         </div>
     </footer>
