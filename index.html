@@ -7,7 +7,7 @@
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
     <link rel="canonical" href="https://atom-afiliados.vercel.app/">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9R2iW42q9FjI9S+W4w6t5oN7r2F5B6Xz7hFm+q+uQ8J+K0iPz2N7l7i2/v1W8zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9R2iW42q9FjI9S+W4w6t5oN7r2F5B6Xz7hFm+q+uQ8J+K0iPz2N7l7i2/v1W8zQ==>" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -24,6 +24,7 @@
             --premium-light-bg: #e9ecef; /* Novo: Um cinza claro para seções premium */
             --gradient-blue: linear-gradient(135deg, #0056b3, #003366);
             --gradient-gold: linear-gradient(135deg, #ffc107, #e0a800);
+            --before-after-bg: #f0f8ff; /* Novo: Um azul muito claro para Antes & Depois */
         }
 
         body {
@@ -708,6 +709,103 @@
             transition: transform 0.5s ease, color 0.3s ease; /* Transição para o ícone e sua cor */
         }
 
+        /* Before & After Section */
+        .before-after-section {
+            background-color: var(--before-after-bg); /* Novo fundo para esta seção */
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .before-after-section h3 {
+            color: var(--primary-color);
+        }
+
+        .before-after-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .before-after-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 450px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .before-after-card.before {
+            border-color: var(--red-alert);
+        }
+
+        .before-after-card.after {
+            border-color: var(--secondary-color);
+        }
+
+        .before-after-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .before-after-card h4 {
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+        }
+
+        .before-after-card.before h4 {
+            color: var(--red-alert);
+        }
+
+        .before-after-card.after h4 {
+            color: var(--secondary-color);
+        }
+
+        .before-after-card h4 i {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .before-after-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .before-after-card ul li {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-color);
+        }
+
+        .before-after-card ul li i {
+            font-size: 1.2em;
+            margin-right: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .before-after-card.before ul li i {
+            color: var(--red-alert);
+        }
+
+        .before-after-card.after ul li i {
+            color: var(--secondary-color);
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark-bg);
@@ -831,6 +929,12 @@
                 line-height: 1.4; /* Garantir que não corte em mobile */
                 padding-bottom: 0px; /* Removido em mobile se não for necessário */
             }
+            .before-after-content {
+                flex-direction: column;
+            }
+            .before-after-card {
+                max-width: 100%;
+            }
         }
     </style>
 
@@ -839,7 +943,7 @@
         function loadMainYouTubeVideo() {
             const videoFrame = document.querySelector('.hero .video-wrapper iframe');
             const youtubeVideoId = 'akPvLjxuGLY'; 
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
+            videoFrame.src = `https://www.youtube.com/embed/$${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
         }
 
         // Mudar o ícone e desmutar
@@ -982,6 +1086,37 @@
         </div>
     </section>
 
+    <section class="before-after-section">
+        <div class="container">
+            <h3>Sua Jornada Antes e Depois da Universidade Atom:</h3>
+            <div class="before-after-content">
+                <div class="before-after-card before">
+                    <h4><i class="fas fa-times-circle"></i> Antes da Atom</h4>
+                    <ul>
+                        <li><i class="fas fa-exclamation-triangle"></i> Medo de perder capital próprio no mercado.</li>
+                        <li><i class="fas fa-search"></i> Dificuldade em encontrar conhecimento prático e confiável.</li>
+                        <li><i class="fas fa-coins"></i> Limitação por falta de capital para operar em grande escala.</li>
+                        <li><i class="fas fa-head-side-mask"></i> Vulnerável a "gurus" sem experiência real de mercado.</li>
+                        <li><i class="fas fa-clock"></i> Tempo e esforço sem resultados consistentes.</li>
+                    </ul>
+                </div>
+                <div class="before-after-card after">
+                    <h4><i class="fas fa-check-circle"></i> Depois da Atom</h4>
+                    <ul>
+                        <li><i class="fas fa-handshake"></i> Opera com o **Capital da Atom**, risco zero para você!</li>
+                        <li><i class="fas fa-lightbulb"></i> Conhecimento sólido e estratégias validadas pelos Paiffer.</li>
+                        <li><i class="fas fa-dollar-sign"></i> Potencial de lucros ilimitados sem investir seu próprio dinheiro.</li>
+                        <li><i class="fas fa-users-line"></i> Mentoria diária e comunidade de traders para suporte contínuo.</li>
+                        <li><i class="fas fa-chart-line"></i> Consistência e confiança para atuar como um profissional.</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://pay.hotmart.com/A899815599A?ref=M100311843U&bid=1753216226076" class="cta-button">EU QUERO ESSA TRANSFORMAÇÃO! CLIQUE AQUI!</a>
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container">        
             <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
@@ -994,7 +1129,7 @@
                 <div class="benefit-item">
                     <i class="fas fa-money-bill-wave"></i>
                     <h4>Capital da Atom</h4>
-                    <p>Passe por 2 avaliações e, sendo aprovado, opere com o capital da Atom. 80% dos lucros são seus, 100% dos riscos são da Atom!</p>
+                    <p>Passe por 2 avaliações e, sendo aprovado, opere com o capital da Atom. **80% dos lucros são seus, 100% dos riscos são da Atom!**</p>
                 </div>
                 <div class="benefit-item">
                     <i class="fas fa-laptop-code"></i>
@@ -1173,7 +1308,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
-                        <p>R: Com certeza! A Universidade Atom foi feita justamente para quem está começando do absoluto zero. Você vai aprender passo a passo, com linguagem simples, exemplos reais e o suporte de quem já formou milhares de traders. Não importa se você nunca operou antes — aqui, você começa do básico e chega ao nível profissional.</p>
+                        <p>R: Absolutamente! A Universidade Atom foi cuidadosamente desenhada para quem está começando do **zero absoluto**. Nossa metodologia passo a passo, com linguagem clara e exemplos práticos, garante que mesmo sem nenhuma experiência prévia, você construa uma base sólida e chegue ao nível profissional, com o suporte de quem já formou milhares de traders de sucesso. **Seu ponto de partida é o nosso desafio, e nosso compromisso é a sua evolução!**</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1182,7 +1317,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
-                        <p>R: Esse é o grande diferencial! Ao final do curso, você poderá realizar 2 avaliações exclusivas. Se for aprovado, você opera com o dinheiro da Atom, a maior mesa proprietária da América Latina. 80% dos lucros vão direto pro seu bolso — e a Atom assume 100% do risco! É a chance real de viver do mercado, mesmo sem ter capital próprio.</p>
+                        <p>R: Este é o nosso **maior diferencial e a sua grande chance!** Ao concluir sua formação, você terá a oportunidade de realizar 2 avaliações exclusivas da Atom. Sendo aprovado em ambas, você passa a operar com o **nosso capital**, o dinheiro da maior mesa proprietária da América Latina. O melhor? **80% dos lucros são seus, e 100% dos riscos são da Atom!** Isso significa que você pode viver do mercado financeiro sem arriscar um centavo do seu próprio patrimônio. É a verdadeira liberdade financeira ao seu alcance.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1191,7 +1326,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
-                        <p>R: Não! A formação é completa e atualizada. Você aprende estratégias de Day Trade, Swing Trade, mini índice, mini dólar, ações, opções e muito mais. O objetivo é que você tenha uma visão ampla do mercado e possa diversificar seus ganhos, mesmo em diferentes cenários econômicos.</p>
+                        <p>R: Não! Nossa formação é **completa e abrangente**, constantemente atualizada. Você aprenderá a dominar não só mini índice e mini dólar, mas também estratégias de Day Trade, Swing Trade, ações, opções e muito mais. Nosso objetivo é te capacitar para atuar em diversos cenários e com diferentes ativos, **diversificando suas fontes de lucro** e te tornando um trader versátil e preparado para qualquer desafio do mercado.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1200,7 +1335,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
-                        <p>R: Você terá 1 ano de acesso completo, com atualizações constantes. Isso inclui as aulas gravadas, mentorias ao vivo com os Paiffer, salas de dúvidas com suporte ao vivo e bônus complementares. É tempo mais do que suficiente pra você absorver, aplicar e transformar sua vida com consistência.</p>
+                        <p>R: Você terá **1 ano de acesso completo** à plataforma da Universidade Atom, com todas as aulas gravadas, mentorias ao vivo com os Paiffer, salas de dúvidas com suporte em tempo real e todos os bônus complementares. Esse período é mais do que suficiente para você absorver todo o conhecimento, praticar, tirar dúvidas e **começar a construir sua consistência no mercado**. E tem mais: nossa equipe está sempre atualizando o conteúdo para você estar à frente!</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1209,7 +1344,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-5" aria-hidden="true">
-                        <p>R: Assim que o pagamento for aprovado, você recebe um e-mail da Hotmart com todos os dados de acesso. O conteúdo fica disponível em uma plataforma prática e segura, onde você pode assistir às aulas quando e onde quiser — inclusive pelo celular.</p>
+                        <p>R: Super simples e rápido! Assim que o seu pagamento for aprovado pela Hotmart, você receberá um e-mail com todos os dados de acesso exclusivos à nossa plataforma de alunos. O conteúdo estará disponível para você assistir quando e onde quiser, no seu ritmo, seja pelo computador, tablet ou celular. **A jornada do seu sucesso começa com um clique!**</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1218,7 +1353,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-6" aria-hidden="true">
-                        <p>R: Não precisa de nada além de um computador simples ou celular com internet estável. A plataforma é leve, e os vídeos são otimizados. Você pode começar com o que já tem aí — o mais importante é a sua vontade de aprender.</p>
+                        <p>R: Não se preocupe! Você não precisa de um computador de última geração ou de uma internet superveloz. A plataforma da Universidade Atom é leve e otimizada, e os vídeos são configurados para se adaptarem à sua conexão. Você pode começar a aprender e se capacitar com o que você já tem. **Sua vontade de aprender é o seu principal equipamento!**</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1227,7 +1362,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-7" aria-hidden="true">
-                        <p>R: Sim! Você tem 7 dias de garantia incondicional. Se dentro desse prazo achar que o curso não é pra você, é só pedir o reembolso diretamente pela Hotmart. Seu risco é zero, e sua chance é gigante</p>
+                        <p>R: Sim, e é uma **garantia incondicional de satisfação total!** Confiamos tanto na qualidade e no poder de transformação da Universidade Atom que oferecemos 7 dias para você experimentar. Se, por qualquer motivo, você sentir que o curso não é para você, basta solicitar o reembolso diretamente pela Hotmart dentro desse prazo. **100% do seu investimento será devolvido, sem burocracia e sem perguntas.** Seu risco é zero, e sua chance de mudar de vida é gigante!</p>
                     </div>
                 </div>
             </div>
