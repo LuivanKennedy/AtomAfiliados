@@ -51,10 +51,8 @@
             margin: 0;
         }
 
-        /* Hero Section com Vídeo de Fundo */
         .hero {
-            position: relative; /* Necessário para posicionamento absoluto do vídeo e overlay */
-            overflow: hidden; /* Esconde qualquer transbordamento do vídeo */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://googleusercontent.com/index-bg.jpg') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
             padding: 100px 20px;
@@ -63,82 +61,6 @@
             justify-content: center;
             align-items: center;
             min-height: 600px;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1; /* Envia o vídeo para trás do conteúdo */
-            transform: translate(-50%, -50%);
-            background-size: cover;
-            filter: brightness(50%); /* Escurece o vídeo para melhor legibilidade do texto */
-        }
-
-        .hero-content {
-            position: relative; /* Garante que o conteúdo fique acima do vídeo e overlay */
-            z-index: 1;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%; /* Garante que o conteúdo ocupe toda a altura para centralização */
-        }
-
-        /* Estilos da Sobreposição do Vídeo (Toque Aqui) */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 2; /* Acima do vídeo, abaixo do conteúdo principal */
-            transition: opacity 0.3s ease; /* Animação suave para desaparecer */
-        }
-
-        .mute-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .mute-button i {
-            font-size: 2.5em; /* Tamanho do ícone */
-            color: var(--white);
-            background-color: rgba(0, 0, 0, 0.6); /* Fundo para a "bolinha" */
-            border-radius: 50%; /* Transforma em círculo */
-            padding: 20px;
-            margin-bottom: 10px;
-            border: 2px solid var(--white); /* Borda branca para a "bolinha" */
-            transition: transform 0.3s ease;
-        }
-
-        .mute-button i:hover {
-            transform: scale(1.1); /* Efeito de scale no hover */
-        }
-
-        .tap-text {
-            color: var(--white);
-            font-size: 1.2em;
-            font-weight: 600;
-            animation: pulse 1.5s infinite; /* Animação de pulso para o texto */
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
         }
 
         .hero h1 {
@@ -533,16 +455,7 @@
     </header>
 
     <section class="hero">
-        <video autoplay loop muted playsinline class="hero-video">
-            <source src="http://googleusercontent.com/hero-video.mp4" type="video/mp4">
-            Seu navegador não suporta a tag de vídeo.
-        </video>
-        <div class="video-overlay" id="video-overlay">
-            <div class="mute-button">
-                <i class="fas fa-volume-mute" id="mute-icon"></i> <span class="tap-text">Toque Aqui</span>
-            </div>
-        </div>
-        <div class="hero-content">
+        <div class="container">
             <h1>O Caminho para Operar no Mercado Financeiro com o Capital da Maior Mesa Proprietária da América Latina!</h1>
             <p>Aprenda do zero ao avançado, receba capital para operar e lucre com a expertise dos Paiffer. Sem risco do seu próprio dinheiro!</p>
             <a href="SEU_LINK_HOTMART" class="btn-cta">QUERO MINHA VAGA AGORA!</a>
@@ -650,59 +563,5 @@
             </p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroVideo = document.querySelector('.hero-video');
-            const videoOverlay = document.getElementById('video-overlay');
-            const muteIcon = document.getElementById('mute-icon');
-
-            if (heroVideo && videoOverlay && muteIcon) {
-                // Estado inicial: vídeo mutado e overlay visível
-                heroVideo.muted = true;
-                muteIcon.classList.remove('fa-volume-up');
-                muteIcon.classList.add('fa-volume-mute');
-
-                videoOverlay.addEventListener('click', function() {
-                    if (heroVideo.muted) {
-                        heroVideo.muted = false;
-                        videoOverlay.style.opacity = '0';
-                        videoOverlay.style.pointerEvents = 'none'; // Torna o overlay não clicável
-                        muteIcon.classList.remove('fa-volume-mute');
-                        muteIcon.classList.add('fa-volume-up'); // Altera para ícone de som
-                    } else {
-                        heroVideo.muted = true;
-                        videoOverlay.style.opacity = '1';
-                        videoOverlay.style.pointerEvents = 'auto'; // Torna o overlay clicável novamente
-                        muteIcon.classList.remove('fa-volume-up');
-                        muteIcon.classList.add('fa-volume-mute'); // Altera para ícone de mudo
-                    }
-                });
-
-                // Oculta o overlay se o vídeo começar a tocar (ex: se o autoplay funcionar totalmente)
-                heroVideo.addEventListener('playing', function() {
-                    if (!heroVideo.muted) { // Só oculta se o vídeo estiver realmente desmutado
-                        videoOverlay.style.opacity = '0';
-                        videoOverlay.style.pointerEvents = 'none';
-                    }
-                });
-
-                // Se o usuário desmutar via controles do navegador, atualiza o overlay
-                heroVideo.addEventListener('volumechange', function() {
-                    if (!heroVideo.muted && videoOverlay.style.opacity === '1') {
-                         videoOverlay.style.opacity = '0';
-                         videoOverlay.style.pointerEvents = 'none';
-                         muteIcon.classList.remove('fa-volume-mute');
-                         muteIcon.classList.add('fa-volume-up');
-                    } else if (heroVideo.muted && videoOverlay.style.opacity === '0') {
-                        videoOverlay.style.opacity = '1';
-                        videoOverlay.style.pointerEvents = 'auto';
-                        muteIcon.classList.remove('fa-volume-up');
-                        muteIcon.classList.add('fa-volume-mute');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
