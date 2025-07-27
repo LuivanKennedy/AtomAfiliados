@@ -6,24 +6,24 @@
     <title>Universidade Atom: O Caminho para Operar com o Capital da Maior Mesa Proprietária!</title>
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
     <link rel="canonical" href="https://atom-afiliados.vercel.app/">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9R2iW42q9FjI9S+W4w6t5oN7r2F5B6Xz7hFm+q+uQ8J+K0iPz2N7l7i2/v1W8zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --primary-color: #0056b3; /* Azul Atom */
-            --secondary-color: #28a745; /* Verde Sucesso */
-            --accent-color: #ffc107; /* Amarelo Destaque */
+            --primary-color: #004080; /* Azul Marinho mais profundo */
+            --secondary-color: #007F5F; /* Verde Esmeralda */
+            --accent-color: #D4AF37; /* Dourado mais rico */
             --text-color: #333;
-            --light-bg: #f8f9fa;
-            --dark-bg: #343a40;
+            --light-bg: #F0F2F5; /* Cinza claro suave */
+            --dark-bg: #343a40; /* Manter para alguns usos */
             --white: #fff;
-            --red-alert: #dc3545;
-            --faq-answer-bg: #e0f2ff; /* Um azul muito claro para o fundo da resposta */
-            --premium-dark-bg: #212529; /* Novo: Um cinza bem escuro para seções premium */
-            --premium-light-bg: #e9ecef; /* Novo: Um cinza claro para seções premium */
-            --gradient-blue: linear-gradient(135deg, #0056b3, #003366);
-            --gradient-gold: linear-gradient(135deg, #ffc107, #e0a800);
+            --red-alert: #C0392B; /* Vermelho mais sóbrio para alertas */
+            --faq-answer-bg: #EAF7FF;
+            --premium-dark-bg: #1A1A1A; /* Preto bem escuro */
+            --premium-light-bg: #e9ecef;
+            --gradient-blue: linear-gradient(135deg, #004080, #00264D);
+            --gradient-gold: linear-gradient(135deg, #D4AF37, #A67C00);
         }
 
         body {
@@ -31,701 +31,350 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            line-height: 1.6;
-            color: var(--text-color);
             background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        /* Hero Section */
-        .hero {
-            background: var(--gradient-blue); /* Usando variável de gradiente */
+        header {
+            background-color: var(--premium-dark-bg);
             color: var(--white);
-            padding: 50px 20px;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
+        .hero {
+            background: var(--gradient-blue);
+            color: var(--white);
+            padding: 80px 20px; /* Aumentar padding */
             text-align: center;
             position: relative;
+            overflow: hidden; /* Para garantir que pseudoelementos não transbordem */
         }
 
-        .hero h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .hero h2 {
-            font-size: 1.5em;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            background-color: #000;
-            margin: 0 auto 30px;
-            max-width: 800px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .video-wrapper iframe {
+        .hero::before { /* Adicionar um padrão sutil no fundo */
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm-1 0h1L0 4V3zm-1 0h1L0 2V1zm-1 0h1L0 0v1zM6 5v1L1 0h-1zM6 4v1L2 0h-1zM6 3v1L3 0h-1zM6 2v1L4 0h-1z"/%3E%3C/g%3E%3C/svg%3E');
+            z-index: 0;
         }
 
-        /* Ícone de Desmutar com Texto */
-        .mute-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            display: none; /* Inicialmente oculto, JS o mostra */
-            
-            /* Ajustes para o botão e seu conteúdo */
-            width: 140px; /* Largura do círculo maior para caber texto e ícone */
-            height: 140px; /* Altura do círculo */
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
-            border-radius: 50%; /* Redondo */
-            border: 2px solid var(--accent-color); /* Borda destacada */
-            box-shadow: 0 0 15px rgba(255,193,7,0.8); /* Sombra que "pulsa" */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            animation: pulse 1.5s infinite ease-in-out; /* Animação de pulso */
-
-            /* Flexbox para alinhar ícone e texto verticalmente */
-            display: flex;
-            flex-direction: column; /* Organiza itens em coluna */
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 10px; /* Espaçamento interno */
+        .hero h1 {
+            font-size: 3.5em; /* Ligeiramente maior */
+            font-weight: 800; /* Mais negrito para impacto */
+            text-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Sombra mais pronunciada */
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        .mute-button:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translate(-50%, -50%) scale(1.05); /* Pequeno aumento ao passar o mouse */
-            animation: none; /* Para a animação ao passar o mouse */
-        }
-
-        .mute-button i {
-            font-size: 3em; /* Tamanho do ícone */
-            color: var(--white); /* Cor do ícone */
-            margin-bottom: 5px; /* Espaço entre ícone e texto */
-        }
-
-        .mute-button .text {
-            font-size: 0.9em; /* Tamanho do texto */
-            color: var(--white); /* Cor do texto */
-            font-weight: 600;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        /* Keyframes para a animação de pulso */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
-            50% { box-shadow: 0 0 20px rgba(255,193,7,1), 0 0 30px rgba(255,193,7,0.8); }
-            100% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 18px 35px;
+            background: var(--gradient-gold); /* Usar gradiente dourado */
+            color: var(--premium-dark-bg); /* Texto escuro no dourado */
+            padding: 20px 40px;
             border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.4em;
+            font-size: 1.5em;
             font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Sombra mais densa */
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-button:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.02); /* Eleva e aumenta ligeiramente */
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
         }
 
-        /* Contador Regressivo */
         .countdown-timer {
-            margin-top: 25px;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 15px 20px;
+            background-color: rgba(212, 175, 55, 0.2); /* Dourado semi-transparente */
+            color: var(--white);
+            border: 1px solid var(--accent-color);
             border-radius: 10px;
-            display: inline-block;
-            color: var(--accent-color);
-            font-size: 1.6em;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .countdown-timer span {
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-        .countdown-timer .label {
-            font-size: 0.5em;
-            display: block;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Sections General */
-        section {
-            padding: 50px 20px;
-            background-color: var(--white);
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        section h3, section h2 { /* Adicionado h2 aqui também para o antes e depois */
-            font-family: 'Roboto', sans-serif;
-            font-size: 2em;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 40px;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: inline-flex;
+            gap: 15px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
             position: relative;
+            z-index: 1;
         }
 
-        section h3::after, section h2::after { /* Adicionado h2::after */
+        .countdown-timer div span {
+            display: block;
+            font-size: 0.7em;
+            font-weight: 400;
+        }
+
+        section {
+            padding: 60px 25px; /* Mais padding */
+            margin-bottom: 30px; /* Mais espaço entre seções */
+            background-color: var(--white);
+            border-radius: 15px; /* Mais arredondado */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Sombra mais densa */
+            text-align: center;
+        }
+
+        section.dark-bg {
+            background-color: var(--premium-dark-bg);
+            color: var(--white);
+        }
+
+        section h2, section h3 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section.dark-bg h2, section.dark-bg h3 {
+            color: var(--accent-color);
+        }
+
+        section h2::after, section h3::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
+            width: 80px; /* Linha um pouco maior */
+            height: 4px; /* Mais espessa */
+            background-color: var(--secondary-color);
             margin: 10px auto 0;
+            border-radius: 2px;
         }
 
-        /* Oportunidade Revelada */
-        .opportunity-section {
-            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
-            color: var(--white);
-            text-align: center;
-            padding: 60px 20px; /* Mais padding */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-        .opportunity-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .opportunity-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
+        section.dark-bg h2::after, section.dark-bg h3::after {
+            background-color: var(--accent-color);
         }
 
-        .opportunity-section p {
-            font-size: 1.1em;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Testimonials Grid (Textual) - Efeito de Flutuação */
-        .testimonials-grid {
+        .grid-3-cols {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
-        .testimonial-item {
-            background-color: var(--light-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        .benefit-item, .testimonial-item, .mentor-item, .atom-stat-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
+            background: linear-gradient(145deg, var(--white), var(--light-bg)); /* Gradiente nos cards */
         }
 
-        .testimonial-item:hover {
-            transform: translateY(-8px); /* Sobe um pouco */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
+        .benefit-item:hover, .testimonial-item:hover, .mentor-item:hover, .atom-stat-item:hover {
+            transform: translateY(-10px); /* Sobe mais */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra mais intensa */
+        }
+
+        .benefit-item i, .mentor-item img {
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .mentor-item img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
         }
 
         .testimonial-item p {
             font-style: italic;
             margin-bottom: 15px;
-            color: var(--text-color);
         }
 
         .testimonial-item .author {
-            display: block;
             font-weight: 600;
             color: var(--primary-color);
         }
 
-        /* Benefits Grid - Efeito de Flutuação */
-        .benefits-grid {
+        .before-after-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .benefit-item {
-            text-align: center;
-            padding: 25px;
-            border-radius: 8px;
-            background-color: var(--light-bg);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-8px); /* Sobe um pouco */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
-        }
-
-        .benefit-item i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .benefit-item h4 {
-            font-size: 1.3em;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .benefit-item p {
-            font-size: 0.95em;
-            color: var(--text-color);
-        }
-
-        /* Estilos para a seção "Antes e Depois" */
-        #before-after {
-            background-color: var(--light-bg); /* Um fundo claro para a seção */
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        #before-after h2 {
-            font-size: 2.8em;
-            margin-bottom: 40px;
-        }
-        
-        /* Container dos cards Antes e Depois */
-        .before-after-items {
-            display: flex; /* Habilita o Flexbox */
-            flex-wrap: wrap; /* Permite que os cards quebrem para a linha de baixo em telas menores */
-            justify-content: center; /* Centraliza os cards horizontalmente */
-            gap: 30px; /* Espaço entre os cards */
-            align-items: stretch; /* Garante que os cards tenham a mesma altura */
-        }
-
-        /* Estilo para cada card individual (Antes/Depois) */
         .before-after-items .card {
             background-color: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra aprimorada */
-            padding: 30px;
-            flex: 1; /* Permite que os cards cresçam e encolham */
-            min-width: 300px; /* Largura mínima antes de quebrar para a próxima linha */
-            max-width: 48%; /* Ocupa quase metade da largura do container, deixando espaço para o outro card */
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+            transition: all 0.3s ease;
+            text-align: center;
+            background: linear-gradient(145deg, var(--white), var(--light-bg));
         }
 
         .before-after-items .card:hover {
-            transform: translateY(-8px); /* Efeito de elevação no hover */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        .before-after-items .card h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .before-after-items .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .before-after-items .card ul li {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            color: #555;
-            line-height: 1.4;
-        }
-
-        .before-after-items .card ul li i {
-            font-size: 1.3em;
-            margin-right: 12px;
-        }
-
-        /* Cores específicas para ícones de Antes e Depois */
-        .before-after-items .card.before-card h3 {
-            color: #dc3545; /* Vermelho para o "Antes" */
-            border-bottom-color: #dc3545;
-        }
-        .before-after-items .card.before-card ul li i {
-            color: #dc3545;
-        }
-
-        .before-after-items .card.after-card h3 {
-            color: var(--secondary-color); /* Verde para o "Depois" */
-            border-bottom-color: var(--secondary-color);
-        }
-        .before-after-items .card.after-card ul li i {
-            color: var(--secondary-color);
-        }
-
-
-        /* Mentors Section */
-        .mentor-section {
-            text-align: center;
-        }
-
-        .mentor-images {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            margin-bottom: 60px; /* Ajustado para dar mais espaço e evitar sobreposição */
-            flex-wrap: wrap; /* Permite que as imagens quebrem a linha em telas menores */
-        }
-
-        /* Novo estilo para cada cartão de mentor */
-        .mentor-card {
-            display: flex;
-            flex-direction: column; /* Empilha o conteúdo (imagem, nome, descrição) verticalmente */
-            align-items: center; /* Centraliza horizontalmente o conteúdo */
-            text-align: center; /* Centraliza o texto */
-            margin-bottom: 20px; /* Espaço entre os cartões quando há quebra de linha */
-        }
-
-        .mentor-image-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 150px; /* Tamanho fixo para o contêiner, garantindo consistência */
-            height: 150px; 
-            overflow: hidden; /* Garante que nada saia do wrapper */
-            border-radius: 50%; /* Garante que o wrapper também é circular */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra no wrapper */
-            background-color: var(--light-bg); /* Fundo para o wrapper */
-        }
-
-        .mentor-image-wrapper img {
+        .before-after-items .card img {
             width: 100%;
-            height: 100%; 
-            border-radius: 50%; /* Imagens circulares */
-            border: 4px solid var(--accent-color);
-            object-fit: cover; /* ESSENCIAL: Garante que a imagem preencha o contêiner mantendo a proporção, cortando o que exceder */
-            object-position: 50% 0%; /* Ajuste para o posicionamento da imagem, movendo o foco verticalmente para cima */
-            transition: transform 0.3s ease; /* Transição para o hover */
-        }
-        
-        .mentor-image-wrapper:hover img {
-            transform: scale(1.05); /* Pequeno zoom no hover */
-            border-color: var(--primary-color); /* Muda a cor da borda no hover */
+            height: 200px;
+            object-fit: cover;
+            display: block;
         }
 
-        /* Estilos para o h4 e p DENTRO do mentor-card */
-        .mentor-card h4 {
-            margin-top: 15px; /* Espaço acima do nome */
-            margin-bottom: 5px;
+        .before-after-items .card .content {
+            padding: 20px;
+        }
+
+        .before-after-items .card h4 {
             color: var(--primary-color);
-            font-size: 1.1em;
+            margin-bottom: 10px;
         }
 
-        .mentor-card p {
-            font-size: 0.8em;
-            margin-top: 5px; /* Espaço acima da descrição */
-            color: var(--text-color);
-        }
-
-        /* Investment Section - ESTILOS REVISADOS PARA PREMIUM */
-        .investment-section {
+        .price-box {
+            background: var(--gradient-gold);
+            color: var(--premium-dark-bg);
+            padding: 40px; /* Mais padding */
+            border-radius: 20px; /* Mais arredondado */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px var(--accent-color); /* Sombra e brilho intensos */
+            border: 4px solid var(--white); /* Borda mais grossa */
+            max-width: 500px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
             text-align: center;
-            background: var(--premium-dark-bg); /* Fundo escuro premium */
+        }
+
+        .price-box::before {
+            content: 'OPORTUNIDADE ÚNICA!'; /* Texto mais forte */
+            position: absolute;
+            top: 20px;
+            left: -50px;
+            background-color: var(--primary-color);
             color: var(--white);
-            padding: 60px 20px; /* Mais padding */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-
-        .investment-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .investment-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
-        }
-
-        .investment-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
+            padding: 10px 50px;
             font-size: 1.1em;
-            color: rgba(255,255,255,0.9);
+            font-weight: 700;
+            transform: rotate(-45deg);
+            z-index: 10;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .price-details {
-            margin-bottom: 40px; /* Aumentar margem */
-            font-size: 1.1em;
-            color: var(--white);
+        .price-box h4 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--premium-dark-bg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-box .installments {
+            font-size: 3.2em; /* Preço principal ainda maior */
+            font-weight: 800;
+            color: var(--premium-dark-bg);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-box .installments span {
+            font-size: 0.5em;
+            font-weight: 600;
+            vertical-align: super;
         }
 
         .price-details ul {
             list-style: none;
             padding: 0;
-            max-width: 500px; /* Aumentado para melhor legibilidade */
-            margin: 20px auto 15px auto;
+            margin-bottom: 30px;
             text-align: left;
-            background-color: rgba(255,255,255,0.08); /* Fundo transparente */
-            border-radius: 12px; /* Mais arredondado */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Sombra mais intensa */
-            overflow: hidden; /* Para garantir bordas arredondadas */
-            backdrop-filter: blur(5px); /* Efeito de vidro fosco, se o browser suportar */
-            border: 1px solid rgba(255,255,255,0.2); /* Borda sutil */
+            position: relative;
+            z-index: 1;
         }
 
         .price-details ul li {
-            padding: 15px 25px; /* Mais padding */
-            border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
-            display: flex; /* Usar flexbox para alinhar ícone e texto */
-            align-items: center; /* Alinha verticalmente */
-            justify-content: space-between;
-            font-size: 1em;
-            position: relative;
-            background-color: rgba(255,255,255,0.05); /* Fundo ligeiramente visível */
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
-        }
-
-        .price-details ul li:hover {
-            background-color: rgba(255,255,255,0.15); /* Fundo mais visível no hover */
-            transform: translateY(-3px); /* Pequena flutuação */
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais intensa */
-        }
-
-        .price-details ul li::before {
-            content: "\f00c"; /* Ícone de check */
-            font-family: "Font Awesome 6 Free"; /* Certifique-se de que a fonte está carregada e que é a versão 6 */
-            font-weight: 900; /* Para ícones sólidos */
-            color: var(--secondary-color); /* Cor verde para o check */
-            margin-right: 15px; /* Espaço para o check */
-            font-size: 1.2em; /* Ícone um pouco maior */
-            text-shadow: 0 0 5px rgba(40,167,69,0.5); /* Sombra no check */
-            flex-shrink: 0; /* Impede que o ícone encolha */
-        }
-
-        .price-details ul li:last-child {
-            border-bottom: none;
-        }
-
-        .price-details ul li .value {
-            font-weight: 700;
-            color: var(--accent-color); /* Cor de destaque */
             font-size: 1.1em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra no valor */
-        }
-
-        .price-details .total-original {
-            font-size: 1.4em; /* Maior destaque */
-            font-weight: 700;
-            color: var(--red-alert);
-            text-decoration: line-through;
-            margin-top: 25px; /* Mais espaço */
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Sombra no texto */
-        }
-
-        .price-box {
-            background: var(--gradient-gold); /* Gradiente dourado para destaque */
-            color: var(--premium-dark-bg); /* Texto escuro no fundo claro */
-            padding: 35px; /* Mais padding */
-            border-radius: 15px; /* Mais arredondado */
-            margin: 40px auto; /* Mais margem */
-            max-width: 450px; /* Maior */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-color); /* Sombra intensa e brilho */
-            position: relative;
-            overflow: hidden;
-            border: 3px solid var(--white); /* Borda branca para destacar */
-            transform: scale(1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .price-box:hover {
-            transform: scale(1.02); /* Levemente maior no hover */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px var(--accent-color); /* Sombra e brilho mais intensos */
-        }
-
-        .price-box::before {
-            content: 'OFERTA EXCLUSIVA!'; /* Texto mais premium */
-            position: absolute;
-            top: 15px; /* Ajuste da posição */
-            left: -40px; /* Ajuste da posição */
-            background-color: var(--primary-color); /* Cor diferente */
-            color: var(--white);
-            padding: 8px 40px; /* Mais padding */
-            font-weight: 700;
-            font-size: 1em; /* Tamanho maior */
-            transform: rotate(-45deg);
-            transform-origin: 0% 0%;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-            letter-spacing: 1px; /* Espaçamento entre letras */
-        }
-
-        /* Ajustes para a nova ordem e destaque */
-        .price-box .installments { /* Agora esta é a principal */
-            font-size: 2.8em; /* Aumento significativo */
-            font-weight: 800; /* Mais negrito */
-            margin-top: 10px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
-            color: var(--primary-color); /* Cor de destaque para o preço principal */
-        }
-
-        .price-box .current-price { /* Agora esta é a secundária */
-            font-size: 1.6em; /* Aumento */
-            font-weight: 600; /* Mais negrito */
             margin-bottom: 10px;
-            color: rgba(0,0,0,0.7); /* Cor mais suave */
+            display: flex;
+            align-items: center;
+            border-bottom: 1px dashed rgba(0,0,0,0.2);
+            padding-bottom: 8px;
         }
 
-
-        /* Guarantee Section */
-        .guarantee-section {
-            text-align: center;
-            background-color: #e6ffee; /* Um verde bem claro */
-            border: 1px solid var(--secondary-color);
-            color: #218838;
-        }
-
-        .guarantee-section i {
-            font-size: 3.5em;
+        .price-details ul li i {
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            margin-right: 10px;
+            font-size: 1.2em;
         }
 
-        .guarantee-section h3 {
-            color: var(--secondary-color);
-        }
-
-        .guarantee-section h3::after {
-            background-color: var(--secondary-color);
-        }
-
-        /* Atom Stats Section - ESTILOS REVISADOS PARA PREMIUM */
-        .atom-stats-section {
-            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
-            padding: 60px 20px; /* Mais padding */
-            text-align: center;
-            color: var(--white); /* Texto branco */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-        .atom-stats-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .atom-stats-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
-        }
-
-        .atom-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Minmax ligeiramente maior */
-            gap: 25px; /* Mais espaçamento */
-            margin-top: 40px;
-        }
         .atom-stat-item {
-            background-color: var(--white); /* Fundo branco para os itens */
-            padding: 35px 20px 25px 20px; /* Aumentado o padding vertical, adicionado bottom padding */
-            border-radius: 12px; /* Mais arredondado */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
-            text-align: center;
-            border-bottom: 5px solid var(--primary-color); /* Borda mais grossa */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Adicionando transição para borda */
-            color: var(--text-color); /* Restaura cor do texto dentro do item */
-            position: relative;
-            overflow: hidden;
-            
-            /* Ajustes para centralização de conteúdo */
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centraliza horizontalmente o conteúdo flex */
-            justify-content: center; /* Centraliza verticalmente o conteúdo flex */
-        }
-        .atom-stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0,86,179,0.05), rgba(255,193,7,0.05)); /* Gradiente sutil */
-            z-index: 0;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
         }
 
-        .atom-stat-item:hover {
-            transform: translateY(-8px); /* Levanta mais */
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3); /* Sombra mais intensa no hover */
-            border-color: var(--accent-color); /* Borda muda para amarelo */
-        }
         .atom-stat-item strong {
-            display: block;
-            font-size: 2.5em; /* Maior */
-            font-weight: 800; /* Mais negrito */
-            color: var(--primary-color); /* Cor principal para os números */
-            margin-bottom: 0px; /* Ajustado para não cortar escrita */
-            line-height: 1.1; /* Ajustado para não cortar escrita */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            position: relative; /* Para ficar acima do ::before */
-            z-index: 1;
-        }
-        .atom-stat-item span {
-            font-size: 1.1em; /* Ligeiramente maior */
-            color: var(--dark-bg); /* Cor mais escura para o texto */
-            font-weight: 600;
-            position: relative; /* Para ficar acima do ::before */
-            z-index: 1;
-            line-height: 1.5; /* Aumentado para dar mais espaço e evitar corte */
-            padding-bottom: 5px; /* Adicionado padding bottom para evitar corte */
+            font-size: 3em; /* Números ainda maiores */
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 700;
         }
 
-        /* FAQ */
+        .atom-stat-item p {
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+
         .faq-item {
-            background-color: var(--light-bg);
+            background-color: var(--faq-answer-bg);
+            border-radius: 10px;
             margin-bottom: 15px;
-            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: box-shadow 0.3s ease; /* Transição para a sombra do item ativo */
-        }
-
-        /* Efeito de "luz" na borda/sombra do item ativo */
-        .faq-item.active {
-            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.25); /* Sombra mais pronunciada e com cor primária */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: left;
         }
 
         .faq-question {
-            padding: 18px 25px; /* Aumentado o padding */
+            padding: 18px 25px;
             background-color: var(--primary-color);
             color: var(--white);
             cursor: pointer;
@@ -733,625 +382,358 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1.15em; /* Aumentado o tamanho da fonte */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Transição para background e cor */
-            box-sizing: border-box; /* Adicionado */
+            font-size: 1.1em;
+            border-radius: 10px; /* Arredondar a pergunta */
+            transition: background-color 0.3s ease;
         }
 
         .faq-question:hover {
-            background-color: #004085;
-        }
-
-        /* Estilo para a pergunta ativa */
-        .faq-item.active .faq-question {
-            background-color: #003366; /* Cor mais escura para a pergunta ativa */
-            border-bottom: 2px solid var(--accent-color); /* Linha abaixo da pergunta ativa */
+            background-color: var(--dark-bg);
         }
 
         .faq-answer {
-            padding: 0 25px; /* Ajustado o padding para corresponder à pergunta */
+            padding: 0 25px;
             max-height: 0;
             overflow: hidden;
-            background-color: var(--faq-answer-bg); /* Fundo azul claro para a resposta */
-            color: var(--text-color); /* Garante que o texto tenha a cor correta */
-            transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out, background-color 0.4s ease; /* Transição mais longa e suave, e para o fundo */
-            box-sizing: border-box; /* Adicionado */
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            color: var(--text-color);
+            background-color: var(--premium-light-bg); /* Fundo mais claro para a resposta */
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
         .faq-answer p {
-            padding-top: 15px; /* Espaçamento superior para o parágrafo */
-            padding-bottom: 15px;
-            margin: 0; /* Remove a margem padrão do parágrafo */
-            line-height: 1.7; /* Melhorar legibilidade */
-        }
-
-        /* Estilo para listas dentro das respostas (se você usar <ul>) */
-        .faq-answer ul {
-            list-style: disc; /* ou circle, square */
-            padding-left: 25px; /* Alinha com o texto do parágrafo */
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .faq-answer ul li {
-            margin-bottom: 8px;
-            line-height: 1.6;
+            padding: 15px 0;
+            margin: 0;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 2000px; /* Aumentado o valor para garantir que o conteúdo caiba */
-            padding-top: 15px; /* Adiciona padding ao expandir */
-            padding-bottom: 15px; /* Adiciona padding ao expandir */
+            max-height: 200px; /* Ajuste conforme necessário para o conteúdo */
+            padding-bottom: 25px;
         }
 
-        .faq-item.active .faq-question i {
+        .faq-item .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .icon {
             transform: rotate(180deg);
-            color: var(--accent-color); /* Ícone muda para a cor de destaque quando ativo */
         }
 
-        .faq-question i {
-            font-size: 0.9em; /* Ícone um pouco menor */
-            transition: transform 0.5s ease, color 0.3s ease; /* Transição para o ícone e sua cor */
-        }
-
-        /* Footer */
         footer {
-            background-color: var(--dark-bg);
-            color: rgba(255,255,255,0.8);
-            text-align: center;
+            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
+            color: rgba(255,255,255,0.7);
             padding: 30px 20px;
-            font-size: 0.9em;
+            text-align: center;
+            border-top: 5px solid var(--primary-color); /* Borda superior para distinção */
+            font-size: 0.95em; /* Ligeiramente maior */
         }
 
         footer p {
-            margin: 5px 0;
+            margin-bottom: 10px;
         }
 
         footer a {
-            color: var(--accent-color);
+            color: var(--accent-color); /* Link em dourado */
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: var(--white);
         }
 
         .disclaimer {
-            font-size: 0.8em;
+            font-size: 0.85em; /* Manter pequeno, mas legível */
+            line-height: 1.5;
             color: rgba(255,255,255,0.6);
             margin-top: 20px;
         }
 
-        /* Estilos para a grade de vídeos de depoimento */
-        .video-testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cria colunas flexíveis */
-            gap: 25px; /* Espaço entre os vídeos */
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .video-testimonials-grid .video-wrapper {
-            margin: 0; /* Remove a margem individual que estava puxando o vídeo principal */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Sombra mais suave para os depoimentos */
-            border-radius: 8px; /* Cantos arredondados */
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
-            .hero h2 {
-                font-size: 1.2em;
+            .hero p {
+                font-size: 1em;
             }
             .cta-button {
                 font-size: 1.2em;
-                padding: 15px 25px;
+                padding: 15px 30px;
             }
-            section h3, section h2 { /* Adicionado h2 */
-                font-size: 1.7em;
-            }
-            /* No mobile, mentor-images já é column, então mentor-card não precisa mudar */
-            .mentor-images {
-                flex-direction: column; /* Empilha os cartões de mentores em telas pequenas */
-                align-items: center;
-            }
-            .mentor-image-wrapper {
-                width: 120px; /* Ajusta o tamanho da imagem em mobile */
-                height: 120px; 
-            }
-            .mute-button {
-                width: 120px; /* Ajusta tamanho do botão em mobile */
-                height: 120px;
-            }
-            .mute-button i {
-                font-size: 2.5em; /* Ajusta tamanho do ícone em mobile */
-            }
-            .mute-button .text {
-                font-size: 0.8em; /* Ajusta tamanho do texto em mobile */
-            }
-            .countdown-timer {
-                font-size: 1.2em;
-                padding: 10px 15px;
-            }
-            /* FAQ em mobile */
-            .faq-question {
-                font-size: 1em; /* Ajusta o tamanho da fonte da pergunta em mobile */
-                padding: 15px 20px;
-            }
-            .faq-answer {
-                padding: 0 20px;
-            }
-            .faq-answer p {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            .faq-answer ul {
-                padding-left: 20px; /* Ajusta padding para listas em mobile */
-            }
-            .atom-stats-grid {
-                grid-template-columns: 1fr; /* Empilha as estatísticas em telas menores */
-            }
-            /* Ajustes para telas menores nas seções premium */
-            .price-box {
-                padding: 25px;
+            section h2, section h3 {
+                font-size: 2em;
             }
             .price-box .installments {
-                font-size: 2.2em;
+                font-size: 2.5em;
             }
-            .price-box .current-price {
-                font-size: 1.2em;
-            }
-            .price-details ul li {
-                padding: 12px 20px;
-            }
-            .atom-stat-item strong {
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
                 font-size: 2em;
-                line-height: 1.1; /* Garantir que não corte em mobile */
-                margin-bottom: 0px;
             }
-            .atom-stat-item span {
+            .cta-button {
                 font-size: 1em;
-                line-height: 1.4; /* Garantir que não corte em mobile */
-                padding-bottom: 0px; /* Removido em mobile se não for necessário */
+                padding: 12px 25px;
             }
-            /* Antes e Depois em mobile */
-            .before-after-items .card {
-                max-width: 90%; /* Ocupa quase toda a largura em telas menores */
+            .countdown-timer {
+                font-size: 1em;
+                gap: 10px;
+                padding: 10px 15px;
+            }
+            section {
+                padding: 40px 15px;
+            }
+            .price-box {
+                padding: 30px 20px;
+            }
+            .price-box::before {
+                font-size: 0.9em;
+                left: -70px;
             }
         }
     </style>
-
-    <script>
-        // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
-        function loadMainYouTubeVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; 
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
-        }
-
-        // Mudar o ícone e desmutar
-        function unmuteVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const muteButton = document.querySelector('.mute-button');
-            const muteIcon = muteButton.querySelector('i');
-            
-            if (videoFrame && videoFrame.contentWindow) {
-                videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                
-                muteIcon.classList.remove('fa-volume-xmark');
-                muteIcon.classList.add('fa-volume-high');
-                
-                setTimeout(() => {
-                    muteButton.style.display = 'none'; 
-                    muteButton.style.animation = 'none';
-                }, 300);
-            }
-        }
-
-        // Contador Regressivo
-        function startCountdown() {
-            const endTime = new Date();
-            endTime.setDate(endTime.getDate() + 1);
-            endTime.setHours(23, 59, 59, 0);
-
-            const countdownElement = document.getElementById('countdown-timer');
-
-            const updateCountdown = () => {
-                const now = new Date().getTime();
-                const distance = endTime.getTime() - now;
-
-                if (distance < 0) {
-                    countdownElement.innerHTML = "Oferta Expirada!";
-                    return;
-                }
-
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                countdownElement.innerHTML = `
-                    <span>${hours.toString().padStart(2, '0')}<span class="label">HORAS</span></span>:
-                    <span>${minutes.toString().padStart(2, '0')}<span class="label">MINUTOS</span></span>:
-                    <span>${seconds.toString().padStart(2, '0')}<span class="label">SEGUNDOS</span></span>
-                `;
-            };
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        }
-
-        window.addEventListener('load', function() {
-            loadMainYouTubeVideo();
-
-            const muteButton = document.querySelector('.mute-button');
-            setTimeout(() => {
-                muteButton.style.display = 'flex';
-            }, 1000);
-
-            muteButton.addEventListener('click', unmuteVideo);
-
-            startCountdown();
-
-            // FAQ Accordion - MOVIDO PARA DENTRO DO load EVENT
-            document.querySelectorAll('.faq-question').forEach(item => {
-                item.addEventListener('click', event => {
-                    const faqItem = item.closest('.faq-item');
-                    faqItem.classList.toggle('active');
-
-                    const isExpanded = faqItem.classList.contains('active');
-                    item.setAttribute('aria-expanded', isExpanded);
-                    const answer = faqItem.querySelector('.faq-answer');
-                    if (answer) {
-                        answer.setAttribute('aria-hidden', !isExpanded);
-                    }
-                });
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'click_cta_hotmart', {
-                        'event_category': 'Call to Action',
-                        'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
-                    });
-                }
-                if (typeof fbq === 'function') {
-                    fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
-                        button_text: this.innerText
-                    });
-                }
-            });
-        });
-    </script>
 </head>
 <body>
-
-    <header class="hero">
+    <header>
         <div class="container">
-            <div class="video-wrapper">
-                <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                
-                <div class="mute-button" title="Clique para ativar o som">
-                    <i class="fas fa-volume-xmark"></i>
-                    <span class="text">Toque Aqui!</span>
-                </div>
-            </div>
-
-            <h1>URGENTE: Assista Agora e Descubra Como Você Pode Operar com o Capital da Maior Mesa Proprietária!</h1>
-            <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong style="text-decoration: underline;">sem arriscar seu próprio capital.</strong></h2>
-            
-            <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
-            <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garanta o seu!</p>
-            
-            <div class="countdown-timer" id="countdown-timer">
-                <span>00<span class="label">HORAS</span></span>:
-                <span>00<span class="label">MINUTOS</span></span>:
-                <span>00<span class="label">SEGUNDOS</span></span>
-            </div>
+            <div class="logo">UNIVERSIDADE ATOM</div>
         </div>
     </header>
 
-    <section class="opportunity-section">
+    <section class="hero">
         <div class="container">
-            <h3>A Grande Oportunidade Revelada: Opere com o Capital da Atom!</h3>
-            <p>Milhares de pessoas sonham em viver do mercado financeiro, mas esbarram na falta de conhecimento ou, principalmente, na falta de capital. A UNIVERSIDADE ATOM foi criada para superar essas barreiras.</p>
-            <p>Mais do que um curso, é sua chance de se tornar um trader profissional, aprender com os maiores nomes do mercado e, o mais importante, ter a <strong style="text-decoration: underline;">OPORTUNIDADE de operar com o dinheiro da Atom, a maior mesa proprietária da América Latina, sem arriscar do seu próprio bolso!</strong></p>
+            <h1>Libere Seu Potencial: Opere com Capital da MAIOR Mesa Proprietária da América Latina!</h1>
+            <p>Descubra o método completo para você se tornar um trader de sucesso e ter a chance única de operar com o dinheiro dos Paiffer!</p>
+            <a href="https://go.hotmart.com/V94119853I?ap=a71a" target="_blank" class="cta-button">QUERO MUDAR MINHA VIDA AGORA!</a>
+            <div class="countdown-timer" id="countdown">
+                <div><span id="days">00</span> DIAS</div>
+                <div><span id="hours">00</span> HORAS</div>
+                <div><span id="minutes">00</span> MINUTOS</div>
+                <div><span id="seconds">00</span> SEGUNDOS</div>
+            </div>
         </div>
     </section>
 
-    <section>
-        <div class="container">        
-            <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h4>Do Zero ao Avançado</h4>
-                    <p>Aprenda a operar no mercado financeiro, desde os conceitos mais básicos até as estratégias mais complexas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h4>Capital da Atom</h4>
-                    <p>Passe por 2 avaliações e, sendo aprovado, opere com o capital da Atom. 80% dos lucros são seus, 100% dos riscos são da Atom!</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>Treinamento Prático</h4>
-                    <p>Aulas focadas na prática com a plataforma Profit Pro para você dominar as operações.</p>
-                </div>
+    <section id="opportunity" class="dark-bg">
+        <div class="container">
+            <h2>A Oportunidade Revelada</h2>
+            <p>Você sonha em viver do mercado financeiro, mas não tem capital suficiente ou conhecimento para começar? A Universidade Atom é a ponte entre você e a sua independência financeira. Aprenda as estratégias testadas e comprovadas que permitiram aos Paiffer, os maiores traders do Brasil, construírem um império, e tenha a chance de operar com o capital deles!</p>
+            <a href="https://go.hotmart.com/V94119853I?ap=a71a" target="_blank" class="cta-button">QUERO APROVEITAR ESTA OPORTUNIDADE!</a>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <h2>O Que Você Vai Aprender</h2>
+            <div class="grid-3-cols">
                 <div class="benefit-item">
                     <i class="fas fa-chart-line"></i>
-                    <h4>Conteúdo Exclusivo</h4>
-                    <p>Day trade, swing trade, mini índice, mini dólar, opções e muito mais para diversificar suas estratégias.</p>
+                    <h3>Estratégias Vencedoras</h3>
+                    <p>Domine as mesmas táticas que os grandes nomes da Atom utilizam para lucrar no mercado.</p>
                 </div>
                 <div class="benefit-item">
-                    <i class="fas fa-users"></i>
-                    <h4>Mentorias ao Vivo</h4>
-                    <p>Aprenda diretamente com Carol e Joaquim Paiffer em sessões exclusivas e interativas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-question-circle"></i>
-                    <h4>Salas de Dúvidas</h4>
-                    <p>Suporte em tempo real, todas as Segundas, Quartas e Sextas (16h e 20h), para tirar suas dúvidas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-book-open"></i>
-                    <h4>Material Complementar</h4>
-                    <p>Aprofunde seu conhecimento com PDFs e planilhas em Excel de apoio.</p>
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Gestão de Risco</h3>
+                    <p>Aprenda a proteger seu capital e a operar com segurança, minimizando perdas.</p>
                 </div>
                 <div class="benefit-item">
                     <i class="fas fa-brain"></i>
-                    <h4>Bônus de Mindset</h4>
-                    <p>Cursos de Psicologia do Trader e Mindset (Atom Talks) para blindar sua mente contra os desafios do mercado.</p>
+                    <h3>Psicologia do Trader</h3>
+                    <p>Desenvolva a mentalidade de um campeão e controle suas emoções nas operações.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Análise Técnica e Fundamentalista</h3>
+                    <p>Desvende os segredos dos gráficos e dos fundamentos para tomar decisões assertivas.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade Exclusiva</h3>
+                    <p>Faça parte de uma rede de traders com os mesmos objetivos e cresçam juntos.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Acesso ao Capital da Atom</h3>
+                    <p>A maior oportunidade: operar com o capital da Atom S/A e multiplicar seus ganhos!</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO SABER MAIS E VER O CURRÍCULO COMPLETO!</a>
+        </div>
+    </section>
+
+    <section id="testimonials" class="dark-bg">
+        <div class="container">
+            <h2>Quem Já Transformou a Vida com a Atom</h2>
+            <div class="grid-3-cols">
+                <div class="testimonial-item">
+                    <p>"Nunca imaginei que poderia operar com tanto capital. A Universidade Atom mudou minha perspectiva sobre o mercado financeiro. Hoje vivo dos meus trades!"</p>
+                    <div class="author">- Carlos S.</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>"O suporte e o conteúdo são incríveis! Saí do zero e em poucos meses já estava lucrando de forma consistente. Recomendo a todos!"</p>
+                    <div class="author">- Fernanda R.</div>
+                </div>
+                <div class="testimonial-item">
+                    <p>"A metodologia dos Paiffer é algo que não se encontra em outro lugar. A confiança que a Atom me passou é algo que não tem preço."</p>
+                    <div class="author">- Bruno M.</div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="before-after">
         <div class="container">
-            <h2>Sua Jornada: Antes e Depois da Universidade Atom</h2>
+            <h2>Antes e Depois: Nossos Alunos em Ação</h2>
             <div class="before-after-items">
-                <div class="card before-card">
-                    <h3>ANTES</h3>
-                    <ul>
-                        <li><i class="fas fa-times-circle"></i> Medo de investir e perder dinheiro</li>
-                        <li><i class="fas fa-times-circle"></i> Dificuldade em entender o mercado financeiro</li>
-                        <li><i class="fas fa-times-circle"></i> Dependência de um único salário</li>
-                        <li><i class="fas fa-times-circle"></i> Falta de tempo para buscar conhecimento</li>
-                        <li><i class="fas fa-times-circle"></i> Insegurança para tomar decisões financeiras</li>
-                    </ul>
-                </div>
-                <div class="card after-card">
-                    <h3>DEPOIS</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Opera com capital da Atom, sem risco próprio</li>
-                        <li><i class="fas fa-check-circle"></i> Entende as movimentações do mercado e lucra</li>
-                        <li><i class="fas fa-check-circle"></i> Liberdade geográfica e de tempo</li>
-                        <li><i class="fas fa-check-circle"></i> Acesso a mentoria e suporte especializado</li>
-                        <li><i class="fas fa-check-circle"></i> Confiança para construir sua carreira de trader</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="atom-stats-section">
-        <div class="container">
-            <h3>Atom em Números: Uma História de Sucesso e Transformação!</h3>
-            <div class="atom-stats-grid">
-                <div class="atom-stat-item">
-                    <strong>9 Anos</strong>
-                    <span>De Empresa</span>
-                </div>
-                <div class="atom-stat-item">
-                    <strong>80.000+</strong>
-                    <span>Alunos Formados</span>
-                </div>
-                <div class="atom-stat-item">
-                    <strong>1ª Mesa Proprietária</strong>
-                    <span>Do Brasil</span>
-                </div>
-                <div class="atom-stat-item">
-                    <strong>1 Milhão+</strong>
-                    <span>Pessoas Impactadas</span>
-                </div>
-                <div class="atom-stat-item">
-                    <strong>800+</strong>
-                    <span>Aulas Disponíveis</span>
-                </div>
-                <div class="atom-stat-item">
-                    <strong>Alunos de Todo o Brasil</strong>
-                    <span>Online e Intuitivo</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="mentor-section">
-        <div class="container">
-            <h3>Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
-            <div class="mentor-images">
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/004080/FFFFFF?text=ANTES+-+Cenario+1" alt="Antes 1">
+                    <div class="content">
+                        <h4>Antes: Sem Direção</h4>
+                        <p>Dúvidas e perdas constantes.</p>
+                        <img src="https://via.placeholder.com/400x200/007F5F/FFFFFF?text=DEPOIS+-+Cenario+1" alt="Depois 1">
+                        <h4>Depois: Lucros Consistentes</h4>
+                        <p>Segurança e ganhos diários.</p>
                     </div>
-                    <h4>Carol Paiffer</h4>
                 </div>
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/004080/FFFFFF?text=ANTES+-+Cenario+2" alt="Antes 2">
+                    <div class="content">
+                        <h4>Antes: Capital Limitado</h4>
+                        <p>Sonhos adiados por falta de dinheiro.</p>
+                        <img src="https://via.placeholder.com/400x200/007F5F/FFFFFF?text=DEPOIS+-+Cenario+2" alt="Depois 2">
+                        <h4>Depois: Operando com a Atom</h4>
+                        <p>Oportunidade de escalar resultados.</p>
                     </div>
-                    <h4>Joaquim Paiffer</h4>
                 </div>
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="priscila_atom.jpg" alt="Priscila">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/004080/FFFFFF?text=ANTES+-+Cenario+3" alt="Antes 3">
+                    <div class="content">
+                        <h4>Antes: Medo de Operar</h4>
+                        <p>Paralisado pela insegurança.</p>
+                        <img src="https://via.placeholder.com/400x200/007F5F/FFFFFF?text=DEPOIS+-+Cenario+3" alt="Depois 3">
+                        <h4>Depois: Confiança Total</h4>
+                        <p>Controle emocional e assertividade.</p>
                     </div>
-                    <h4>Priscila</h4>
                 </div>
-            </div>
-            <p>Aprenda com quem realmente faz o mercado!</p>
-            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a Priscila, <strong style="text-decoration: underline;">focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
-            <p>Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h3>Transformando Vidas: Depoimentos de Quem Já Está no Jogo!</h3>
-            
-            <div class="video-testimonials-grid" style="margin-bottom: 50px;">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
-                "Assista aos depoimentos de quem já está trilhando o caminho do sucesso com a Universidade Atom!"
-            </p>
-            <div class="testimonials-grid">
-                <div class="testimonial-item">
-                    <p>"Eu não tinha nenhuma experiência e a Universidade Atom me abriu um mundo. As aulas são claras e a oportunidade de operar com o capital deles é inacreditável. Estou focado na qualificação!"</p>
-                    <span class="author">- Ana P., Aluna da Universidade Atom</span>
-                </div>
-                <div class="testimonial-item">
-                    <p>"Sempre quis viver de trade, mas o capital era um problema. O que a Atom oferece é único! O curso é top e as mentorias com os Paiffer são um diferencial gigante."</p>
-                    <span class="author">- Carlos D., Trader em Evolução</span>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic;">"Na página oficial da Hotmart, você encontrará mais depoimentos e cases de sucesso de alunos da Universidade Atom!"</p>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://www.youtube.com/watch?v=NvMNeM7mj9I&list=PL52D_BpvKwreZUo8LFCQfhJvFZg3Hxmxf" class="cta-button">VER MAIS DEPOIMENTOS E DETALHES NA PÁGINA OFICIAL!</a>
             </div>
         </div>
     </section>
 
-    <section class="investment-section">
+    <section id="mentors" class="dark-bg">
         <div class="container">
-            <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
-            <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
-            
-            <div class="price-details">
-                <p>Veja tudo o que você terá acesso na Universidade Atom:</p>
-                <ul>
-                    <li>Mentorias com Investidores <span class="value">R$1.997,00</span></li>
-                    <li>Duas Avaliações da Atom <span class="value">R$1.960,00</span></li>
-                    <li>Acesso à Universidade Atom por 12 meses <span class="value">R$750,00</span></li>
-                    <li>Três meses de acesso ao Profit Chart <span class="value">R$750,00</span></li>
-                </ul>
-                <p class="total-original">Valor total original: R$6.407,00</p>
+            <h2>Conheça Seus Mentores</h2>
+            <p>Aprenda diretamente com os maiores nomes do mercado financeiro, a família Paiffer.</p>
+            <div class="grid-3-cols">
+                <div class="mentor-item">
+                    <img src="https://via.placeholder.com/150/007F5F/FFFFFF?text=Joao+Paiffer" alt="João Paiffer">
+                    <h3>João Paiffer</h3>
+                    <p>Cofundador da Atom, referência em trading e gestão de mesas proprietárias.</p>
+                </div>
+                <div class="mentor-item">
+                    <img src="https://via.placeholder.com/150/007F5F/FFFFFF?text=Carol+Paiffer" alt="Carol Paiffer">
+                    <h3>Carol Paiffer</h3>
+                    <p>CEO da Atom, empreendedora e especialista em mercado de ações.</p>
+                </div>
+                <div class="mentor-item">
+                    <img src="https://via.placeholder.com/150/007F5F/FFFFFF?text=Outro+Mentor" alt="Outro Mentor">
+                    <h3>Equipe de Especialistas</h3>
+                    <p>Um time completo de profissionais para te guiar em cada passo.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section id="investment">
+        <div class="container">
+            <h2>Seu Investimento no Sucesso</h2>
+            <p>Acesso completo à Universidade Atom e a chance de operar com o capital da maior mesa proprietária da América Latina!</p>
 
             <div class="price-box">
-                <p class="installments">12x de R$ 199,92 no cartão de crédito</p>
-                <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
+                <h4>ACESSO COMPLETO À UNIVERSIDADE ATOM + CHANCE DE OPERAR COM CAPITAL EXTERNO</h4>
+                <div class="installments">
+                    12x de <span>R$</span> 99,70
+                </div>
+                <div class="price-details">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Curso Completo do Básico ao Avançado</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso às Estratégias Exclusivas da Atom</li>
+                        <li><i class="fas fa-check-circle"></i> Módulos de Psicologia do Trader</li>
+                        <li><i class="fas fa-check-circle"></i> Gestão de Risco Profissional</li>
+                        <li><i class="fas fa-check-circle"></i> Aulas com os Paiffer</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso à Comunidade de Traders Atom</li>
+                        <li><i class="fas fa-check-circle"></i> Teste de Performance para Mesa Proprietária</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte Exclusivo</li>
+                    </ul>
+                </div>
+                <a href="https://go.hotmart.com/V94119853I?ap=a71a" target="_blank" class="cta-button">GARANTIR MINHA VAGA AGORA!</a>
             </div>
-            <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
-            <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
         </div>
     </section>
 
-    <section class="guarantee-section">
+    <section id="atom-stats" class="dark-bg">
         <div class="container">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Sua Decisão Sem Riscos: Garantia de Satisfação Total!</h3>
-            <p>Temos total confiança na qualidade e no potencial transformador da UNIVERSIDADE ATOM. Por isso, sua inscrição é protegida por uma garantia incondicional de 7 dias.</p>
-            <p>Se, por qualquer motivo, você não estiver satisfeito ou o curso não atender às suas expectativas, basta solicitar o reembolso na Hotmart dentro deste período e 100% do seu investimento será devolvido, sem burocracia. Seu sucesso é nosso compromisso!</p>
+            <h2>Atom em Números: Sua Confiança, Nossos Resultados</h2>
+            <div class="grid-3-cols">
+                <div class="atom-stat-item">
+                    <strong>+20.000</strong>
+                    <p>Alunos Transformados</p>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>+100 Milhões</strong>
+                    <p>Em Capital Operado</p>
+                </div>
+                <div class="atom-stat-item">
+                    <strong>RA1000</strong>
+                    <p>Selo Reclame AQUI (Excelente Atendimento)</p>
+                </div>
+            </div>
+            <a href="https://go.hotmart.com/V94119853I?ap=a71a" target="_blank" class="cta-button">JUNTE-SE AOS VENCEDORES!</a>
         </div>
     </section>
 
-    <section>
+    <section id="faq">
         <div class="container">
-            <h3>Perguntas Frequentes (FAQ)</h3>
-            <div class="faq-list">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-1">
-                        <span>1. Sou iniciante no mercado financeiro. A Universidade Atom é pra mim?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question">
+                        <span>Preciso ter experiência para começar?</span>
+                        <i class="fas fa-chevron-down icon"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
-                        <p>R: Com certeza! A Universidade Atom foi feita justamente para quem está começando do absoluto zero. Você vai aprender passo a passo, com linguagem simples, exemplos reais e o suporte de quem já formou milhares de traders. Não importa se você nunca operou antes — aqui, você começa do básico e chega ao nível profissional.</p>
+                    <div class="faq-answer">
+                        <p>Não! A Universidade Atom é projetada para iniciantes e traders experientes. Você aprenderá do zero ao avançado.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-2">
-                        <span>2. Como funciona a oportunidade de operar com o capital da Atom?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question">
+                        <span>Como funciona a operação com o capital da Atom?</span>
+                        <i class="fas fa-chevron-down icon"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
-                        <p>R: Esse é o grande diferencial! Ao final do curso, você poderá realizar 2 avaliações exclusivas. Se for aprovado, você opera com o dinheiro da Atom, a maior mesa proprietária da América Latina. 80% dos lucros vão direto pro seu bolso — e a Atom assume 100% do risco! É a chance real de viver do mercado, mesmo sem ter capital próprio.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-3">
-                        <span>3. O curso ensina só mini índice e mini dólar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
-                        <p>R: Não! A formação é completa e atualizada. Você aprende estratégias de Day Trade, Swing Trade, mini índice, mini dólar, ações, opções e muito mais. O objetivo é que você tenha uma visão ampla do mercado e possa diversificar seus ganhos, mesmo em diferentes cenários econômicos.</p>
+                    <div class="faq-answer">
+                        <p>Após concluir o treinamento e passar em um teste de performance, você terá a chance de operar com o capital da mesa proprietária, compartilhando os lucros sem arriscar seu próprio dinheiro.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-4">
-                        <span>4. Por quanto tempo terei acesso às aulas e mentorias?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question">
+                        <span>Terei suporte durante o curso?</span>
+                        <i class="fas fa-chevron-down icon"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
-                        <p>R: Você terá 1 ano de acesso completo, com atualizações constantes. Isso inclui as aulas gravadas, mentorias ao vivo com os Paiffer, salas de dúvidas com suporte ao vivo e bônus complementares. É tempo mais do que suficiente pra você absorver, aplicar e transformar sua vida com consistência.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-5">
-                        <span>5. Onde eu acesso o curso depois da compra?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" id="faq-answer-5" aria-hidden="true">
-                        <p>R: Assim que o pagamento for aprovado, você recebe um e-mail da Hotmart com todos os dados de acesso. O conteúdo fica disponível em uma plataforma prática e segura, onde você pode assistir às aulas quando e onde quiser — inclusive pelo celular.</p>
+                    <div class="faq-answer">
+                        <p>Sim, você terá acesso a uma comunidade exclusiva e suporte da equipe para tirar todas as suas dúvidas.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-6">
-                        <span>6. Preciso de computador potente ou internet muito rápida para acompanhar?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question">
+                        <span>Por quanto tempo terei acesso ao conteúdo?</span>
+                        <i class="fas fa-chevron-down icon"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-6" aria-hidden="true">
-                        <p>R: Não precisa de nada além de um computador simples ou celular com internet estável. A plataforma é leve, e os vídeos são otimizados. Você pode começar com o que já tem aí — o mais importante é a sua vontade de aprender.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-7">
-                        <span>7. E se eu não gostar do curso? Tem garantia?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer" id="faq-answer-7" aria-hidden="true">
-                        <p>R: Sim! Você tem 7 dias de garantia incondicional. Se dentro desse prazo achar que o curso não é pra você, é só pedir o reembolso diretamente pela Hotmart. Seu risco é zero, e sua chance é gigante</p>
+                    <div class="faq-answer">
+                        <p>Seu acesso ao conteúdo da Universidade Atom é vitalício!</p>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">GARANTIR MINHA VAGA NA UNIVERSIDADE ATOM AGORA!</a>
-            </div>
+            <a href="https://go.hotmart.com/V94119853I?ap=a71a" target="_blank" class="cta-button">COMECE NA UNIVERSIDADE ATOM AGORA!</a>
         </div>
     </section>
 
@@ -1369,5 +751,43 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Countdown Timer
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 7); // Set to 7 days from now for demonstration
+
+            const countdownInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate.getTime() - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+                document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("countdown").innerHTML = "OFERTA ENCERRADA!";
+                }
+            }, 1000);
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
