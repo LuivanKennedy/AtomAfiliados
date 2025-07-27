@@ -123,8 +123,16 @@
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
             border: none; 
             cursor: pointer; 
-            margin-top: 30px;
             box-shadow: var(--button-shadow);
+
+            /* --- Ajustes para o botão final --- */
+            display: inline-block; /* Permite que margin auto funcione para centralização */
+            max-width: 450px; /* Limita a largura para evitar que ele estique demais em telas grandes */
+            margin: 30px auto 0; /* Centraliza horizontalmente e adiciona margem superior */
+            text-align: center; /* Centraliza o texto dentro do botão */
+            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura total */
+            white-space: normal; /* Permite que o texto quebre linha dentro do botão se for muito longo */
+            line-height: 1.3; /* Ajusta a altura da linha para que o texto não se sobreponha */
         }
         .quiz-button:hover { 
             background-color: #218838; 
@@ -209,6 +217,13 @@
             font-size: 0.95em;
         }
 
+        /* Novo estilo para o texto de rodapé abaixo do botão de resultados */
+        .quiz-results-note {
+            font-size: 0.85em; 
+            color: #777; 
+            margin-top: 20px; /* Espaçamento após o botão */
+        }
+
         .hidden { display: none; }
 
         /* Responsive */
@@ -221,6 +236,7 @@
             .quiz-button { padding: 15px 25px; font-size: 1.1em; }
             .quiz-results h2 { font-size: 2em; }
             .quiz-results p { font-size: 1em; }
+            .quiz-button { max-width: 380px; } /* Ajusta largura máxima em telas menores */
         }
         @media (max-width: 480px) {
             .quiz-container { padding: 25px 15px; }
@@ -234,6 +250,7 @@
             .quiz-results .testimonial-quote {
                 padding: 15px;
             }
+            .quiz-button { max-width: 100%; } /* Ocupa toda largura em telas muito pequenas */
         }
     </style>
 </head>
@@ -262,8 +279,8 @@
                     <p><i class="fas fa-quote-left"></i> Eu também tinha medo de perder dinheiro, mas a Atom me deu o conhecimento e o capital para começar. Hoje, opero com confiança! <i class="fas fa-quote-right"></i></p>
                     <span>- [Nome de Exemplo], Trader Atom</span>
                 </div>
-                <a href="SEU_DOMINIO/index.html" class="quiz-button">CLIQUE AQUI PARA CONHECER A UNIVERSIDADE ATOM E COMEÇAR A OPERAR SEM ARRISCAR SEU DINHEIRO!</a>
-                <p class="quiz-footer" style="font-size: 0.85em; margin-top: 20px;">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
+                <a href="/index.html" class="quiz-button">CLIQUE AQUI PARA CONHECER A UNIVERSIDADE ATOM E COMEÇAR A OPERAR SEM ARRISCAR SEU DINHEIRO!</a>
+                <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
             </div>
         </div>
 
