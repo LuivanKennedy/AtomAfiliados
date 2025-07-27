@@ -13,6 +13,7 @@
             --primary-color: #0A2342; /* Azul Marinho Profundo / Quase Preto - Força e Segurança */
             --secondary-color: #FFD700; /* Dourado Vivo - Dinheiro e Destaque */
             --accent-color: #C0C0C0; /* Prata - Confiabilidade e Premium */
+            --selection-green: #008000; /* Novo Verde para seleção de opção - Transmite Sucesso */
             --text-color: #333; /* Mantido para legibilidade em fundo claro do container */
             --light-bg: #f8f9fa; /* Fundo leve para detalhes */
             --white: #fff;
@@ -91,9 +92,9 @@
             box-shadow: var(--button-shadow); /* Sombra aprimorada */
         }
         .quiz-options button.selected { 
-            background-color: var(--secondary-color); /* Dourado para opção selecionada */
-            color: var(--primary-color); /* Texto escuro no dourado */
-            border-color: var(--secondary-color); 
+            background-color: var(--selection-green); /* VERDE para opção selecionada */
+            color: var(--white); /* Texto branco no verde para melhor contraste */
+            border-color: var(--selection-green); 
             box-shadow: var(--button-shadow); 
             transform: translateY(-2px);
             position: relative;
@@ -104,7 +105,7 @@
             font-weight: 900;
             position: absolute;
             right: 20px;
-            color: var(--primary-color); /* Cor do checkmark (azul escuro) */
+            color: var(--white); /* Cor do checkmark (branco) */
             font-size: 1.2em;
         }
         .quiz-footer { 
@@ -278,7 +279,7 @@
                 <p id="results-text"></p>
                 <div class="testimonial-quote">
                     <p><i class="fas fa-quote-left"></i> Eu também tinha medo de perder dinheiro, mas a Atom me deu o conhecimento e o capital para começar. Hoje, opero com confiança! <i class="fas fa-quote-right"></i></p>
-                    <span>- Lucas A., Trader Atom</span>
+                    <span>- [Nome de Exemplo], Trader Atom</span>
                 </div>
                 <a href="/index.html" class="quiz-button">CLIQUE AQUI PARA CONHECER A UNIVERSIDADE ATOM E COMEÇAR A OPERAR SEM ARRISCAR SEU DINHEIRO!</a>
                 <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
