@@ -13,574 +13,664 @@
             --primary-color: #0A2342; /* Azul Marinho Profundo / Quase Preto - Força e Segurança */
             --secondary-color: #FFD700; /* Dourado Vivo - Dinheiro e Destaque */
             --accent-color: #C0C0C0; /* Prata - Confiabilidade e Premium */
-            --selection-green: #008000; /* Novo Verde para seleção de opção - Transmite Sucesso */
-            --text-color: #333; /* Esta cor será para textos sobre o branco do container */
-            --light-bg: #f8f9fa; /* Fundo leve para detalhes */
-            --white: #fff;
-            --quiz-bg-gradient: linear-gradient(135deg, #0A2342, #1B3A5B); /* Gradiente de Azul Profundo */
-            --button-shadow: 0 4px 10px rgba(0,0,0,0.25); /* Sombra mais intensa para contraste */
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Sombra aprimorada para destaque do container */
-        }
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            background: var(--quiz-bg-gradient); 
-            color: var(--text-color); /* Esta cor será para textos sobre o branco do container */
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            overflow-x: hidden; /* Evita scroll horizontal */
-        }
-        .quiz-container { 
-            background-color: var(--white); 
-            border-radius: 16px; /* Mais arredondado */
-            box-shadow: var(--card-shadow); /* Sombra aprimorada */
-            padding: 50px 40px; /* Mais padding */
-            max-width: 650px; /* Levemente mais largo */
-            width: 90%; 
-            text-align: center; 
-            position: relative; 
-            animation: fadeIn 0.8s ease-out; /* Animação de entrada */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            --selection-green: #008000; /* Novo Verde para seleção de opção - Transmite Confiança e Crescimento */
+            --error-red: #FF0000; /* Vermelho para mensagens de erro */
+
+            /* --- Outras Cores --- */
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --dark-gray: #555;
+            --border-color: #ddd;
         }
 
-        .quiz-header h1 { 
-            color: var(--primary-color); 
+        body {
             font-family: 'Roboto', sans-serif;
-            font-size: 2.5em; /* Ligeiramente maior */
-            margin-bottom: 20px; 
-            line-height: 1.2;
-        }
-        .quiz-header p { 
-            font-size: 1.2em; /* Maior */
-            color: #555; 
-            margin-bottom: 40px; 
-            font-weight: 300; /* Mais leve */
-        }
-        .quiz-question { 
-            font-size: 1.6em; /* Mais destaque */
-            color: var(--primary-color); 
-            margin-bottom: 30px; 
-            font-weight: 600; 
-            line-height: 1.4;
-        }
-        .quiz-options button { 
-            display: block; 
-            width: 100%; 
-            padding: 20px 25px; /* Mais padding */
-            margin-bottom: 18px; /* Mais espaço */
-            border: 2px solid var(--primary-color); 
-            border-radius: 10px; /* Mais arredondado */
-            background-color: var(--white); 
-            color: var(--primary-color); 
-            font-size: 1.15em; /* Ligeiramente maior */
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            font-weight: 500; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra sutil */
-        }
-        .quiz-options button:hover { 
-            background-color: var(--primary-color); 
-            color: var(--white); 
-            transform: translateY(-5px); /* Mais movimento */
-            box-shadow: var(--button-shadow); /* Sombra aprimorada */
-        }
-        .quiz-options button.selected { 
-            background-color: var(--selection-green); /* VERDE para opção selecionada */
-            color: var(--white); /* Texto branco no verde para melhor contraste */
-            border-color: var(--selection-green); 
-            box-shadow: var(--button-shadow); 
-            transform: translateY(-2px);
-            position: relative;
-        }
-        .quiz-options button.selected::after {
-            content: '\f00c'; /* Checkmark icon */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 20px;
-            color: var(--white); /* Cor do checkmark (branco) */
-            font-size: 1.2em;
-        }
-        .quiz-footer { 
-            margin-top: 40px; 
-            font-size: 0.95em; 
-            color: #777; 
-            font-weight: 300;
-        }
-        .quiz-button { 
-            background-color: var(--secondary-color); /* Dourado */
-            color: var(--primary-color); /* Texto azul escuro no dourado */
-            padding: 18px 35px; /* Mais padding */
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-size: 1.3em; /* Maior */
-            font-weight: 700; 
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: var(--button-shadow);
-
-            display: inline-block; /* Permite que margin auto funcione para centralização */
-            max-width: 450px; /* Limita a largura para evitar que ele estique demais em telas grandes */
-            margin: 30px auto 0; /* Centraliza horizontalmente e adiciona margem superior */
-            text-align: center; /* Centraliza o texto dentro do botão */
-            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura total */
-            white-space: normal; /* Permite que o texto quebre linha dentro do botão se for muito longo */
-            line-height: 1.3; /* Ajusta a altura da linha para que o texto não se sobreponha */
-        }
-        .quiz-button:hover { 
-            background-color: #DAA520; /* Dourado ligeiramente mais escuro no hover */
-            transform: translateY(-3px); /* Mais movimento */
-            box-shadow: 0 6px 15px rgba(0,0,0,0.35); /* Sombra mais pronunciada */
-        }
-        .quiz-button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-        .quiz-button i {
-            margin-left: 10px;
-            color: var(--primary-color); /* Icone na cor principal */
-        }
-
-        .quiz-progress { 
-            height: 12px; /* Mais grosso */
-            background-color: #e9ecef; /* Cor de fundo mais clara */
-            border-radius: 6px; 
-            margin-bottom: 30px; 
-            overflow: hidden; 
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna */
-        }
-        .quiz-progress-bar { 
-            height: 100%; 
-            width: 0%; 
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); /* Gradiente na barra (Prata para Dourado) */
-            border-radius: 6px; 
-            transition: width 0.4s ease-in-out; 
-        }
-        .quiz-results h2 { 
-            color: var(--primary-color); /* Título de resultados em Azul Profundo */
-            font-size: 2.5em; /* Maior */
-            margin-bottom: 25px; 
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.2;
-        }
-        .quiz-results p { 
-            font-size: 1.2em; 
-            line-height: 1.7; 
-            color: #555; 
-            margin-bottom: 30px; 
-            font-weight: 300;
-        }
-        .testimonial-grid {
-            margin-top: 30px;
-            display: grid;
-            gap: 20px;
-        }
-        .testimonial-quote {
-            padding: 25px;
-            background-color: var(--light-bg);
-            border-left: 5px solid var(--secondary-color); /* Borda em Dourado */
-            border-radius: 8px;
-            font-style: italic;
-            font-weight: 500;
-            color: #666;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: relative;
-            animation: slideIn 0.6s ease-out;
-            text-align: left; /* Alinhar texto do depoimento à esquerda */
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .testimonial-quote i {
-            font-size: 1.8em;
-            color: var(--secondary-color); /* Ícone em Dourado */
-            margin-right: 15px;
-            vertical-align: middle;
-        }
-        .testimonial-quote p {
-            display: inline;
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #666; /* Cor do texto do depoimento */
             margin: 0;
-            font-weight: 400;
-        }
-        .testimonial-quote span {
-            display: block;
-            margin-top: 10px;
-            font-weight: 600;
-            color: var(--primary-color); /* Nome do depoimento em Azul Profundo */
-            font-size: 0.95em;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-        /* Novo estilo para o texto de rodapé abaixo do botão de resultados */
-        .quiz-results-note {
-            font-size: 0.85em; 
-            color: #777; 
-            margin-top: 20px; /* Espaçamento após o botão */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilos para o formulário de coleta de lead */
-        .lead-form-container {
-            margin-top: 20px;
+        header {
+            text-align: center;
             margin-bottom: 30px;
         }
-        .lead-input {
-            width: calc(100% - 24px); /* Full width minus padding */
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
+
+        header h1 {
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--dark-gray);
+            font-size: 1.1em;
+        }
+
+        .quiz-section {
+            display: none; /* Hidden by default */
+        }
+
+        .quiz-section.active {
+            display: block; /* Show active section */
+        }
+
+        .question-progress {
+            font-size: 0.9em;
+            color: var(--dark-gray);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .question-card {
+            background-color: var(--primary-color); /* Fundo da pergunta */
+            color: #fff; /* Cor do texto da pergunta */
+            padding: 25px;
             border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-button {
+            background-color: #f0f0f0; /* Fundo das opções */
+            color: var(--primary-color); /* Texto das opções */
+            border: 2px solid var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 6px;
             font-size: 1em;
-            box-sizing: border-box; /* Include padding in width */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
         }
-        .lead-input:focus {
-            outline: none;
+
+        .option-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .option-button.selected {
+            background-color: var(--selection-green);
+            color: #fff;
+            border-color: var(--selection-green);
+            box-shadow: 0 2px 8px rgba(0, 128, 0, 0.3);
+        }
+
+        .option-button:active {
+            transform: translateY(0);
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px; /* Espaço entre os botões */
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            flex-grow: 1; /* Para que os botões ocupem o espaço disponível */
+            max-width: 48%; /* Para garantir que não cresçam demais */
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #071a30;
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #a0a0a0;
+        }
+
+        /* Lead Capture Section */
+        .lead-capture-section {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid var(--border-color);
+            margin-top: 30px;
+        }
+
+        .lead-capture-section h2 {
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .lead-capture-section .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .lead-capture-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .lead-capture-section input[type="text"],
+        .lead-capture-section input[type="email"],
+        .lead-capture-section input[type="tel"] {
+            width: calc(100% - 24px); /* Adjust for padding */
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1em;
+        }
+        
+        .lead-capture-section input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(10, 35, 66, 0.2);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(10, 35, 66, 0.2);
         }
 
-        .hidden { display: none; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .quiz-container { padding: 30px 20px; }
-            .quiz-header h1 { font-size: 2em; }
-            .quiz-header p { font-size: 1em; }
-            .quiz-question { font-size: 1.3em; }
-            .quiz-options button { padding: 16px 15px; font-size: 1em; }
-            .quiz-button { padding: 15px 25px; font-size: 1.1em; }
-            .quiz-results h2 { font-size: 2em; }
-            .quiz-results p { font-size: 1em; }
-            .quiz-button { max-width: 380px; } /* Ajusta largura máxima em telas menores */
-            .testimonial-grid { grid-template-columns: 1fr; } /* Uma coluna em mobile */
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
         }
-        @media (max-width: 480px) {
-            .quiz-container { padding: 25px 15px; }
-            .quiz-header h1 { font-size: 1.6em; }
-            .quiz-header p { font-size: 0.9em; }
-            .quiz-question { font-size: 1.1em; }
-            .quiz-options button { padding: 14px 10px; font-size: 0.9em; }
-            .quiz-button { padding: 12px 20px; font-size: 0.9em; }
-            .quiz-results h2 { font-size: 1.8em; }
-            .quiz-results p { font-size: 0.9em; }
-            .testimonial-quote {
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid var(--border-color);
+            margin-top: 30px;
+        }
+
+        .results-section h2 {
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .results-section p {
+            color: var(--dark-gray);
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .results-section .quote {
+            background-color: #f0f8ff; /* Light blue background for quote */
+            border-left: 5px solid var(--secondary-color);
+            padding: 15px 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            font-style: italic;
+            color: var(--primary-color);
+            position: relative;
+            text-align: left;
+        }
+
+        .results-section .quote::before {
+            content: '“';
+            font-family: Georgia, serif;
+            font-size: 3em;
+            color: var(--secondary-color);
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            opacity: 0.6;
+        }
+
+        .results-section .quote::after {
+            content: '”';
+            font-family: Georgia, serif;
+            font-size: 3em;
+            color: var(--secondary-color);
+            position: absolute;
+            right: 10px;
+            bottom: -15px;
+            opacity: 0.6;
+        }
+
+        .results-section .quote footer {
+            margin-top: 10px;
+            font-size: 0.9em;
+            text-align: right;
+            color: var(--dark-gray);
+        }
+
+        .final-cta {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-top: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .final-cta:hover {
+            background-color: #e6c200;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
                 padding: 15px;
             }
-            .quiz-button { max-width: 100%; } /* Ocupa toda largura em telas muito pequenas */
+            .btn {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            .btn, .btn-secondary {
+                max-width: 100%;
+            }
+            .question-card {
+                font-size: 1em;
+                padding: 20px;
+            }
+            .option-button {
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+            .results-section p {
+                font-size: 1em;
+            }
+            .final-cta {
+                font-size: 1em;
+                padding: 12px 20px;
+            }
         }
     </style>
-</head>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    </head>
 <body>
-    <div class="quiz-container">
-        <div id="quiz-start-screen">
-            <div class="quiz-header">
-                <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
-                <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
-                <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
+    <div class="container">
+        <header>
+            <h1>Descubra o Seu Perfil para a Universidade Atom!</h1>
+            <p>Responda algumas perguntas rápidas e receba uma análise personalizada sobre o seu potencial no mercado financeiro.</p>
+        </header>
+
+        <div id="quiz-section-1" class="quiz-section active">
+            <p class="question-progress">Pergunta 1 de 5</p>
+            <div class="question-card">Qual a sua principal motivação para buscar novas fontes de renda?</div>
+            <div class="options-container">
+                <button class="option-button" data-value="Liberdade Financeira">Ter mais liberdade financeira para viver como sempre sonhei.</button>
+                <button class="option-button" data-value="Sair da Dívida">Sair das dívidas e ter mais tranquilidade.</button>
+                <button class="option-button" data-value="Aposentadoria Precoce">Aposentar-me mais cedo e aproveitar a vida sem preocupações financeiras.</button>
+                <button class="option-button" data-value="Investir em Sonhos">Juntar dinheiro para investir em um grande sonho (casa, carro, viagem).</button>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-primary" id="next-q1">Próxima</button>
             </div>
         </div>
 
-        <div id="quiz-questions-screen" class="hidden">
-            <div class="quiz-progress"><div class="quiz-progress-bar" id="progressBar"></div></div>
-            <p class="quiz-question" id="question-text"></p>
-            <div class="quiz-options" id="options-container"></div>
-            <button class="quiz-button" id="next-button" onclick="nextQuestion()" disabled>Próxima Pergunta <i class="fas fa-arrow-right"></i></button>
-        </div>
-
-        <div id="quiz-lead-form-screen" class="hidden">
-            <div class="quiz-results">
-                <h2 class="quiz-question">Quase lá! Para ver seu perfil e o próximo passo ideal...</h2>
-                <p class="quiz-header" style="margin-bottom: 30px;">Preencha seus dados para receber seu resultado personalizado e o acesso exclusivo à oportunidade que preparamos para você:</p>
-                <div class="lead-form-container">
-                    <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
-                    <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
-                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp (opcional)" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="19">
-                    <button class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
-                </div>
-                <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
+        <div id="quiz-section-2" class="quiz-section">
+            <p class="question-progress">Pergunta 2 de 5</p>
+            <div class="question-card">Qual o seu maior receio ao pensar em investir seu próprio capital?</div>
+            <div class="options-container">
+                <button class="option-button" data-value="Perder Dinheiro">Perder o dinheiro que investi.</button>
+                <button class="option-button" data-value="Falta de Conhecimento">Não ter conhecimento suficiente para tomar as decisões certas.</button>
+                <button class="option-button" data-value="Mercado Volátil">O mercado ser muito volátil e imprevisível.</button>
+                <button class="option-button" data-value="Fraudes">Cair em golpes ou fraudes financeiras.</button>
             </div>
-        </div>
-        <div id="quiz-results-screen" class="hidden">
-            <div class="quiz-results">
-                <h2 id="results-title"></h2>
-                <p id="results-text"></p>
-                
-                <div class="testimonial-grid">
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> Eu também tinha medo de perder dinheiro, mas a Atom me deu o conhecimento e o capital para começar. Hoje, opero com confiança! <i class="fas fa-quote-right"></i></p>
-                        <span>- Lucas A., Trader Atom</span>
-                    </div>
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> A didática é fantástica e a mentoria fez toda a diferença. Finalmente encontrei um caminho para viver do mercado! <i class="fas fa-quote-right"></i></p>
-                        <span>- Fernanda G., Aluna Atom</span>
-                    </div>
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> Pensei que era tarde para mim, mas o plano da Atom é para todos. Graças a eles, estou construindo meu futuro financeiro. <i class="fas fa-quote-right"></i></p>
-                        <span>- Carlos P., Novo Trader</span>
-                    </div>
-                </div>
-                <a href="/index.html" class="quiz-button" id="final-cta-button">QUERO DESCOBRIR COMO OPERAR SEM ARRISCAR MEU DINHEIRO!</a>
-                <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prev-q2">Anterior</button>
+                <button class="btn btn-primary" id="next-q2">Próxima</button>
             </div>
         </div>
 
-        <div class="quiz-footer">
-            <p>Seus dados são confidenciais e este quiz é totalmente gratuito.</p>
+        <div id="quiz-section-3" class="quiz-section">
+            <p class="question-progress">Pergunta 3 de 5</p>
+            <div class="question-card">Quanto tempo você estaria disposto a dedicar por dia para aprender e operar no mercado?</div>
+            <div class="options-container">
+                <button class="option-button" data-value="Menos de 1h">Menos de 1 hora.</button>
+                <button class="option-button" data-value="1-2h">De 1 a 2 horas.</button>
+                <button class="option-button" data-value="2-4h">De 2 a 4 horas.</button>
+                <button class="option-button" data-value="Mais de 4h">Mais de 4 horas.</button>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prev-q3">Anterior</button>
+                <button class="btn btn-primary" id="next-q3">Próxima</button>
+            </div>
+        </div>
+
+        <div id="quiz-section-4" class="quiz-section">
+            <p class="question-progress">Pergunta 4 de 5</p>
+            <div class="question-card">Qual tipo de operação no mercado financeiro mais te atrai?</div>
+            <div class="options-container">
+                <button class="option-button" data-value="Day Trade">Operações rápidas de compra e venda no mesmo dia (Day Trade).</button>
+                <button class="option-button" data-value="Swing Trade">Operações de médio prazo, segurando por alguns dias/semanas (Swing Trade).</button>
+                <button class="option-button" data-value="Long-Term Investing">Investimento de longo prazo em ações ou fundos.</button>
+                <button class="option-button" data-value="Renda Fixa">Investimentos mais seguros e previsíveis (renda fixa).</button>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prev-q4">Anterior</button>
+                <button class="btn btn-primary" id="next-q4">Próxima</button>
+            </div>
+        </div>
+
+        <div id="quiz-section-5" class="quiz-section">
+            <p class="question-progress">Pergunta 5 de 5</p>
+            <div class="question-card">Você já tem alguma experiência ou conhecimento sobre o mercado financeiro?</div>
+            <div class="options-container">
+                <button class="option-button" data-value="Nenhuma">Nenhuma experiência.</button>
+                <button class="option-button" data-value="Básico">Conhecimento básico (li alguns artigos/livros, vi alguns vídeos).</button>
+                <button class="option-button" data-value="Intermediário">Conhecimento intermediário (já fiz algum curso, operei em simulador).</button>
+                <button class="option-button" data-value="Avançado">Conhecimento avançado (já opero na prática, tenho mentores).</button>
+            </div>
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prev-q5">Anterior</button>
+                <button class="btn btn-primary" id="submit-quiz">Ver Meu Resultado</button>
+            </div>
+        </div>
+
+        <div id="lead-capture-section" class="lead-capture-section">
+            <h2>Quase lá! Para ver seu perfil completo, preencha seus dados:</h2>
+            <div class="input-group">
+                <label for="lead-name">Nome Completo:</label>
+                <input type="text" id="lead-name" placeholder="Seu nome completo">
+                <div class="error-message" id="name-error">Por favor, preencha seu nome.</div>
+            </div>
+            <div class="input-group">
+                <label for="lead-email">Seu Melhor E-mail:</label>
+                <input type="email" id="lead-email" placeholder="seu.email@exemplo.com">
+                <div class="error-message" id="email-error">Por favor, insira um e-mail válido.</div>
+            </div>
+            <div class="input-group">
+                <label for="lead-whatsapp">Seu WhatsApp (Opcional):</label>
+                <input type="tel" id="lead-whatsapp" placeholder="(99) 99999-9999" maxlength="15">
+            </div>
+            <button class="btn btn-primary" id="get-results">Ver Meu Resultado</button>
+        </div>
+
+        <div id="results-section" class="results-section">
+            <h2 id="results-title"></h2>
+            <p id="results-text"></p>
+            <div class="quote">
+                <span id="quote-text"></span>
+                <footer>- <span id="quote-author"></span></footer>
+            </div>
+            <a href="#" class="final-cta" id="final-cta-button">Quero Dar o Próximo Passo!</a>
         </div>
     </div>
 
     <script>
-        const questions = [
-            {
-                question: "Qual sua principal motivação para aprender sobre o mercado financeiro?",
-                options: [
-                    "Buscar uma nova fonte de renda",
-                    "Conquistar liberdade geográfica e de tempo",
-                    "Construir uma carreira sólida como trader",
-                    "Apenas curiosidade sobre o assunto"
-                ]
-            },
-            {
-                question: "Qual sua maior preocupação ao pensar em Day Trade ou investimentos?",
-                options: [
-                    "Perder dinheiro (capital próprio)",
-                    "Não ter conhecimento suficiente",
-                    "Falta de tempo para se dedicar",
-                    "Dificuldade em encontrar mentores confiáveis"
-                ]
-            },
-            {
-                question: "Você se considera uma pessoa mais...",
-                options: [
-                    "Analítica e paciente, que gosta de estudar dados.",
-                    "Rápida e intuitiva, que toma decisões ágeis.",
-                    "Equilibrada, uma mistura dos dois."
-                ]
-            },
-            {
-                question: "Quanto tempo por dia você estaria disposto a dedicar ao aprendizado e prática, em média?",
-                options: [
-                    "Menos de 1 hora",
-                    "1 a 2 horas",
-                    "Mais de 2 horas",
-                    "Não tenho tempo fixo, mas sou flexível"
-                ]
-            },
-            {
-                question: "O que mais te atrairia na oportunidade de ser um trader?",
-                options: [
-                    "A possibilidade de operar com o capital de uma grande empresa (sem risco próprio)",
-                    "A mentoria de traders experientes como os Paiffer",
-                    "O conteúdo completo do básico ao avançado",
-                    "A comunidade de alunos e o suporte diário"
-                ]
-            }
+        // --- CONFIGURAÇÕES DO GOOGLE FORMS ---
+        // ATENÇÃO: Verifique sempre se esses IDs e a URL estão atualizados com seu formulário publicado.
+        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScU0c2h4B3e1c6n6C0p5M-T7p4S3q2Y8o8B4g9M0J9t3N0G0/formResponse'; // URL de ação do formulário
+        const NAME_ENTRY_ID = 'entry.2117502428'; // ID para "Nome Completo"
+        const EMAIL_ENTRY_ID = 'entry.1018311110'; // ID para "Seu Melhor E-mail"
+        const WHATSAPP_ENTRY_ID = 'entry.1221710242'; // ID para "Seu WhatsApp"
+        const ANSWERS_ENTRY_ID = 'entry.393450934'; // ID para "Respostas do Quiz"
+        const PROFILE_ENTRY_ID = 'entry.1704609806'; // ID para "Perfil do Usuário"
+        // --- FIM DAS CONFIGURAÇÕES DO GOOGLE FORMS ---
+
+        const quizSections = [
+            document.getElementById('quiz-section-1'),
+            document.getElementById('quiz-section-2'),
+            document.getElementById('quiz-section-3'),
+            document.getElementById('quiz-section-4'),
+            document.getElementById('quiz-section-5')
         ];
+        const leadCaptureSection = document.getElementById('lead-capture-section');
+        const resultsSection = document.getElementById('results-section');
 
-        let currentQuestionIndex = 0;
-        let userAnswers = [];
-        let userName = '';
-        let userEmail = '';
-        let userWhatsapp = '';
-        let userProfileType = ''; // Nova variável para armazenar o perfil
-
-        const startScreen = document.getElementById('quiz-start-screen');
-        const questionsScreen = document.getElementById('quiz-questions-screen');
-        const leadFormScreen = document.getElementById('quiz-lead-form-screen');
-        const resultsScreen = document.getElementById('quiz-results-screen');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const nextButton = document.getElementById('next-button');
-        const progressBar = document.getElementById('progressBar');
-        const resultsTitle = document.getElementById('results-title');
-        const resultsText = document.getElementById('results-text');
-        const finalCtaButton = document.getElementById('final-cta-button');
-
-        // Elementos do formulário de lead
         const leadNameInput = document.getElementById('lead-name');
         const leadEmailInput = document.getElementById('lead-email');
         const leadWhatsappInput = document.getElementById('lead-whatsapp');
-        const viewResultsButton = document.getElementById('view-results-button');
-        const startQuizButton = document.getElementById('start-quiz-button'); 
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const getResultsButton = document.getElementById('get-results');
 
-        // Função para obter parâmetros UTM da URL atual
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
+        const resultsTitle = document.getElementById('results-title');
+        const resultsText = document.getElementById('results-text');
+        const quoteText = document.getElementById('quote-text');
+        const quoteAuthor = document.getElementById('quote-author');
+        const finalCtaButton = document.getElementById('final-cta-button');
 
-        // Função para anexar parâmetros UTM a uma URL
-        function appendUtmParameters(url) {
-            const urlObj = new URL(url, window.location.origin);
-            const params = new URLSearchParams(window.location.search);
+        let currentQuestionIndex = 0;
+        const userAnswers = [];
+        let userName = '';
+        let userEmail = '';
+        let userWhatsapp = '';
+        let userProfileType = ''; // Para armazenar o tipo de perfil do usuário
 
-            const utmSource = params.get('utm_source');
-            const utmMedium = params.get('utm_medium');
-            const utmCampaign = params.get('utm_campaign');
-            const utmContent = params.get('utm_content');
-            const utmTerm = params.get('utm_term');
-
-            if (utmSource) urlObj.searchParams.set('utm_source', utmSource);
-            if (utmMedium) urlObj.searchParams.set('utm_medium', utmMedium);
-            if (utmCampaign) urlObj.searchParams.set('utm_campaign', utmCampaign);
-            if (utmContent) urlObj.searchParams.set('utm_content', utmContent);
-            if (utmTerm) urlObj.searchParams.set('utm_term', utmTerm);
-
-            return urlObj.toString();
-        }
-
-        function startQuiz() {
-            startScreen.classList.add('hidden');
-            questionsScreen.classList.remove('hidden');
-            currentQuestionIndex = 0;
-            userAnswers = [];
-            loadQuestion();
-            updateProgressBar();
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStarted', { 
-                    quiz_name: 'Trader Atom Profile',
-                    action: 'Start Quiz'
-                });
-            }
-        }
-
-        function loadQuestion() {
-            if (currentQuestionIndex < questions.length) {
-                const q = questions[currentQuestionIndex];
-                questionText.textContent = q.question;
-                optionsContainer.innerHTML = '';
-                nextButton.disabled = true;
-
-                q.options.forEach((option, index) => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.onclick = () => selectOption(option, button);
-                    optionsContainer.appendChild(button);
-                });
-                updateProgressBar();
-            } else {
-                questionsScreen.classList.add('hidden');
-                leadFormScreen.classList.remove('hidden');
-            }
-        }
-
-        function selectOption(selectedOption, clickedButton) {
-            userAnswers[currentQuestionIndex] = selectedOption;
-            document.querySelectorAll('.quiz-options button').forEach(button => {
-                button.classList.remove('selected');
+        function showSection(index) {
+            quizSections.forEach((section, i) => {
+                section.classList.remove('active');
+                if (i === index) {
+                    section.classList.add('active');
+                }
             });
-            clickedButton.classList.add('selected');
-            nextButton.disabled = false;
+            leadCaptureSection.style.display = 'none';
+            resultsSection.style.display = 'none';
         }
 
-        function nextQuestion() {
-            currentQuestionIndex++;
-            loadQuestion();
+        function showLeadCapture() {
+            quizSections.forEach(section => section.classList.remove('active'));
+            leadCaptureSection.style.display = 'block';
+            resultsSection.style.display = 'none';
         }
 
-        function updateProgressBar() {
-            const progress = ((currentQuestionIndex) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
+        function showResults() {
+            quizSections.forEach(section => section.classList.remove('active'));
+            leadCaptureSection.style.display = 'none';
+            resultsSection.style.display = 'block';
+            // Scroll to top of results section
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        startQuizButton.addEventListener('click', function() {
-            startQuiz(); 
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStartClicked', { 
-                    quiz_name: 'Trader Atom Profile',
-                    button_text: startQuizButton.textContent.trim()
+        function isValidEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Event Listeners for Quiz Navigation
+        quizSections.forEach((section, index) => {
+            const options = section.querySelectorAll('.option-button');
+            options.forEach(button => {
+                button.addEventListener('click', () => {
+                    options.forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
+                    userAnswers[index] = button.dataset.value;
+                });
+            });
+
+            const nextButton = section.querySelector(`#next-q${index + 1}, #submit-quiz`);
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (userAnswers[index]) { // Check if an option is selected
+                        if (index < quizSections.length - 1) {
+                            currentQuestionIndex++;
+                            showSection(currentQuestionIndex);
+                        } else {
+                            // Last question, show lead capture
+                            showLeadCapture();
+                        }
+                    } else {
+                        alert("Por favor, selecione uma opção antes de continuar.");
+                    }
+                });
+            }
+
+            const prevButton = section.querySelector(`#prev-q${index + 1}`);
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    currentQuestionIndex--;
+                    showSection(currentQuestionIndex);
                 });
             }
         });
 
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+        // Event Listener for Get Results Button (Lead Capture)
+        getResultsButton.addEventListener('click', async () => {
+            userName = leadNameInput.value.trim();
+            userEmail = leadEmailInput.value.trim();
+            userWhatsapp = leadWhatsappInput.value.trim();
+
+            let hasError = false;
+
+            if (!userName) {
+                nameError.style.display = 'block';
+                hasError = true;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            if (!userEmail || !isValidEmail(userEmail)) {
+                emailError.style.display = 'block';
+                hasError = true;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            if (hasError) {
+                return;
+            }
+
+            // Determine user profile type based on answers
+            userProfileType = determineUserProfile(userAnswers);
+
+            // Enviar dados para o Google Forms
+            await sendDataToGoogleForms();
+
+            // Display results
+            displayResults(userProfileType, userAnswers);
+            showResults();
+        });
+
+        // Whatsapp input formatting
+        leadWhatsappInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+            let formattedValue = '';
+
+            if (value.length > 0) {
+                formattedValue += '(' + value.substring(0, 2);
+                if (value.length > 2) {
+                    formattedValue += ') ';
+                }
+                if (value.length > 7) { // For 9 digit numbers (mobile)
+                    formattedValue += value.substring(2, 7) + '-';
+                    formattedValue += value.substring(7, 11);
+                } else if (value.length > 6) { // For 8 digit numbers
+                    formattedValue += value.substring(2, 6) + '-';
+                    formattedValue += value.substring(6, 10);
+                } else {
+                    formattedValue += value.substring(2, 6);
+                }
+            }
+            e.target.value = formattedValue;
+        });
+
+        leadWhatsappInput.addEventListener('keydown', function(e) {
+            // Allow backspace, tab, escape, enter, arrows, delete
+            if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || 
+                // Allow numbers
+                (e.keyCode >= 48 && e.keyCode <= 57) ||
+                (e.keyCode >= 96 && e.keyCode <= 105)) {
+                return;
+            }
+            // Prevent other keys
+            e.preventDefault();
+        });
+
+        leadWhatsappInput.addEventListener('paste', function(e) {
+            const pastedData = e.clipboardData.getData('text');
+            const cleanedData = pastedData.replace(/\D/g, ''); // Remove non-digits
+            e.target.value = cleanedData.substring(0, 11); // Max 11 digits for formatting
+            e.target.dispatchEvent(new Event('input')); // Trigger input event to format
+            e.preventDefault(); // Prevent default paste behavior
+        });
+
+
+        // Função para determinar o perfil do usuário
+        function determineUserProfile(answers) {
+            // Lógica mais elaborada para determinar o perfil
+            // Exemplo simples baseado nas respostas:
+            const motivations = {
+                "Liberdade Financeira": 5, "Sair da Dívida": 4, "Aposentadoria Precoce": 3, "Investir em Sonhos": 2
+            };
+            const concerns = {
+                "Perder Dinheiro": 5, "Falta de Conhecimento": 3, "Mercado Volátil": 2, "Fraudes": 1
+            };
+            const timeDedicated = {
+                "Menos de 1h": 1, "1-2h": 2, "2-4h": 4, "Mais de 4h": 5
+            };
+            const attractions = {
+                "Day Trade": 5, "Swing Trade": 4, "Long-Term Investing": 2, "Renda Fixa": 1
+            };
+            const experiences = {
+                "Nenhuma": 1, "Básico": 2, "Intermediário": 3, "Avançado": 4
+            };
+
+            let score = 0;
+            score += motivations[answers[0]] || 0;
+            score += concerns[answers[1]] || 0;
+            score += timeDedicated[answers[2]] || 0;
+            score += attractions[answers[3]] || 0;
+            score += experiences[answers[4]] || 0;
+
+            if (score >= 18) return "Arrojado";
+            if (score >= 12) return "Cauteloso";
+            return "Conservador";
         }
 
-        // Função para calcular o tipo de perfil (movida para antes do envio do formulário)
-        function calculateProfileType() {
-            let profileType = "";
-            let mainMotivation = userAnswers[0] || ""; 
-            let mainConcern = userAnswers[1] || "";    
-            let personalityType = userAnswers[2] || ""; 
-            let timeDedicated = userAnswers[3] || "";  
-            let mainAttraction = userAnswers[4] || ""; 
-
-            if (
-                (mainMotivation.includes("nova fonte de renda") || mainMotivation.includes("carreira sólida")) &&
-                (mainConcern.includes("Perder dinheiro") || mainConcern.includes("Não ter conhecimento suficiente")) &&
-                (mainAttraction.includes("operar com o capital") || mainAttraction.includes("mentoria de traders experientes"))
-            ) {
-                profileType = "Ideal";
-            } 
-            else if (
-                (mainMotivation.includes("liberdade geográfica") || mainMotivation.includes("carreira sólida")) &&
-                (timeDedicated.includes("1 a 2 horas") || timeDedicated.includes("Mais de 2 horas") || timeDedicated.includes("flexível")) &&
-                (mainAttraction.includes("conteúdo completo") || mainAttraction.includes("comunidade de alunos"))
-            ) {
-                profileType = "Potencial";
-            } 
-            else {
-                profileType = "Cauteloso";
-            }
-            return profileType;
-        }
-
-
-        // Função para submeter o formulário de Lead e o perfil
-        viewResultsButton.addEventListener('click', async function() {
-            const name = leadNameInput.value.trim();
-            const email = leadEmailInput.value.trim();
-            const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
-
-            if (!name) {
-                alert("Por favor, preencha seu nome para ver o resultado.");
-                return;
-            }
-
-            if (!email) {
-                alert("Por favor, preencha seu e-mail para ver o resultado.");
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                alert("Por favor, insira um e-mail válido.");
-                return;
-            }
-
-            userName = name;
-            userEmail = email;
-            userWhatsapp = whatsapp;
-            userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
-
-            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfSYf6yXoWNsExYc9zKIdMyS4pj7NQ1-JJpIieSW34JdKlN_w/formResponse';
-            const NAME_ENTRY_ID = 'entry.2117502428'; // ID para "Nome Completo"
-            const EMAIL_ENTRY_ID = 'entry.1018311110'; // ID para "Seu Melhor E-mail"
-            const WHATSAPP_ENTRY_ID = 'entry.1221710242'; // ID para "Seu WhatsApp"
-            const ANSWERS_ENTRY_ID = 'entry.393450934'; // ID para "Respostas do Quiz"
-            const PROFILE_ENTRY_ID = 'entry.1704609806'; // ID para "Perfil do Usuário"
-
-            // Novo método de envio usando Fetch
+        async function sendDataToGoogleForms() {
+            // NOVO MÉTODO DE ENVIO USANDO FETCH
             const formData = new FormData();
             formData.append(NAME_ENTRY_ID, userName);
             formData.append(EMAIL_ENTRY_ID, userEmail);
             formData.append(WHATSAPP_ENTRY_ID, userWhatsapp);
             if (userAnswers.length > 0) {
+                // Formate as respostas do quiz em uma string legível
                 formData.append(ANSWERS_ENTRY_ID, userAnswers.map((ans, i) => `Q${i+1}: ${ans}`).join(' | '));
             }
             formData.append(PROFILE_ENTRY_ID, userProfileType);
@@ -589,7 +679,7 @@
                 const response = await fetch(GOOGLE_FORM_ACTION_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // Necessário para evitar erro CORS com Google Forms
+                    mode: 'no-cors' // Essencial para evitar problemas de CORS com Google Forms
                 });
 
                 console.log('Dados enviados (fetch com no-cors). Verifique o Google Forms.');
@@ -598,143 +688,78 @@
                 console.error('Erro ao enviar dados para o Google Forms:', error);
                 alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.');
             }
-
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead', {
-                    content_name: 'Quiz do Trader Atom Lead',
-                    value: 1, 
-                    currency: 'BRL',
-                    lead_name: userName,
-                    lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp,
-                    profile_type: userProfileType // Envie o perfil também no pixel
-                });
-                fbq('trackCustom', 'BridgePageClicked', {
-                    quiz_name: 'Trader Atom Profile',
-                    button_text: viewResultsButton.textContent.trim(),
-                    lead_name: userName,
-                    lead_email: userEmail,
-                    profile_type: userProfileType // Envie o perfil também no pixel
-                });
-            }
-
-            showResults(userProfileType); // Passa o perfil para a função que mostra os resultados
-        });
+        }
 
 
-        // A função showResults agora recebe o profileType como argumento
-        function showResults(profileTypeToShow) { 
-            leadFormScreen.classList.add('hidden'); 
-            questionsScreen.classList.add('hidden');
-            resultsScreen.classList.remove('hidden');
+        // Função para exibir os resultados na tela
+        function displayResults(profileType, answers) {
+            let titleText = '';
+            let resultParagraph1 = '';
+            let resultParagraph2 = '';
+            let quoteAuthorText = '';
+            let quoteTextContent = '';
 
-            // Use o profileType que foi calculado anteriormente e passado como argumento
-            let titleText = `Parabéns! Seu Perfil é ${profileTypeToShow} para a Universidade Atom!`;
-            let mainMotivation = userAnswers[0] || ""; 
-            let mainConcern = userAnswers[1] || "";    
-            let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>.`;
-            let resultParagraph2 = "";
+            const mainMotivation = answers[0];
+            const mainConcern = answers[1];
+            const timeDedicated = answers[2];
+            const mainAttraction = answers[3];
+            const experience = answers[4];
 
-            switch (profileTypeToShow) { // Use profileTypeToShow aqui
-                case "Ideal":
-                    resultParagraph2 = `Essa é exatamente a combinação que buscamos em nossos alunos na Universidade Atom. Você tem o perfil para se destacar no mercado financeiro, operando com o capital da maior Proprietary Trading da América Latina. Milhares de pessoas com o seu perfil já transformaram suas vidas financeiras, aprendendo do zero e lucrando sem arriscar o próprio dinheiro!`;
+            switch (profileType) {
+                case "Arrojado":
+                    titleText = "Parabéns! Seu Perfil é Arrojado para a Universidade Atom!";
+                    resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande ambição em ${mainMotivation.toLowerCase()} e não teme ${mainConcern.toLowerCase()}. Sua disposição em dedicar ${timeDedicated.toLowerCase()} e seu interesse em ${mainAttraction.toLowerCase()} demonstram um grande potencial.`;
+                    resultParagraph2 = `Seu perfil indica que você busca resultados significativos e está disposto a aprender e se dedicar para alcançá-los. A estrutura completa de aprendizado da Universidade Atom é ideal para quem, como você, está pronto para dar um grande salto e buscar a liberdade financeira através do mercado.`;
+                    quoteTextContent = "O mercado financeiro é para os corajosos que buscam ir além. Não tenha medo de arriscar, tenha medo de não tentar!";
+                    quoteAuthorText = "Lucas A. Trader Atom";
                     break;
-                case "Potencial":
-                    resultParagraph2 = `Seu perfil indica um grande potencial para o mercado financeiro. Com a orientação certa e o suporte adequado da Universidade Atom, você pode evoluir rapidamente e alcançar a liberdade que busca, operando com o capital de uma grande empresa e sem arriscar seu próprio dinheiro.`;
+                case "Conservador":
+                    titleText = "Parabéns! Seu Perfil é Conservador para a Universidade Atom!";
+                    resultParagraph1 = `Com base nas suas respostas, percebemos que você busca ${mainMotivation.toLowerCase()} de forma mais segura e se preocupa com ${mainConcern.toLowerCase()}. Seu tempo de dedicação de ${timeDedicated.toLowerCase()} e seu interesse em ${mainAttraction.toLowerCase()} indicam uma abordagem mais cautelosa.`;
+                    resultParagraph2 = `Seu perfil demonstra prudência e aversão a riscos desnecessários. A estrutura completa de aprendizado da Universidade Atom oferece um caminho seguro para quem deseja entrar no mercado, com foco em gestão de risco e estratégias que minimizam perdas, ideal para quem, como você, busca resultados sólidos com segurança.`;
+                    quoteTextContent = "Comece pequeno, mas comece. A jornada de mil milhas começa com um único passo. A segurança está no conhecimento, não na inércia.";
+                    quoteAuthorText = "Lucas A. Trader Atom";
                     break;
                 case "Cauteloso":
+                default: // Default para Cauteloso
+                    titleText = "Parabéns! Seu Perfil é Cauteloso para a Universidade Atom!";
+                    resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em ${mainMotivation.toLowerCase()} e busca soluções sobre ${mainConcern.toLowerCase()}. Seu tempo de dedicação de ${timeDedicated.toLowerCase()} e seu interesse em ${mainAttraction.toLowerCase()} mostram um equilíbrio.`;
                     resultParagraph2 = `Seu perfil demonstra interesse e abertura para o mercado financeiro. Com a estrutura completa de aprendizado da Universidade Atom, você pode desenvolver as habilidades necessárias para operar com confiança e ser cauteloso, sem arriscar seu próprio capital. Milhares de iniciantes já trilharam esse caminho com sucesso!`;
+                    quoteTextContent = "Eu também tinha medo de perder dinheiro, mas a Atom me deu o conhecimento e o capital para começar. Hoje, opero com confiança!";
+                    quoteAuthorText = "Lucas A. Trader Atom";
                     break;
             }
 
             resultsTitle.textContent = titleText;
             resultsText.innerHTML = `${resultParagraph1}<br><br>${resultParagraph2}`;
+            quoteText.textContent = quoteTextContent;
+            quoteAuthor.textContent = quoteAuthorText;
             
+            // Disparar evento de Pixel para "Conclusão do Quiz"
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizCompleted', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: profileTypeToShow, // Use profileTypeToShow aqui
+                    profile_type: profileType,
                     motivation: mainMotivation,
                     concern: mainConcern,
-                    time_dedicated: userAnswers[3] || "",
-                    main_attraction: userAnswers[4] || ""
+                    time_dedicated: timeDedicated,
+                    main_attraction: mainAttraction,
+                    experience: experience
                 });
             }
-
-            finalCtaButton.href = appendUtmParameters(finalCtaButton.href);
         }
 
+        // NEW: Add event listener for the final CTA button
         finalCtaButton.addEventListener('click', function() {
             if (typeof fbq === 'function') {
-                fbq('trackCustom', 'FinalCTAClicked', { 
+                fbq('trackCustom', 'BridgePageClicked', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: userProfileType, // Use a variável global do perfil
+                    profile_type: resultsTitle.textContent.replace('Parabéns! Seu Perfil é ', '').replace(' para a Universidade Atom!', ''), // Extract profile type
                     lead_name: userName,
                     lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp,
-                    button_text: finalCtaButton.textContent.trim(),
-                    destination_url: finalCtaButton.href 
+                    lead_whatsapp: userWhatsapp
                 });
             }
-        });
-
-        // --- Funções para formatação do campo WhatsApp ---
-        leadWhatsappInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, ''); 
-
-            if (value.startsWith('55')) {
-                value = value.substring(2);
-            }
-            
-            let formattedValue = '';
-            
-            formattedValue += '+55 ';
-
-            if (value.length > 0) {
-                if (value.length >= 2) { 
-                    formattedValue += '(' + value.substring(0, 2) + ') ';
-                    value = value.substring(2); 
-                } else {
-                    formattedValue += '(' + value;
-                    e.target.value = formattedValue;
-                    return;
-                }
-            }
-
-            if (value.length > 0) {
-                if (value.length >= 5) {
-                    const firstPart = value.substring(0, value.length - 4); 
-                    const lastPart = value.substring(value.length - 4); 
-                    formattedValue += firstPart + '-' + lastPart;
-                } else { 
-                    formattedValue += value;
-                }
-            }
-            
-            e.target.value = formattedValue;
-        });
-
-        leadWhatsappInput.addEventListener('keydown', function(e) {
-            if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
-                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode >= 48 && e.keyCode <= 57) ||
-                (e.keyCode >= 96 && e.keyCode <= 105)) {
-                return;
-            }
-            e.preventDefault();
-        });
-
-        leadWhatsappInput.addEventListener('paste', function(e) {
-            const pastedData = e.clipboardData.getData('text');
-            const cleanedData = pastedData.replace(/\D/g, ''); 
-            
-            e.target.value = cleanedData; 
-            e.preventDefault(); 
-            
-            e.target.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
     </script>
