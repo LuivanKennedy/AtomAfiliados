@@ -509,6 +509,13 @@
             }
         });
 
+        // Function to validate email format
+        function isValidEmail(email) {
+            // Basic regex for email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         // Função para submeter o formulário de Lead
         viewResultsButton.addEventListener('click', function() {
             const name = leadNameInput.value.trim();
@@ -516,8 +523,18 @@
             // Pegar o valor SEM a formatação para envio ou armazenamento
             const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
 
-            if (!name || !email) {
-                alert("Por favor, preencha seu nome e e-mail para ver o resultado.");
+            if (!name) {
+                alert("Por favor, preencha seu nome para ver o resultado.");
+                return;
+            }
+
+            if (!email) {
+                alert("Por favor, preencha seu e-mail para ver o resultado.");
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert("Por favor, insira um e-mail válido.");
                 return;
             }
 
