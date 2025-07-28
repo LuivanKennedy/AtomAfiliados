@@ -575,7 +575,7 @@
             const ANSWERS_ENTRY_ID = 'entry.393450934'; // ID para "Respostas do Quiz"
             const PROFILE_ENTRY_ID = 'entry.1704609806'; // ID para "Perfil do Usuário"
 
-            // Criar um FormData para enviar os dados
+            // Novo método de envio usando Fetch
             const formData = new FormData();
             formData.append(NAME_ENTRY_ID, userName);
             formData.append(EMAIL_ENTRY_ID, userEmail);
@@ -592,19 +592,11 @@
                     mode: 'no-cors' // Necessário para evitar erro CORS com Google Forms
                 });
 
-                // Mesmo com 'no-cors', não podemos ler a resposta,
-                // mas a requisição será enviada.
-                // O status 200 é esperado para uma submissão bem-sucedida,
-                // mas em 'no-cors' não conseguimos verificar.
-
-                // Por isso, simplesmente prosseguimos para exibir os resultados
-                // após a tentativa de envio.
                 console.log('Dados enviados (fetch com no-cors). Verifique o Google Forms.');
 
             } catch (error) {
                 console.error('Erro ao enviar dados para o Google Forms:', error);
                 alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.');
-                // Você pode adicionar um tratamento de erro mais sofisticado aqui, se desejar.
             }
 
             if (typeof fbq === 'function') {
