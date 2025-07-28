@@ -394,6 +394,7 @@
         let userName = '';
         let userEmail = '';
         let userWhatsapp = '';
+        let userProfileType = ''; // Nova variável para armazenar o perfil
 
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
@@ -412,7 +413,7 @@
         const leadEmailInput = document.getElementById('lead-email');
         const leadWhatsappInput = document.getElementById('lead-whatsapp');
         const viewResultsButton = document.getElementById('view-results-button');
-        const startQuizButton = document.getElementById('start-quiz-button'); // Pegar o botão de iniciar quiz
+        const startQuizButton = document.getElementById('start-quiz-button'); 
 
         // Função para obter parâmetros UTM da URL atual
         function getUrlParameter(name) {
@@ -449,7 +450,6 @@
             userAnswers = [];
             loadQuestion();
             updateProgressBar();
-             // Disparar evento de Pixel para "Início do Quiz"
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
                     quiz_name: 'Trader Atom Profile',
@@ -473,7 +473,6 @@
                 });
                 updateProgressBar();
             } else {
-                // Todas as perguntas respondidas, mostrar formulário de lead
                 questionsScreen.classList.add('hidden');
                 leadFormScreen.classList.remove('hidden');
             }
@@ -498,29 +497,55 @@
             progressBar.style.width = `${progress}%`;
         }
 
-        // Event listener para o botão "FAZER O TESTE AGORA!" (CTA do anúncio)
         startQuizButton.addEventListener('click', function() {
-            startQuiz(); // Chama a função startQuiz original
+            startQuiz(); 
             if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStartClicked', { // Rastreia o clique no botão inicial do quiz
+                fbq('trackCustom', 'QuizStartClicked', { 
                     quiz_name: 'Trader Atom Profile',
                     button_text: startQuizButton.textContent.trim()
                 });
             }
         });
 
-        // Function to validate email format
         function isValidEmail(email) {
-            // Basic regex for email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
 
-        // Função para submeter o formulário de Lead
-        viewResultsButton.addEventListener('click', function() {
+        // Função para calcular o tipo de perfil (movida para antes do envio do formulário)
+        function calculateProfileType() {
+            let profileType = "";
+            let mainMotivation = userAnswers[0] || ""; 
+            let mainConcern = userAnswers[1] || "";    
+            let personalityType = userAnswers[2] || ""; 
+            let timeDedicated = userAnswers[3] || "";  
+            let mainAttraction = userAnswers[4] || ""; 
+
+            if (
+                (mainMotivation.includes("nova fonte de renda") || mainMotivation.includes("carreira sólida")) &&
+                (mainConcern.includes("Perder dinheiro") || mainConcern.includes("Não ter conhecimento suficiente")) &&
+                (mainAttraction.includes("operar com o capital") || mainAttraction.includes("mentoria de traders experientes"))
+            ) {
+                profileType = "Ideal";
+            } 
+            else if (
+                (mainMotivation.includes("liberdade geográfica") || mainMotivation.includes("carreira sólida")) &&
+                (timeDedicated.includes("1 a 2 horas") || timeDedicated.includes("Mais de 2 horas") || timeDedicated.includes("flexível")) &&
+                (mainAttraction.includes("conteúdo completo") || mainAttraction.includes("comunidade de alunos"))
+            ) {
+                profileType = "Potencial";
+            } 
+            else {
+                profileType = "Cauteloso";
+            }
+            return profileType;
+        }
+
+
+        // Função para submeter o formulário de Lead e o perfil
+        viewResultsButton.addEventListener('click', async function() {
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
-            // Pegar o valor SEM a formatação para envio ou armazenamento
             const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
 
             if (!name) {
@@ -538,76 +563,92 @@
                 return;
             }
 
-            // Armazenar dados do lead (e.g., enviar para backend via AJAX, ou apenas para pixel)
             userName = name;
             userEmail = email;
-            userWhatsapp = whatsapp; // Usar o número limpo aqui
+            userWhatsapp = whatsapp;
+            userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
 
-            // Disparar evento de Pixel para "Lead"
+            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfSYf6yXoWNsExYc9zKIdMyS4pj7NQ1-JJpIieSW34JdKlN_w/formResponse';
+            const NAME_ENTRY_ID = 'entry.2117502428'; // ID para "Nome Completo"
+            const EMAIL_ENTRY_ID = 'entry.1018311110'; // ID para "Seu Melhor E-mail"
+            const WHATSAPP_ENTRY_ID = 'entry.1221710242'; // ID para "Seu WhatsApp"
+            const ANSWERS_ENTRY_ID = 'entry.393450934'; // ID para "Respostas do Quiz"
+            const PROFILE_ENTRY_ID = 'entry.1704609806'; // ID para "Perfil do Usuário"
+
+            const tempForm = document.createElement('form');
+            tempForm.action = GOOGLE_FORM_ACTION_URL;
+            tempForm.method = 'POST';
+            tempForm.target = 'google-form-iframe'; 
+            tempForm.style.display = 'none'; 
+
+            const addHiddenField = (name, value) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = value;
+                tempForm.appendChild(input);
+            };
+
+            addHiddenField(NAME_ENTRY_ID, userName);
+            addHiddenField(EMAIL_ENTRY_ID, userEmail);
+            addHiddenField(WHATSAPP_ENTRY_ID, userWhatsapp);
+            // APENAS ENVIE SE HOUVER UM ID VÁLIDO PARA AS RESPOSTAS DO QUIZ
+            if (ANSWERS_ENTRY_ID !== 'entry.000000000' && userAnswers.length > 0) {
+                addHiddenField(ANSWERS_ENTRY_ID, userAnswers.map((ans, i) => `Q${i+1}: ${ans}`).join(' | '));
+            }
+            addHiddenField(PROFILE_ENTRY_ID, userProfileType); // Adiciona o perfil aqui
+
+            document.body.appendChild(tempForm);
+            
+            const iframe = document.createElement('iframe');
+            iframe.name = 'google-form-iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+
+            tempForm.submit();
+
+            setTimeout(() => {
+                document.body.removeChild(tempForm);
+                document.body.removeChild(iframe);
+            }, 500); 
+
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead', {
                     content_name: 'Quiz do Trader Atom Lead',
-                    value: 1, // Pode ser um valor simbólico ou real
+                    value: 1, 
                     currency: 'BRL',
                     lead_name: userName,
                     lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp
+                    lead_whatsapp: userWhatsapp,
+                    profile_type: userProfileType // Envie o perfil também no pixel
                 });
-                // Rastreia o clique no botão "VER MEU RESULTADO AGORA!" (CTA da bridge)
                 fbq('trackCustom', 'BridgePageClicked', {
                     quiz_name: 'Trader Atom Profile',
                     button_text: viewResultsButton.textContent.trim(),
                     lead_name: userName,
-                    lead_email: userEmail
+                    lead_email: userEmail,
+                    profile_type: userProfileType // Envie o perfil também no pixel
                 });
             }
 
-            // Após a captura do lead, mostrar resultados
-            showResults();
+            showResults(userProfileType); // Passa o perfil para a função que mostra os resultados
         });
 
 
-        function showResults() {
-            // Garante que o formulário de lead esteja oculto se esta função for chamada diretamente
+        // A função showResults agora recebe o profileType como argumento
+        function showResults(profileTypeToShow) { 
             leadFormScreen.classList.add('hidden'); 
             questionsScreen.classList.add('hidden');
             resultsScreen.classList.remove('hidden');
 
-            let profileType = "";
-            let mainMotivation = userAnswers[0] || ""; // P1: Principal motivação
-            let mainConcern = userAnswers[1] || "";    // P2: Maior preocupação
-            let personalityType = userAnswers[2] || ""; // P3: Tipo de pessoa
-            let timeDedicated = userAnswers[3] || "";  // P4: Tempo de dedicação
-            let mainAttraction = userAnswers[4] || ""; // P5: O que mais atrai na oportunidade
-
-            // --- Lógica para determinar o tipo de perfil ---
-            // Ideal: Forte motivação para renda/carreira, preocupação com risco/conhecimento, atração por capital/mentoria
-            if (
-                (mainMotivation.includes("nova fonte de renda") || mainMotivation.includes("carreira sólida")) &&
-                (mainConcern.includes("Perder dinheiro") || mainConcern.includes("Não ter conhecimento suficiente")) &&
-                (mainAttraction.includes("operar com o capital") || mainAttraction.includes("mentoria de traders experientes"))
-            ) {
-                profileType = "Ideal";
-            } 
-            // Potencial: Busca liberdade/carreira, talvez tempo limitado mas flexível, atração por conteúdo/comunidade
-            else if (
-                (mainMotivation.includes("liberdade geográfica") || mainMotivation.includes("carreira sólida")) &&
-                (timeDedicated.includes("1 a 2 horas") || timeDedicated.includes("Mais de 2 horas") || timeDedicated.includes("flexível")) &&
-                (mainAttraction.includes("conteúdo completo") || mainAttraction.includes("comunidade de alunos"))
-            ) {
-                profileType = "Potencial";
-            } 
-            // Cauteloso: Curiosidade, falta de tempo ou preocupações mais gerais
-            else {
-                profileType = "Cauteloso";
-            }
-
-            // --- Conteúdo dinâmico para o título e texto do resultado ---
-            let titleText = `Parabéns! Seu Perfil é ${profileType} para a Universidade Atom!`;
+            // Use o profileType que foi calculado anteriormente e passado como argumento
+            let titleText = `Parabéns! Seu Perfil é ${profileTypeToShow} para a Universidade Atom!`;
+            let mainMotivation = userAnswers[0] || ""; 
+            let mainConcern = userAnswers[1] || "";    
             let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>.`;
             let resultParagraph2 = "";
 
-            switch (profileType) {
+            switch (profileTypeToShow) { // Use profileTypeToShow aqui
                 case "Ideal":
                     resultParagraph2 = `Essa é exatamente a combinação que buscamos em nossos alunos na Universidade Atom. Você tem o perfil para se destacar no mercado financeiro, operando com o capital da maior Proprietary Trading da América Latina. Milhares de pessoas com o seu perfil já transformaram suas vidas financeiras, aprendendo do zero e lucrando sem arriscar o próprio dinheiro!`;
                     break;
@@ -615,7 +656,6 @@
                     resultParagraph2 = `Seu perfil indica um grande potencial para o mercado financeiro. Com a orientação certa e o suporte adequado da Universidade Atom, você pode evoluir rapidamente e alcançar a liberdade que busca, operando com o capital de uma grande empresa e sem arriscar seu próprio dinheiro.`;
                     break;
                 case "Cauteloso":
-                    // ALTERAÇÃO: Ajuste do texto para o perfil Cauteloso para evitar a dissonância
                     resultParagraph2 = `Seu perfil demonstra interesse e abertura para o mercado financeiro. Com a estrutura completa de aprendizado da Universidade Atom, você pode desenvolver as habilidades necessárias para operar com confiança e ser cauteloso, sem arriscar seu próprio capital. Milhares de iniciantes já trilharam esse caminho com sucesso!`;
                     break;
             }
@@ -623,56 +663,50 @@
             resultsTitle.textContent = titleText;
             resultsText.innerHTML = `${resultParagraph1}<br><br>${resultParagraph2}`;
             
-            // Disparar evento de Pixel para "Conclusão do Quiz"
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizCompleted', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: profileType,
+                    profile_type: profileTypeToShow, // Use profileTypeToShow aqui
                     motivation: mainMotivation,
                     concern: mainConcern,
-                    time_dedicated: timeDedicated,
-                    main_attraction: mainAttraction
+                    time_dedicated: userAnswers[3] || "",
+                    main_attraction: userAnswers[4] || ""
                 });
             }
 
-            // Adicionar parâmetros UTM ao href do botão CTA final
             finalCtaButton.href = appendUtmParameters(finalCtaButton.href);
         }
 
-        // Adicionar event listener para o botão de CTA final
         finalCtaButton.addEventListener('click', function() {
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'FinalCTAClicked', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: resultsTitle.textContent.replace('Parabéns! Seu Perfil é ', '').replace(' para a Universidade Atom!', ''), // Extrair tipo de perfil
+                    profile_type: userProfileType, // Use a variável global do perfil
                     lead_name: userName,
                     lead_email: userEmail,
                     lead_whatsapp: userWhatsapp,
                     button_text: finalCtaButton.textContent.trim(),
-                    destination_url: finalCtaButton.href // Incluir a URL com UTMs
+                    destination_url: finalCtaButton.href 
                 });
             }
         });
 
         // --- Funções para formatação do campo WhatsApp ---
         leadWhatsappInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            let value = e.target.value.replace(/\D/g, ''); 
 
-            // Se o número começar com 55 (código do país), remove para formatar apenas o DDD e número
             if (value.startsWith('55')) {
                 value = value.substring(2);
             }
             
             let formattedValue = '';
             
-            // Adiciona o prefixo internacional fixo +55
             formattedValue += '+55 ';
 
             if (value.length > 0) {
-                // DDD
                 if (value.length >= 2) { 
                     formattedValue += '(' + value.substring(0, 2) + ') ';
-                    value = value.substring(2); // Remaining digits for the number part
+                    value = value.substring(2); 
                 } else {
                     formattedValue += '(' + value;
                     e.target.value = formattedValue;
@@ -680,14 +714,12 @@
                 }
             }
 
-            // Number part (after DDD)
             if (value.length > 0) {
-                // If there are 5 or more digits, it's either a 9-digit number or an 8-digit number where we already have the first block
                 if (value.length >= 5) {
-                    const firstPart = value.substring(0, value.length - 4); // Take all but the last 4 digits
-                    const lastPart = value.substring(value.length - 4); // Take the last 4 digits
+                    const firstPart = value.substring(0, value.length - 4); 
+                    const lastPart = value.substring(value.length - 4); 
                     formattedValue += firstPart + '-' + lastPart;
-                } else { // For 1 to 4 digits for the number part (e.g., user is still typing)
+                } else { 
                     formattedValue += value;
                 }
             }
@@ -695,36 +727,26 @@
             e.target.value = formattedValue;
         });
 
-        // Adiciona um listener para o evento 'keydown' para impedir a digitação de caracteres não numéricos
         leadWhatsappInput.addEventListener('keydown', function(e) {
-            // Permite Backspace, Delete, Tab, Escape, Enter e as teclas de seta
             if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
-                // Permite Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X (para Windows/Linux)
-                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+A ou Cmd+A
-                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+C ou Cmd+C
-                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+V ou Cmd+V
-                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+X ou Cmd+X
-                // Permite números do teclado numérico e do teclado alfanumérico
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || 
+                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || 
                 (e.keyCode >= 48 && e.keyCode <= 57) ||
                 (e.keyCode >= 96 && e.keyCode <= 105)) {
-                // Permite a ação padrão
                 return;
             }
-            // Impede a ação padrão para todos os outros caracteres
             e.preventDefault();
         });
 
-        // Adiciona um listener para o evento 'paste' para remover caracteres não numéricos ao colar
         leadWhatsappInput.addEventListener('paste', function(e) {
             const pastedData = e.clipboardData.getData('text');
-            const cleanedData = pastedData.replace(/\D/g, ''); // Remove tudo que não é dígito
+            const cleanedData = pastedData.replace(/\D/g, ''); 
             
-            // Coloca os dados limpos no campo
-            // É importante fazer isso *antes* do 'input' event listener agir
             e.target.value = cleanedData; 
-            e.preventDefault(); // Impede o comportamento padrão de colar
+            e.preventDefault(); 
             
-            // Dispara manualmente o evento 'input' para que a formatação seja aplicada
             e.target.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
