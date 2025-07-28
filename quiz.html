@@ -306,7 +306,7 @@
                 <div class="lead-form-container">
                     <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
                     <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
-                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp (opcional)" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="16">
+                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp (opcional)" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="18">
                     <button class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
                 </div>
                 <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
@@ -642,6 +642,7 @@
             let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
 
             // Se o número começar com 55 (código do país), remove para formatar apenas o DDD e número
+            // Isso evita a duplicação se o usuário colar um número com +55
             if (value.startsWith('55')) {
                 value = value.substring(2);
             }
@@ -653,7 +654,7 @@
 
             if (value.length > 0) {
                 // DDD
-                if (value.length > 2) {
+                if (value.length >= 2) { // Alterado para >= 2 para começar a formatar o DDD assim que 2 dígitos forem inseridos
                     formattedValue += '(' + value.substring(0, 2) + ') ';
                     value = value.substring(2);
                 } else {
@@ -664,17 +665,23 @@
             }
 
             // Número de telefone
-            if (value.length > 5) {
-                // Formato 9XXXX-XXXX (para números de 9 dígitos)
-                if (value.length === 9) {
-                    formattedValue += value.substring(0, 5) + '-' + value.substring(5, 9);
-                } 
-                // Formato XXXX-XXXX (para números de 8 dígitos)
-                else { 
-                    formattedValue += value.substring(0, 4) + '-' + value.substring(4, 8);
+            // A lógica aqui deve considerar o número de dígitos restantes após o DDD
+            if (value.length > 0) {
+                // Para números de 9 dígitos (total de 11 após DDD)
+                if (value.length >= 5) {
+                    // Considera que se o usuário digitou 5 ou mais dígitos, já pode ser o formato 9xxxx-xxxx
+                    if (value.length > 4) { // Pelo menos 5 dígitos para o primeiro bloco
+                        formattedValue += value.substring(0, 5);
+                        if (value.length > 5) { // Se há mais que 5, adiciona o hífen e o restante
+                            formattedValue += '-' + value.substring(5, 9);
+                        }
+                    } else { // Se tem entre 1 e 4 dígitos para o número
+                        formattedValue += value;
+                    }
+                } else {
+                    // Para números de 8 dígitos (total de 10 após DDD)
+                    formattedValue += value; // Apenas adiciona os dígitos conforme digitado
                 }
-            } else {
-                formattedValue += value;
             }
             
             e.target.value = formattedValue;
