@@ -288,7 +288,7 @@
             <div class="quiz-header">
                 <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
                 <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
-                <button class="quiz-button" onclick="startQuiz()">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
+                <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
@@ -306,8 +306,8 @@
                 <div class="lead-form-container">
                     <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
                     <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
-                    <input type="text" id="lead-whatsapp" placeholder="Seu WhatsApp (opcional)" class="lead-input">
-                    <button class="quiz-button" id="view-results-button" onclick="submitLeadForm()">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
+                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp (opcional)" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="16">
+                    <button class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
                 </div>
                 <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
             </div>
@@ -397,7 +397,7 @@
 
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
-        const leadFormScreen = document.getElementById('quiz-lead-form-screen'); // NEW
+        const leadFormScreen = document.getElementById('quiz-lead-form-screen');
         const resultsScreen = document.getElementById('quiz-results-screen');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
@@ -405,13 +405,42 @@
         const progressBar = document.getElementById('progressBar');
         const resultsTitle = document.getElementById('results-title');
         const resultsText = document.getElementById('results-text');
-        const finalCtaButton = document.getElementById('final-cta-button'); // NEW
+        const finalCtaButton = document.getElementById('final-cta-button');
 
-        // NEW: Lead Form elements
+        // Elementos do formulário de lead
         const leadNameInput = document.getElementById('lead-name');
         const leadEmailInput = document.getElementById('lead-email');
         const leadWhatsappInput = document.getElementById('lead-whatsapp');
         const viewResultsButton = document.getElementById('view-results-button');
+        const startQuizButton = document.getElementById('start-quiz-button'); // Pegar o botão de iniciar quiz
+
+        // Função para obter parâmetros UTM da URL atual
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        // Função para anexar parâmetros UTM a uma URL
+        function appendUtmParameters(url) {
+            const urlObj = new URL(url, window.location.origin);
+            const params = new URLSearchParams(window.location.search);
+
+            const utmSource = params.get('utm_source');
+            const utmMedium = params.get('utm_medium');
+            const utmCampaign = params.get('utm_campaign');
+            const utmContent = params.get('utm_content');
+            const utmTerm = params.get('utm_term');
+
+            if (utmSource) urlObj.searchParams.set('utm_source', utmSource);
+            if (utmMedium) urlObj.searchParams.set('utm_medium', utmMedium);
+            if (utmCampaign) urlObj.searchParams.set('utm_campaign', utmCampaign);
+            if (utmContent) urlObj.searchParams.set('utm_content', utmContent);
+            if (utmTerm) urlObj.searchParams.set('utm_term', utmTerm);
+
+            return urlObj.toString();
+        }
 
         function startQuiz() {
             startScreen.classList.add('hidden');
@@ -422,7 +451,10 @@
             updateProgressBar();
              // Disparar evento de Pixel para "Início do Quiz"
             if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStarted', { quiz_name: 'Trader Atom Profile' });
+                fbq('trackCustom', 'QuizStarted', { 
+                    quiz_name: 'Trader Atom Profile',
+                    action: 'Start Quiz'
+                });
             }
         }
 
@@ -441,7 +473,7 @@
                 });
                 updateProgressBar();
             } else {
-                // All questions answered, show lead form
+                // Todas as perguntas respondidas, mostrar formulário de lead
                 questionsScreen.classList.add('hidden');
                 leadFormScreen.classList.remove('hidden');
             }
@@ -466,18 +498,29 @@
             progressBar.style.width = `${progress}%`;
         }
 
-        // NEW: Submit Lead Form function
-        function submitLeadForm() {
+        // Event listener para o botão "FAZER O TESTE AGORA!" (CTA do anúncio)
+        startQuizButton.addEventListener('click', function() {
+            startQuiz(); // Chama a função startQuiz original
+            if (typeof fbq === 'function') {
+                fbq('trackCustom', 'QuizStartClicked', { // Rastreia o clique no botão inicial do quiz
+                    quiz_name: 'Trader Atom Profile',
+                    button_text: startQuizButton.textContent.trim()
+                });
+            }
+        });
+
+        // Função para submeter o formulário de Lead
+        viewResultsButton.addEventListener('click', function() {
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
-            const whatsapp = leadWhatsappInput.value.trim();
+            const whatsapp = leadWhatsappInput.value.trim(); // Pega o valor formatado
 
             if (!name || !email) {
                 alert("Por favor, preencha seu nome e e-mail para ver o resultado.");
                 return;
             }
 
-            // Store lead data (e.g., send to backend via AJAX, or just store for pixel)
+            // Armazenar dados do lead (ex: enviar para backend via AJAX, ou apenas para pixel)
             userName = name;
             userEmail = email;
             userWhatsapp = whatsapp;
@@ -492,24 +535,32 @@
                     lead_email: userEmail,
                     lead_whatsapp: userWhatsapp
                 });
+                // Rastreia o clique no botão "VER MEU RESULTADO AGORA!" (CTA da bridge)
+                fbq('trackCustom', 'BridgePageClicked', {
+                    quiz_name: 'Trader Atom Profile',
+                    button_text: viewResultsButton.textContent.trim(),
+                    lead_name: userName,
+                    lead_email: userEmail
+                });
             }
 
-            // After lead capture, show results
+            // Após a captura do lead, mostrar resultados
             showResults();
-        }
+        });
+
 
         function showResults() {
-            // Ensure lead form is hidden if this function is called directly (e.g. for testing)
+            // Garante que o formulário de lead esteja oculto se esta função for chamada diretamente
             leadFormScreen.classList.add('hidden'); 
             questionsScreen.classList.add('hidden');
             resultsScreen.classList.remove('hidden');
 
             let profileType = "";
-            let mainMotivation = userAnswers[0] || ""; // Q1: Principal motivação
-            let mainConcern = userAnswers[1] || "";    // Q2: Maior preocupação
-            let personalityType = userAnswers[2] || ""; // Q3: Tipo de pessoa
-            let timeDedicated = userAnswers[3] || "";  // Q4: Tempo de dedicação
-            let mainAttraction = userAnswers[4] || ""; // Q5: O que mais atrai na oportunidade
+            let mainMotivation = userAnswers[0] || ""; // P1: Principal motivação
+            let mainConcern = userAnswers[1] || "";    // P2: Maior preocupação
+            let personalityType = userAnswers[2] || ""; // P3: Tipo de pessoa
+            let timeDedicated = userAnswers[3] || "";  // P4: Tempo de dedicação
+            let mainAttraction = userAnswers[4] || ""; // P5: O que mais atrai na oportunidade
 
             // --- Lógica para determinar o tipo de perfil ---
             // Ideal: Forte motivação para renda/carreira, preocupação com risco/conhecimento, atração por capital/mentoria
@@ -565,18 +616,55 @@
                     main_attraction: mainAttraction
                 });
             }
+
+            // Adicionar parâmetros UTM ao href do botão CTA final
+            finalCtaButton.href = appendUtmParameters(finalCtaButton.href);
         }
 
-        // NEW: Add event listener for the final CTA button
+        // Adicionar event listener para o botão de CTA final
         finalCtaButton.addEventListener('click', function() {
             if (typeof fbq === 'function') {
-                fbq('trackCustom', 'BridgePageClicked', { 
+                fbq('trackCustom', 'FinalCTAClicked', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: resultsTitle.textContent.replace('Parabéns! Seu Perfil é ', '').replace(' para a Universidade Atom!', ''), // Extract profile type
+                    profile_type: resultsTitle.textContent.replace('Parabéns! Seu Perfil é ', '').replace(' para a Universidade Atom!', ''), // Extrair tipo de perfil
                     lead_name: userName,
                     lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp
+                    lead_whatsapp: userWhatsapp,
+                    button_text: finalCtaButton.textContent.trim(),
+                    destination_url: finalCtaButton.href // Incluir a URL com UTMs
                 });
+            }
+        });
+
+        // --- Novas funções para formatação do campo WhatsApp ---
+        leadWhatsappInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            let formattedValue = '';
+
+            if (value.length > 0) {
+                formattedValue = '+55 ';
+                if (value.length > 2) {
+                    formattedValue += '(' + value.substring(0, 2) + ') ';
+                    value = value.substring(2);
+                } else {
+                    formattedValue += '(' + value;
+                    e.target.value = formattedValue;
+                    return;
+                }
+            }
+
+            if (value.length > 5) {
+                formattedValue += value.substring(0, 5) + '-' + value.substring(5, 9);
+            } else {
+                formattedValue += value;
+            }
+            e.target.value = formattedValue;
+        });
+
+        // Opcional: Para garantir que apenas números sejam digitados, mesmo colando
+        leadWhatsappInput.addEventListener('keypress', function(e) {
+            if (e.key < '0' || e.key > '9') {
+                e.preventDefault();
             }
         });
 
