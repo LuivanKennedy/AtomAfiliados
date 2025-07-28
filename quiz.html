@@ -568,14 +568,16 @@
             userWhatsapp = whatsapp;
             userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
 
-            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfSYf6yXoWNsExYc9zKIdMyS4pj7NQ1-JJpIieSW34JdKlN_w/formResponse';
-            const NAME_ENTRY_ID = 'entry.2117502428'; // ID para "Nome Completo"
-            const EMAIL_ENTRY_ID = 'entry.1018311110'; // ID para "Seu Melhor E-mail"
-            const WHATSAPP_ENTRY_ID = 'entry.1221710242'; // ID para "Seu WhatsApp"
-            const ANSWERS_ENTRY_ID = 'entry.393450934'; // ID para "Respostas do Quiz"
-            const PROFILE_ENTRY_ID = 'entry.1704609806'; // ID para "Perfil do Usuário"
+            // --- ATENÇÃO: SUBSTITUA ESTAS CONSTANTES PELOS VALORES MAIS RECENTES DO SEU FORMULÁRIO DO GOOGLE ---
+            // Siga as instruções fornecidas para obter a URL de ação e os entry.IDs mais atualizados.
+            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfSYf6yXoWNsExYc9zKIdMyS4pj7NQ1-JJpIieSW34JdKlN_w/formResponse'; // <--- ATUALIZE ESTA URL
+            const NAME_ENTRY_ID = 'entry.2117502428';   // <--- ATUALIZE ESTE ID PARA "Nome Completo"
+            const EMAIL_ENTRY_ID = 'entry.1018311110';   // <--- ATUALIZE ESTE ID PARA "Seu Melhor E-mail"
+            const WHATSAPP_ENTRY_ID = 'entry.1221710242'; // <--- ATUALIZE ESTE ID PARA "Seu WhatsApp"
+            const ANSWERS_ENTRY_ID = 'entry.393450934';  // <--- ATUALIZE ESTE ID PARA "Respostas do Quiz"
+            const PROFILE_ENTRY_ID = 'entry.1704609806'; // <--- ATUALIZE ESTE ID PARA "Perfil do Usuário"
+            // --- FIM DA SEÇÃO DE ATUALIZAÇÃO ---
 
-            // Novo método de envio usando Fetch
             const formData = new FormData();
             formData.append(NAME_ENTRY_ID, userName);
             formData.append(EMAIL_ENTRY_ID, userEmail);
@@ -589,7 +591,7 @@
                 const response = await fetch(GOOGLE_FORM_ACTION_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // Necessário para evitar erro CORS com Google Forms
+                    mode: 'no-cors' 
                 });
 
                 console.log('Dados enviados (fetch com no-cors). Verifique o Google Forms.');
@@ -607,18 +609,18 @@
                     lead_name: userName,
                     lead_email: userEmail,
                     lead_whatsapp: userWhatsapp,
-                    profile_type: userProfileType // Envie o perfil também no pixel
+                    profile_type: userProfileType 
                 });
                 fbq('trackCustom', 'BridgePageClicked', {
                     quiz_name: 'Trader Atom Profile',
                     button_text: viewResultsButton.textContent.trim(),
                     lead_name: userName,
                     lead_email: userEmail,
-                    profile_type: userProfileType // Envie o perfil também no pixel
+                    profile_type: userProfileType 
                 });
             }
 
-            showResults(userProfileType); // Passa o perfil para a função que mostra os resultados
+            showResults(userProfileType); 
         });
 
 
