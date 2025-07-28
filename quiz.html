@@ -546,7 +546,8 @@
                     resultParagraph2 = `Seu perfil indica um grande potencial para o mercado financeiro. Com a orientação certa e o suporte adequado da Universidade Atom, você pode evoluir rapidamente e alcançar a liberdade que busca, operando com o capital de uma grande empresa e sem arriscar seu próprio dinheiro.`;
                     break;
                 case "Cauteloso":
-                    resultParagraph2 = `Seu perfil demonstra interesse e abertura para o mercado financeiro. Com a estrutura completa de aprendizado da Universidade Atom, mesmo sendo mais cauteloso, você pode desenvolver as habilidades necessárias para operar com confiança e sem arriscar seu próprio capital. Milhares de iniciantes já trilharam esse caminho com sucesso!`;
+                    // ALTERAÇÃO: Ajuste do texto para o perfil Cauteloso para evitar a dissonância
+                    resultParagraph2 = `Como você demonstrou interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e buscar resolver <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>, seu perfil indica você é uma pessoa mais cautelosa. Por isso, a Universidade Atom oferece a estrutura completa para que, mesmo com cautela, você possa desenvolver as habilidades necessárias para operar com confiança e sem arriscar seu próprio capital. Milhares de iniciantes já trilharam esse caminho com sucesso!`;
                     break;
             }
 
