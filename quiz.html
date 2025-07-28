@@ -513,17 +513,18 @@
         viewResultsButton.addEventListener('click', function() {
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
-            const whatsapp = leadWhatsappInput.value.trim(); // Pega o valor formatado
+            // Pegar o valor SEM a formatação para envio ou armazenamento
+            const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
 
             if (!name || !email) {
                 alert("Por favor, preencha seu nome e e-mail para ver o resultado.");
                 return;
             }
 
-            // Armazenar dados do lead (ex: enviar para backend via AJAX, ou apenas para pixel)
+            // Armazenar dados do lead (e.g., enviar para backend via AJAX, ou apenas para pixel)
             userName = name;
             userEmail = email;
-            userWhatsapp = whatsapp;
+            userWhatsapp = whatsapp; // Usar o número limpo aqui
 
             // Disparar evento de Pixel para "Lead"
             if (typeof fbq === 'function') {
@@ -636,13 +637,22 @@
             }
         });
 
-        // --- Novas funções para formatação do campo WhatsApp ---
+        // --- Funções para formatação do campo WhatsApp ---
         leadWhatsappInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+
+            // Se o número começar com 55 (código do país), remove para formatar apenas o DDD e número
+            if (value.startsWith('55')) {
+                value = value.substring(2);
+            }
+            
             let formattedValue = '';
+            
+            // Adiciona o prefixo internacional fixo +55
+            formattedValue += '+55 ';
 
             if (value.length > 0) {
-                formattedValue = '+55 ';
+                // DDD
                 if (value.length > 2) {
                     formattedValue += '(' + value.substring(0, 2) + ') ';
                     value = value.substring(2);
@@ -653,19 +663,54 @@
                 }
             }
 
+            // Número de telefone
             if (value.length > 5) {
-                formattedValue += value.substring(0, 5) + '-' + value.substring(5, 9);
+                // Formato 9XXXX-XXXX (para números de 9 dígitos)
+                if (value.length === 9) {
+                    formattedValue += value.substring(0, 5) + '-' + value.substring(5, 9);
+                } 
+                // Formato XXXX-XXXX (para números de 8 dígitos)
+                else { 
+                    formattedValue += value.substring(0, 4) + '-' + value.substring(4, 8);
+                }
             } else {
                 formattedValue += value;
             }
+            
             e.target.value = formattedValue;
         });
 
-        // Opcional: Para garantir que apenas números sejam digitados, mesmo colando
-        leadWhatsappInput.addEventListener('keypress', function(e) {
-            if (e.key < '0' || e.key > '9') {
-                e.preventDefault();
+        // Adiciona um listener para o evento 'keydown' para impedir a digitação de caracteres não numéricos
+        leadWhatsappInput.addEventListener('keydown', function(e) {
+            // Permite Backspace, Delete, Tab, Escape, Enter e as teclas de seta
+            if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
+                // Permite Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X (para Windows/Linux)
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+A ou Cmd+A
+                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+C ou Cmd+C
+                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+V ou Cmd+V
+                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || // Ctrl+X ou Cmd+X
+                // Permite números do teclado numérico e do teclado alfanumérico
+                (e.keyCode >= 48 && e.keyCode <= 57) ||
+                (e.keyCode >= 96 && e.keyCode <= 105)) {
+                // Permite a ação padrão
+                return;
             }
+            // Impede a ação padrão para todos os outros caracteres
+            e.preventDefault();
+        });
+
+        // Adiciona um listener para o evento 'paste' para remover caracteres não numéricos ao colar
+        leadWhatsappInput.addEventListener('paste', function(e) {
+            const pastedData = e.clipboardData.getData('text');
+            const cleanedData = pastedData.replace(/\D/g, ''); // Remove tudo que não é dígito
+            
+            // Coloca os dados limpos no campo
+            // É importante fazer isso *antes* do 'input' event listener agir
+            e.target.value = cleanedData; 
+            e.preventDefault(); // Impede o comportamento padrão de colar
+            
+            // Dispara manualmente o evento 'input' para que a formatação seja aplicada
+            e.target.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
     </script>
