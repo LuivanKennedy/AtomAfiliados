@@ -163,7 +163,7 @@
             height: 100%; 
             width: 0%; 
             background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); /* Gradiente na barra (Prata para Dourado) */
-            border-radius: 6px; 
+            border-radius: 66px; 
             transition: width 0.4s ease-in-out; 
         }
         .quiz-results h2 { 
@@ -303,12 +303,19 @@
             <div class="quiz-results">
                 <h2 class="quiz-question">Quase lá! Para ver seu perfil e o próximo passo ideal...</h2>
                 <p class="quiz-header" style="margin-bottom: 30px;">Preencha seus dados para receber seu resultado personalizado e o acesso exclusivo à oportunidade que preparamos para você:</p>
-                <div class="lead-form-container">
-                    <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
-                    <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
-                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="19">
-                    <button class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
-                </div>
+                
+                <form id="lead-form" action="https://formspree.io/f/xblkypyy" method="POST">
+                    <div class="lead-form-container">
+                        <input type="text" id="lead-name" name="Nome_Completo" placeholder="Seu Nome Completo" class="lead-input" required>
+                        <input type="email" id="lead-email" name="Seu_Melhor_Email" placeholder="Seu Melhor E-mail" class="lead-input" required>
+                        <input type="tel" id="lead-whatsapp" name="Whatsapp" placeholder="Seu WhatsApp" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="19">
+                        
+                        <input type="hidden" id="quiz-answers-hidden" name="Respostas_do_Quiz">
+                        <input type="hidden" id="user-profile-hidden" name="Perfil_do_Usuario">
+
+                        <button type="submit" class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
                 <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
             </div>
         </div>
@@ -394,7 +401,7 @@
         let userName = '';
         let userEmail = '';
         let userWhatsapp = '';
-        let userProfileType = ''; // Nova variável para armazenar o perfil
+        let userProfileType = ''; 
 
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
@@ -409,9 +416,12 @@
         const finalCtaButton = document.getElementById('final-cta-button');
 
         // Elementos do formulário de lead
+        const leadForm = document.getElementById('lead-form'); // Adicionado o formulário
         const leadNameInput = document.getElementById('lead-name');
         const leadEmailInput = document.getElementById('lead-email');
         const leadWhatsappInput = document.getElementById('lead-whatsapp');
+        const quizAnswersHidden = document.getElementById('quiz-answers-hidden'); // Novo campo oculto
+        const userProfileHidden = document.getElementById('user-profile-hidden'); // Novo campo oculto
         const viewResultsButton = document.getElementById('view-results-button');
         const startQuizButton = document.getElementById('start-quiz-button'); 
 
@@ -542,8 +552,10 @@
         }
 
 
-        // Função para submeter o formulário de Lead e o perfil
-        viewResultsButton.addEventListener('click', async function() {
+        // Função para validar e preparar os dados antes de submeter o formulário
+        leadForm.addEventListener('submit', function(event) { // Listener no formulário, não no botão
+            event.preventDefault(); // Impede o envio padrão do formulário inicialmente
+
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
             const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
@@ -566,41 +578,18 @@
             userName = name;
             userEmail = email;
             userWhatsapp = whatsapp;
-            userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
+            userProfileType = calculateProfileType(); 
 
-            // --- ATENÇÃO: SUBSTITUA ESTAS CONSTANTES PELOS VALORES MAIS RECENTES DO SEU FORMULÁRIO DO GOOGLE ---
-            // Siga as instruções fornecidas para obter a URL de ação e os entry.IDs mais atualizados.
-            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfD4WYOTTZvFubZjRwQA8dloNOWeaznbn8qw3XZ4GG1oo5gwg/formResponse'; // <--- ATUALIZE ESTA URL
-            const NAME_ENTRY_ID = 'entry.1440339264';   // <--- ATUALIZE ESTE ID PARA "Nome Completo"
-            const EMAIL_ENTRY_ID = 'entry.1005621090';   // <--- ATUALIZE ESTE ID PARA "Seu Melhor E-mail"
-            const WHATSAPP_ENTRY_ID = 'entry.1103533750'; // <--- ATUALIZE ESTE ID PARA "Seu WhatsApp"
-            const ANSWERS_ENTRY_ID = 'entry.343019994';  // <--- ATUALIZE ESTE ID PARA "Respostas do Quiz"
-            const PROFILE_ENTRY_ID = 'entry.1269124642'; // <--- ATUALIZE ESTE ID PARA "Perfil do Usuário"
-            // --- FIM DA SEÇÃO DE ATUALIZAÇÃO ---
-
-            const formData = new FormData();
-            formData.append(NAME_ENTRY_ID, userName);
-            formData.append(EMAIL_ENTRY_ID, userEmail);
-            formData.append(WHATSAPP_ENTRY_ID, userWhatsapp);
+            // Atribui os valores aos campos hidden para serem enviados pelo formulário
             if (userAnswers.length > 0) {
-                formData.append(ANSWERS_ENTRY_ID, userAnswers.map((ans, i) => `Q${i+1}: ${ans}`).join(' | '));
+                quizAnswersHidden.value = userAnswers.map((ans, i) => `Q${i+1}: ${ans}`).join(' | ');
             }
-            formData.append(PROFILE_ENTRY_ID, userProfileType);
+            userProfileHidden.value = userProfileType;
 
-            try {
-                const response = await fetch(GOOGLE_FORM_ACTION_URL, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' 
-                });
+            // Envia o formulário
+            leadForm.submit();
 
-                console.log('Dados enviados (fetch com no-cors). Verifique o Google Forms.');
-
-            } catch (error) {
-                console.error('Erro ao enviar dados para o Google Forms:', error);
-                alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.');
-            }
-
+            // Rastreamento (se `fbq` estiver definido)
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead', {
                     content_name: 'Quiz do Trader Atom Lead',
@@ -620,6 +609,7 @@
                 });
             }
 
+            // Exibe os resultados (isto será executado antes do redirecionamento do Formspree, se houver)
             showResults(userProfileType); 
         });
 
