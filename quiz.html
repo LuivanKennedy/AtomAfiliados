@@ -7,6 +7,16 @@
     <meta name="description" content="Descubra se você tem o perfil para operar com o capital da Atom. Faça nosso quiz rápido e receba uma análise personalizada.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SRTZNPH8ET');
+    </script>
+    
     <style>
         :root {
             /* --- NOVAS CORES (Força, Confiabilidade, Segurança, Dinheiro) --- */
@@ -250,35 +260,77 @@
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(10, 35, 66, 0.2);
         }
-
-        .hidden { display: none; }
-
+        .hidden {
+            display: none;
+        }
         /* Responsive */
         @media (max-width: 768px) {
-            .quiz-container { padding: 30px 20px; }
-            .quiz-header h1 { font-size: 2em; }
-            .quiz-header p { font-size: 1em; }
-            .quiz-question { font-size: 1.3em; }
-            .quiz-options button { padding: 16px 15px; font-size: 1em; }
-            .quiz-button { padding: 15px 25px; font-size: 1.1em; }
-            .quiz-results h2 { font-size: 2em; }
-            .quiz-results p { font-size: 1em; }
-            .quiz-button { max-width: 380px; } /* Ajusta largura máxima em telas menores */
-            .testimonial-grid { grid-template-columns: 1fr; } /* Uma coluna em mobile */
+            .quiz-container {
+                padding: 30px 20px;
+            }
+            .quiz-header h1 {
+                font-size: 2em;
+            }
+            .quiz-header p {
+                font-size: 1em;
+            }
+            .quiz-question {
+                font-size: 1.3em;
+            }
+            .quiz-options button {
+                padding: 16px 15px;
+                font-size: 1em;
+            }
+            .quiz-button {
+                padding: 15px 25px;
+                font-size: 1.1em;
+            }
+            .quiz-results h2 {
+                font-size: 2em;
+            }
+            .quiz-results p {
+                font-size: 1em;
+            }
+            .quiz-button {
+                max-width: 380px;
+            } /* Ajusta largura máxima em telas menores */
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            } /* Uma coluna em mobile */
         }
         @media (max-width: 480px) {
-            .quiz-container { padding: 25px 15px; }
-            .quiz-header h1 { font-size: 1.6em; }
-            .quiz-header p { font-size: 0.9em; }
-            .quiz-question { font-size: 1.1em; }
-            .quiz-options button { padding: 14px 10px; font-size: 0.9em; }
-            .quiz-button { padding: 12px 20px; font-size: 0.9em; }
-            .quiz-results h2 { font-size: 1.8em; }
-            .quiz-results p { font-size: 0.9em; }
+            .quiz-container {
+                padding: 25px 15px;
+            }
+            .quiz-header h1 {
+                font-size: 1.6em;
+            }
+            .quiz-header p {
+                font-size: 0.9em;
+            }
+            .quiz-question {
+                font-size: 1.1em;
+            }
+            .quiz-options button {
+                padding: 14px 10px;
+                font-size: 0.9em;
+            }
+            .quiz-button {
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+            .quiz-results h2 {
+                font-size: 1.8em;
+            }
+            .quiz-results p {
+                font-size: 0.9em;
+            }
             .testimonial-quote {
                 padding: 15px;
             }
-            .quiz-button { max-width: 100%; } /* Ocupa toda largura em telas muito pequenas */
+            .quiz-button {
+                max-width: 100%;
+            } /* Ocupa toda largura em telas muito pequenas */
         }
     </style>
 </head>
@@ -304,98 +356,31 @@
                 <h2 class="quiz-question">Quase lá! Para ver seu perfil e o próximo passo ideal...</h2>
                 <p class="quiz-header" style="margin-bottom: 30px;">Preencha seus dados para receber seu resultado personalizado e o acesso exclusivo à oportunidade que preparamos para você:</p>
                 <div class="lead-form-container">
-                    <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
-                    <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
-                    <input type="tel" id="lead-whatsapp" placeholder="Seu WhatsApp" class="lead-input" inputmode="numeric" pattern="[0-9]*" maxlength="19">
-                    <button class="quiz-button" id="view-results-button">VER MEU RESULTADO AGORA! <i class="fas fa-arrow-right"></i></button>
+                    <input type="text" id="lead-name" class="lead-input" placeholder="Seu nome" required>
+                    <input type="email" id="lead-email" class="lead-input" placeholder="Seu melhor e-mail" required>
+                    <input type="tel" id="lead-phone" class="lead-input" placeholder="Seu WhatsApp (com DDD)" required>
+                    <button class="quiz-button" id="send-lead-button" onclick="submitLead()">RECEBER RESULTADO <i class="fas fa-arrow-right"></i></button>
                 </div>
-                <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
+                <p class="quiz-results-note">Prometemos não encher seu saco. Vamos enviar apenas informações importantes para você lucrar com a gente!</p>
             </div>
         </div>
+
         <div id="quiz-results-screen" class="hidden">
             <div class="quiz-results">
                 <h2 id="results-title"></h2>
                 <p id="results-text"></p>
                 
-                <div class="testimonial-grid">
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> Eu também tinha medo de perder dinheiro, mas a Atom me deu o conhecimento e o capital para começar. Hoje, opero com confiança! <i class="fas fa-quote-right"></i></p>
-                        <span>- Lucas A., Trader Atom</span>
-                    </div>
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> A didática é fantástica e a mentoria fez toda a diferença. Finalmente encontrei um caminho para viver do mercado! <i class="fas fa-quote-right"></i></p>
-                        <span>- Fernanda G., Aluna Atom</span>
-                    </div>
-                    <div class="testimonial-quote">
-                        <p><i class="fas fa-quote-left"></i> Pensei que era tarde para mim, mas o plano da Atom é para todos. Graças a eles, estou construindo meu futuro financeiro. <i class="fas fa-quote-right"></i></p>
-                        <span>- Carlos P., Novo Trader</span>
-                    </div>
+                <div class="testimonial-grid" id="testimonial-container">
                 </div>
-                <a href="/index.html" class="quiz-button" id="final-cta-button">QUERO DESCOBRIR COMO OPERAR SEM ARRISCAR MEU DINHEIRO!</a>
-                <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
+
+                <a href="https://pay.hotmart.com/E91350493E" class="quiz-button">GARANTIR MINHA VAGA AGORA! <i class="fas fa-arrow-right"></i></a>
+                <p class="quiz-results-note">Ao clicar, você será direcionado para o site seguro da Hotmart.</p>
             </div>
         </div>
-
-        <div class="quiz-footer">
-            <p>Seus dados são confidenciais e este quiz é totalmente gratuito.</p>
-        </div>
     </div>
-
+    
     <script>
-        const questions = [
-            {
-                question: "Qual sua principal motivação para aprender sobre o mercado financeiro?",
-                options: [
-                    "Buscar uma nova fonte de renda",
-                    "Conquistar liberdade geográfica e de tempo",
-                    "Construir uma carreira sólida como trader",
-                    "Apenas curiosidade sobre o assunto"
-                ]
-            },
-            {
-                question: "Qual sua maior preocupação ao pensar em Day Trade ou investimentos?",
-                options: [
-                    "Perder dinheiro (capital próprio)",
-                    "Não ter conhecimento suficiente",
-                    "Falta de tempo para se dedicar",
-                    "Dificuldade em encontrar mentores confiáveis"
-                ]
-            },
-            {
-                question: "Você se considera uma pessoa mais...",
-                options: [
-                    "Analítica e paciente, que gosta de estudar dados.",
-                    "Rápida e intuitiva, que toma decisões ágeis.",
-                    "Equilibrada, uma mistura dos dois."
-                ]
-            },
-            {
-                question: "Quanto tempo por dia você estaria disposto a dedicar ao aprendizado e prática, em média?",
-                options: [
-                    "Menos de 1 hora",
-                    "1 a 2 horas",
-                    "Mais de 2 horas",
-                    "Não tenho tempo fixo, mas sou flexível"
-                ]
-            },
-            {
-                question: "O que mais te atrairia na oportunidade de ser um trader?",
-                options: [
-                    "A possibilidade de operar com o capital de uma grande empresa (sem risco próprio)",
-                    "A mentoria de traders experientes como os Paiffer",
-                    "O conteúdo completo do básico ao avançado",
-                    "A comunidade de alunos e o suporte diário"
-                ]
-            }
-        ];
-
-        let currentQuestionIndex = 0;
-        let userAnswers = [];
-        let userName = '';
-        let userEmail = '';
-        let userWhatsapp = '';
-        let userProfileType = ''; // Nova variável para armazenar o perfil
-
+        const quizContainer = document.querySelector('.quiz-container');
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
         const leadFormScreen = document.getElementById('quiz-lead-form-screen');
@@ -406,339 +391,181 @@
         const progressBar = document.getElementById('progressBar');
         const resultsTitle = document.getElementById('results-title');
         const resultsText = document.getElementById('results-text');
-        const finalCtaButton = document.getElementById('final-cta-button');
+        const testimonialContainer = document.getElementById('testimonial-container');
+        const leadName = document.getElementById('lead-name');
+        const leadEmail = document.getElementById('lead-email');
+        const leadPhone = document.getElementById('lead-phone');
 
-        // Elementos do formulário de lead
-        const leadNameInput = document.getElementById('lead-name');
-        const leadEmailInput = document.getElementById('lead-email');
-        const leadWhatsappInput = document.getElementById('lead-whatsapp');
-        const viewResultsButton = document.getElementById('view-results-button');
-        const startQuizButton = document.getElementById('start-quiz-button'); 
+        let currentQuestionIndex = 0;
+        let traderScore = 0;
+        let traderProfile = '';
 
-        // Função para obter parâmetros UTM da URL atual
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
+        const questions = [
+            {
+                question: "Você se considera uma pessoa que busca um propósito maior e liberdade financeira, ou está satisfeito com a sua rotina atual?",
+                options: [
+                    { text: "Busco um propósito maior e total liberdade financeira", value: 3 },
+                    { text: "Estou satisfeito, mas me interesso por novas oportunidades", value: 2 },
+                    { text: "Prefiro manter a minha rotina sem grandes mudanças", value: 1 }
+                ]
+            },
+            {
+                question: "Em relação ao mercado financeiro, qual é a sua experiência?",
+                options: [
+                    { text: "Nenhuma, sou completamente iniciante, mas quero começar do jeito certo", value: 3 },
+                    { text: "Já fiz alguns investimentos, mas não tenho resultados consistentes", value: 2 },
+                    { text: "Sou experiente, mas estou buscando capital para operar em maior escala", value: 3 }
+                ]
+            },
+            {
+                question: "Quando você pensa em “ser trader”, qual dos sentimentos abaixo te representa melhor?",
+                options: [
+                    { text: "Entusiasmo e motivação para aprender e crescer", value: 3 },
+                    { text: "Curiosidade, mas com um pouco de medo de arriscar meu dinheiro", value: 2 },
+                    { text: "Incerteza, pois não sei por onde começar", value: 2 }
+                ]
+            },
+            {
+                question: "O que te motiva a buscar uma nova fonte de renda?",
+                options: [
+                    { text: "Atingir a liberdade geográfica e financeira e ter tempo para a família", value: 3 },
+                    { text: "Complementar minha renda atual, mas sem grandes riscos", value: 2 },
+                    { text: "Curiosidade sobre o mercado, mas não é uma prioridade", value: 1 }
+                ]
+            },
+            {
+                question: "Se você tivesse a oportunidade de operar com o capital de uma grande mesa proprietária, o que te faria aceitar o desafio?",
+                options: [
+                    { text: "A chance de ter um capital alto para operar sem arriscar meu dinheiro", value: 3 },
+                    { text: "O aprendizado com os maiores nomes do mercado", value: 2 },
+                    { text: "A credibilidade e a solidez da empresa", value: 3 }
+                ]
+            }
+        ];
 
-        // Função para anexar parâmetros UTM a uma URL
-        function appendUtmParameters(url) {
-            const urlObj = new URL(url, window.location.origin);
-            const params = new URLSearchParams(window.location.search);
-
-            const utmSource = params.get('utm_source');
-            const utmMedium = params.get('utm_medium');
-            const utmCampaign = params.get('utm_campaign');
-            const utmContent = params.get('utm_content');
-            const utmTerm = params.get('utm_term');
-
-            if (utmSource) urlObj.searchParams.set('utm_source', utmSource);
-            if (utmMedium) urlObj.searchParams.set('utm_medium', utmMedium);
-            if (utmCampaign) urlObj.searchParams.set('utm_campaign', utmCampaign);
-            if (utmContent) urlObj.searchParams.set('utm_content', utmContent);
-            if (utmTerm) urlObj.searchParams.set('utm_term', utmTerm);
-
-            return urlObj.toString();
-        }
+        const testimonials = [
+            { quote: "Graças à Atom, hoje eu opero no mercado financeiro de um jeito que nunca imaginei ser possível! Eles me deram a estrutura e o capital que eu precisava.", author: "João S., Trader Profissional" },
+            { quote: "A mentoria do Paiffer é surreal. Ele simplifica o que parece complexo e te coloca no caminho certo. Vale cada centavo e cada minuto de estudo.", author: "Maria C., Aluna da Universidade Atom" },
+            { quote: "Perdi muito tempo tentando sozinho. Na Atom, encontrei uma comunidade e um método que realmente funcionam. Agora sei que meu futuro no mercado é promissor.", author: "Pedro A., Trader em Formação" }
+        ];
 
         function startQuiz() {
             startScreen.classList.add('hidden');
             questionsScreen.classList.remove('hidden');
             currentQuestionIndex = 0;
-            userAnswers = [];
-            loadQuestion();
-            updateProgressBar();
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStarted', { 
-                    quiz_name: 'Trader Atom Profile',
-                    action: 'Start Quiz'
-                });
-            }
+            traderScore = 0;
+            displayQuestion();
         }
 
-        function loadQuestion() {
-            if (currentQuestionIndex < questions.length) {
-                const q = questions[currentQuestionIndex];
-                questionText.textContent = q.question;
-                optionsContainer.innerHTML = '';
-                nextButton.disabled = true;
+        function displayQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionText.textContent = `Pergunta ${currentQuestionIndex + 1} de ${questions.length}: ${currentQuestion.question}`;
+            optionsContainer.innerHTML = '';
+            nextButton.disabled = true;
 
-                q.options.forEach((option, index) => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.onclick = () => selectOption(option, button);
-                    optionsContainer.appendChild(button);
-                });
-                updateProgressBar();
-            } else {
-                questionsScreen.classList.add('hidden');
-                leadFormScreen.classList.remove('hidden');
-            }
-        }
-
-        function selectOption(selectedOption, clickedButton) {
-            userAnswers[currentQuestionIndex] = selectedOption;
-            document.querySelectorAll('.quiz-options button').forEach(button => {
-                button.classList.remove('selected');
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.setAttribute('data-value', option.value);
+                button.addEventListener('click', () => selectOption(button, option.value));
+                optionsContainer.appendChild(button);
             });
-            clickedButton.classList.add('selected');
+            updateProgressBar();
+        }
+
+        function selectOption(selectedButton, value) {
+            // Remove a classe 'selected' de todos os botões e adiciona ao clicado
+            const allButtons = optionsContainer.querySelectorAll('button');
+            allButtons.forEach(btn => btn.classList.remove('selected'));
+            selectedButton.classList.add('selected');
+            
             nextButton.disabled = false;
+            nextButton.setAttribute('data-value', value); // Armazena o valor da opção para ser usado no "next"
         }
 
         function nextQuestion() {
+            const selectedValue = parseInt(nextButton.getAttribute('data-value'));
+            traderScore += selectedValue;
+            
             currentQuestionIndex++;
-            loadQuestion();
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                showLeadForm();
+            }
         }
-
+        
         function updateProgressBar() {
-            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            const progress = (currentQuestionIndex / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
 
-        startQuizButton.addEventListener('click', function() {
-            startQuiz(); 
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizStartClicked', { 
-                    quiz_name: 'Trader Atom Profile',
-                    button_text: startQuizButton.textContent.trim()
-                });
-            }
-        });
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Função para calcular o tipo de perfil (movida para antes do envio do formulário)
-        function calculateProfileType() {
-            let profileType = "";
-            let mainMotivation = userAnswers[0] || ""; 
-            let mainConcern = userAnswers[1] || "";    
-            let personalityType = userAnswers[2] || ""; 
-            let timeDedicated = userAnswers[3] || "";  
-            let mainAttraction = userAnswers[4] || ""; 
-
-            if (
-                (mainMotivation.includes("nova fonte de renda") || mainMotivation.includes("carreira sólida")) &&
-                (mainConcern.includes("Perder dinheiro") || mainConcern.includes("Não ter conhecimento suficiente")) &&
-                (mainAttraction.includes("operar com o capital") || mainAttraction.includes("mentoria de traders experientes"))
-            ) {
-                profileType = "Ideal";
-            } 
-            else if (
-                (mainMotivation.includes("liberdade geográfica") || mainMotivation.includes("carreira sólida")) &&
-                (timeDedicated.includes("1 a 2 horas") || timeDedicated.includes("Mais de 2 horas") || timeDedicated.includes("flexível")) &&
-                (mainAttraction.includes("conteúdo completo") || mainAttraction.includes("comunidade de alunos"))
-            ) {
-                profileType = "Potencial";
-            } 
-            else {
-                profileType = "Cauteloso";
-            }
-            return profileType;
-        }
-
-
-        // Função para submeter o formulário de Lead e o perfil
-        viewResultsButton.addEventListener('click', async function() {
-            const name = leadNameInput.value.trim();
-            const email = leadEmailInput.value.trim();
-            const whatsapp = leadWhatsappInput.value.replace(/\D/g, ''); 
-
-            if (!name) {
-                alert("Por favor, preencha seu nome para ver o resultado.");
-                return;
-            }
-
-            if (!email) {
-                alert("Por favor, preencha seu e-mail para ver o resultado.");
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                alert("Por favor, insira um e-mail válido.");
-                return;
-            }
-
-            userName = name;
-            userEmail = email;
-            userWhatsapp = whatsapp;
-            userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
-
-            // --- ATENÇÃO: SUBSTITUA ESTAS CONSTANTES PELOS VALORES MAIS RECENTES DO SEU FORMULÁRIO DO GOOGLE ---
-            // Siga as instruções fornecidas para obter a URL de ação e os entry.IDs mais atualizados.
-            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfD4WYOTTZvFubZjRwQA8dloNOWeaznbn8qw3XZ4GG1oo5gwg/formResponse'; // <--- ATUALIZE ESTA URL
-            const NAME_ENTRY_ID = 'entry.752188270';   // <--- ATUALIZE ESTE ID PARA "Nome Completo"
-            const EMAIL_ENTRY_ID = 'entry.1366291081';   // <--- ATUALIZE ESTE ID PARA "Seu Melhor E-mail"
-            const WHATSAPP_ENTRY_ID = 'entry.1192966571'; // <--- ATUALIZE ESTE ID PARA "Seu WhatsApp"
-            const ANSWERS_ENTRY_ID = 'entry.1512222229';  // <--- ATUALIZE ESTE ID PARA "Respostas do Quiz"
-            const PROFILE_ENTRY_ID = 'entry.976247691'; // <--- ATUALIZE ESTE ID PARA "Perfil do Usuário"
-            // --- FIM DA SEÇÃO DE ATUALIZAÇÃO ---
-
-            const formData = new FormData();
-            formData.append(NAME_ENTRY_ID, userName);
-            formData.append(EMAIL_ENTRY_ID, userEmail);
-            formData.append(WHATSAPP_ENTRY_ID, userWhatsapp);
-            if (userAnswers.length > 0) {
-                formData.append(ANSWERS_ENTRY_ID, userAnswers.map((ans, i) => `Q${i+1}: ${ans}`).join(' | '));
-            }
-            formData.append(PROFILE_ENTRY_ID, userProfileType);
-
-            try {
-                const response = await fetch(GOOGLE_FORM_ACTION_URL, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' 
-                });
-
-                console.log('Dados enviados (fetch com no-cors). Verifique o Google Forms.');
-
-            } catch (error) {
-                console.error('Erro ao enviar dados para o Google Forms:', error);
-                alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.');
-            }
-
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead', {
-                    content_name: 'Quiz do Trader Atom Lead',
-                    value: 1, 
-                    currency: 'BRL',
-                    lead_name: userName,
-                    lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp,
-                    profile_type: userProfileType 
-                });
-                fbq('trackCustom', 'BridgePageClicked', {
-                    quiz_name: 'Trader Atom Profile',
-                    button_text: viewResultsButton.textContent.trim(),
-                    lead_name: userName,
-                    lead_email: userEmail,
-                    profile_type: userProfileType 
-                });
-            }
-
-            showResults(userProfileType); 
-        });
-
-
-        // A função showResults agora recebe o profileType como argumento
-        function showResults(profileTypeToShow) { 
-            leadFormScreen.classList.add('hidden'); 
+        function showLeadForm() {
             questionsScreen.classList.add('hidden');
-            resultsScreen.classList.remove('hidden');
-
-            // Use o profileType que foi calculado anteriormente e passado como argumento
-            let titleText = `Parabéns! Seu Perfil é ${profileTypeToShow} para a Universidade Atom!`;
-            let mainMotivation = userAnswers[0] || ""; 
-            let mainConcern = userAnswers[1] || "";    
-            let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>.`;
-            let resultParagraph2 = "";
-
-            switch (profileTypeToShow) { // Use profileTypeToShow aqui
-                case "Ideal":
-                    resultParagraph2 = `Essa é exatamente a combinação que buscamos em nossos alunos na Universidade Atom. Você tem o perfil para se destacar no mercado financeiro, operando com o capital da maior Proprietary Trading da América Latina. Milhares de pessoas com o seu perfil já transformaram suas vidas financeiras, aprendendo do zero e lucrando sem arriscar o próprio dinheiro!`;
-                    break;
-                case "Potencial":
-                    resultParagraph2 = `Seu perfil indica um grande potencial para o mercado financeiro. Com a orientação certa e o suporte adequado da Universidade Atom, você pode evoluir rapidamente e alcançar a liberdade que busca, operando com o capital de uma grande empresa e sem arriscar seu próprio dinheiro.`;
-                    break;
-                case "Cauteloso":
-                    resultParagraph2 = `Seu perfil demonstra interesse e abertura para o mercado financeiro. Com a estrutura completa de aprendizado da Universidade Atom, você pode desenvolver as habilidades necessárias para operar com confiança e ser cauteloso, sem arriscar seu próprio capital. Milhares de iniciantes já trilharam esse caminho com sucesso!`;
-                    break;
-            }
-
-            resultsTitle.textContent = titleText;
-            resultsText.innerHTML = `${resultParagraph1}<br><br>${resultParagraph2}`;
-            
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizCompleted', { 
-                    quiz_name: 'Trader Atom Profile',
-                    profile_type: profileTypeToShow, // Use profileTypeToShow aqui
-                    motivation: mainMotivation,
-                    concern: mainConcern,
-                    time_dedicated: userAnswers[3] || "",
-                    main_attraction: userAnswers[4] || ""
-                });
-            }
-
-            finalCtaButton.href = appendUtmParameters(finalCtaButton.href);
+            leadFormScreen.classList.remove('hidden');
+            updateProgressBar(); // 100%
         }
 
-        finalCtaButton.addEventListener('click', function() {
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'FinalCTAClicked', { 
-                    quiz_name: 'Trader Atom Profile',
-                    profile_type: userProfileType, // Use a variável global do perfil
-                    lead_name: userName,
-                    lead_email: userEmail,
-                    lead_whatsapp: userWhatsapp,
-                    button_text: finalCtaButton.textContent.trim(),
-                    destination_url: finalCtaButton.href 
-                });
+        function showResults() {
+            leadFormScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+            determineProfile();
+            resultsTitle.textContent = `Parabéns, você tem o perfil de um(a) ${traderProfile}!`;
+            resultsText.textContent = getProfileDescription();
+            displayTestimonials();
+        }
+        
+        function determineProfile() {
+            if (traderScore >= 12) {
+                traderProfile = "Trader de Elite";
+            } else if (traderScore >= 8) {
+                traderProfile = "Trader em Potencial";
+            } else {
+                traderProfile = "Investidor Cauteloso";
             }
-        });
+        }
 
-        // --- Funções para formatação do campo WhatsApp ---
-        leadWhatsappInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, ''); 
-
-            if (value.startsWith('55')) {
-                value = value.substring(2);
+        function getProfileDescription() {
+            if (traderProfile === "Trader de Elite") {
+                return "Sua ambição e vontade de crescer são impressionantes! Você tem a mentalidade certa para prosperar no mercado financeiro. O próximo passo é canalizar essa energia com o conhecimento e capital certos. A Universidade Atom foi feita para você.";
+            } else if (traderProfile === "Trader em Potencial") {
+                return "Você tem todas as características para ser um trader de sucesso, só precisa do direcionamento correto para alavancar seu potencial. Com a metodologia certa e capital de terceiros, seu crescimento será exponencial.";
+            } else {
+                return "Sua cautela é uma virtude, mas o mercado financeiro exige um pouco mais de atitude. Com um ambiente seguro de aprendizado e a oportunidade de operar com capital da maior mesa proprietária da América Latina, você pode mudar seu perfil e construir sua liberdade financeira.";
             }
-            
-            let formattedValue = '';
-            
-            formattedValue += '+55 ';
+        }
 
-            if (value.length > 0) {
-                if (value.length >= 2) { 
-                    formattedValue += '(' + value.substring(0, 2) + ') ';
-                    value = value.substring(2); 
-                } else {
-                    formattedValue += '(' + value;
-                    e.target.value = formattedValue;
-                    return;
-                }
+        function displayTestimonials() {
+            testimonialContainer.innerHTML = '';
+            testimonials.forEach(item => {
+                const testimonialHTML = `
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"${item.quote}"</p>
+                        <span>- ${item.author}</span>
+                    </div>
+                `;
+                testimonialContainer.innerHTML += testimonialHTML;
+            });
+        }
+
+        function submitLead() {
+            const name = leadName.value;
+            const email = leadEmail.value;
+            const phone = leadPhone.value;
+
+            // Simple validation
+            if (name && email && phone) {
+                // Here, you would typically send this data to a server (e.g., via fetch API)
+                // For this example, we'll just log it and proceed to results
+                console.log('Lead submitted:', { name, email, phone });
+                showResults();
+            } else {
+                alert('Por favor, preencha todos os campos!');
             }
+        }
 
-            if (value.length > 0) {
-                if (value.length >= 5) {
-                    const firstPart = value.substring(0, value.length - 4); 
-                    const lastPart = value.substring(value.length - 4); 
-                    formattedValue += firstPart + '-' + lastPart;
-                } else { 
-                    formattedValue += value;
-                }
-            }
-            
-            e.target.value = formattedValue;
-        });
-
-        leadWhatsappInput.addEventListener('keydown', function(e) {
-            if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
-                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || 
-                (e.keyCode >= 48 && e.keyCode <= 57) ||
-                (e.keyCode >= 96 && e.keyCode <= 105)) {
-                return;
-            }
-            e.preventDefault();
-        });
-
-        leadWhatsappInput.addEventListener('paste', function(e) {
-            const pastedData = e.clipboardData.getData('text');
-            const cleanedData = pastedData.replace(/\D/g, ''); 
-            
-            e.target.value = cleanedData; 
-            e.preventDefault(); 
-            
-            e.target.dispatchEvent(new Event('input', { bubbles: true }));
-        });
-
+        document.getElementById('start-quiz-button').addEventListener('click', startQuiz);
     </script>
 </body>
 </html>
