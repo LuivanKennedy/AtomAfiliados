@@ -379,9 +379,6 @@
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
 
-        // NEW: Adicione uma flag para controlar se o quiz já foi iniciado.
-        let quizStarted = false;
-        // NEW: Adicione uma flag para controlar se o pop-up de saída já foi exibido.
         let hasShownPopup = false; 
 
         closePopup.addEventListener('click', () => {
@@ -493,7 +490,6 @@
             return urlObj.toString();
         }
 
-        // --- CÓDIGO CORRIGIDO AQUI ---
         function startQuiz() {
             startScreen.classList.add('hidden');
             questionsScreen.classList.remove('hidden');
@@ -502,17 +498,14 @@
             loadQuestion();
             updateProgressBar();
 
-            // Adiciona o event listener de saída do mouse apenas quando o quiz começa
-            if (!quizStarted) {
-                document.addEventListener('mouseleave', (e) => {
-                    // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
-                    if (e.clientY <= 0 && !hasShownPopup) { 
-                        exitPopup.style.display = 'flex';
-                        hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
-                    }
-                });
-                quizStarted = true;
-            }
+            // Adiciona o event listener de saída do mouse SOMENTE quando o quiz começa
+            document.addEventListener('mouseleave', (e) => {
+                // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
+                if (e.clientY <= 0 && !hasShownPopup) { 
+                    exitPopup.style.display = 'flex';
+                    hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
+                }
+            });
 
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
@@ -521,7 +514,6 @@
                 });
             }
         }
-        // --- FIM DO CÓDIGO CORRIGIDO ---
 
         function loadQuestion() {
             if (currentQuestionIndex < questions.length) {
