@@ -281,7 +281,6 @@
             .quiz-button { max-width: 100%; } /* Ocupa toda largura em telas muito pequenas */
         }
     </style>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -290,6 +289,14 @@
 
   gtag("config", "G-SRTZNPH8ET");
 </script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sosleiks4b");
+</script>
 </head>
 <body>
     <div class="quiz-container">
@@ -297,6 +304,7 @@
             <div class="quiz-header">
                 <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
                 <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
+                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz e preencher o formulário, você ganhará o e-book exclusivo: <span style="color: #FFD700;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
                 <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
@@ -342,6 +350,12 @@
                 </div>
                 <a href="/index.html" class="quiz-button" id="final-cta-button">QUERO DESCOBRIR COMO OPERAR SEM ARRISCAR MEU DINHEIRO!</a>
                 <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
+
+                <div class="ebook-offer" style="margin-top: 40px; padding: 25px; background-color: #e0f2ff; border-radius: 10px; border: 1px solid #0056b3;">
+                    <h3 style="color: #0056b3; font-size: 1.5em; margin-bottom: 15px;">🎁 Bônus Exclusivo: Seu Guia Essencial do Trader de Sucesso!</h3>
+                    <p style="font-size: 1.1em; color: #333; margin-bottom: 20px;">Como agradecimento por completar o quiz e dar o primeiro passo, preparamos um e-book completo para você aprofundar seus conhecimentos no mercado financeiro.</p>
+                    <a href="/home/ubuntu/upload/OGuiaEssencialdoTraderdeSucesso.pdf" download="OGuiaEssencialdoTraderdeSucesso.pdf" class="quiz-button" style="background-color: #28a745; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2em;">BAIXAR MEU E-BOOK AGORA! <i class="fas fa-download"></i></a>
+                </div>
             </div>
         </div>
 
@@ -350,13 +364,49 @@
         </div>
     </div>
 
+    <div id="exit-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <div style="background-color: white; padding: 40px; border-radius: 10px; text-align: center; max-width: 500px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <button id="close-popup" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5em; cursor: pointer; color: #333;">&times;</button>
+            <h2 style="color: #0A2342; font-size: 1.8em; margin-bottom: 20px;">Não vá ainda!</h2>
+            <p style="font-size: 1.2em; color: #555; margin-bottom: 25px;">Lembre-se: ao final do quiz e preencher o formulário, você garante seu e-book exclusivo:</p>
+            <h3 style="color: #FFD700; font-size: 1.6em; margin-bottom: 30px; font-weight: 700;">"O Guia Essencial do Trader de Sucesso"</h3>
+            <p style="font-size: 1.1em; color: #555; margin-bottom: 30px;">Não perca essa oportunidade de aprofundar seus conhecimentos no mercado financeiro!</p>
+            <button class="quiz-button" style="background-color: #28a745; color: white; padding: 15px 30px; border-radius: 50px; font-size: 1.2em; cursor: pointer;" onclick="document.getElementById('exit-popup').style.display='none';">CONTINUAR NO QUIZ</button>
+        </div>
+    </div>
+
     <script>
+        // JavaScript para o pop-up de saída
+        const exitPopup = document.getElementById('exit-popup');
+        const closePopup = document.getElementById('close-popup');
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.toElement === null || e.relatedTarget === null) {
+                // Mouse saiu da janela do navegador
+                if (exitPopup.style.display === 'none') { // Só mostra se não estiver visível
+                    exitPopup.style.display = 'flex';
+                }
+            }
+        });
+
+        closePopup.addEventListener('click', () => {
+            exitPopup.style.display = 'none';
+        });
+
+        // Adicionei um evento para fechar o pop-up ao clicar fora dele também
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                exitPopup.style.display = 'none';
+            }
+        });
+
         const questions = [
             {
                 question: "Qual sua principal motivação para aprender sobre o mercado financeiro?",
                 options: [
-                    "Buscar uma nova fonte de renda",
-                    "Conquistar liberdade geográfica e de tempo",
+                 
+"Ter uma nova fonte de renda",
+                    "Atingir liberdade geográfica e de tempo",
                     "Construir uma carreira sólida como trader",
                     "Apenas curiosidade sobre o assunto"
                 ]
