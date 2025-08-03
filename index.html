@@ -12,1632 +12,287 @@
     <style>
         :root {
             /* Paleta de cores premium */
-            --primary-dark: #0B1426;
-            --primary-blue: #1E3A8A;
-            --accent-gold: #F59E0B;
-            --accent-emerald: #10B981;
-            --accent-red: #EF4444;
-            --text-primary: #1F2937;
-            --text-secondary: #6B7280;
-            --text-light: #9CA3AF;
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F9FAFB;
-            --bg-dark: #111827;
-            --border-light: #E5E7EB;
-            --border-medium: #D1D5DB;
-            
-            /* Gradientes premium */
-            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #0B1426 100%);
-            --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-            --gradient-emerald: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            
-            /* Sombras premium */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.3);
-            
-            /* Transições premium */
-            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary-color: #0A2342; /* Azul Marinho (Profundo) */
+            --secondary-color: #F8B400; /* Dourado */
+            --highlight-color: #1a73e8; /* Azul Vibrante para destaque */
+            --text-color: #333;
+            --light-text-color: #f0f0f0;
+            --background-color: #f4f7f9;
+            --card-bg-color: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Inter', sans-serif;
+            --success-color: #00A36C; /* Verde */
+            --attention-color: #FF6347; /* Vermelho */
         }
-
+        
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: var(--body-font);
+            color: var(--text-color);
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            overflow-x: hidden;
+            background-color: var(--background-color);
         }
 
+        /* Container principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* Animações premium */
+        h1, h2, h3, h4 {
+            font-family: var(--heading-font);
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        p { font-size: 1rem; }
+
+        /* Estilos dos botões */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--highlight-color);
+            color: var(--light-text-color);
+            box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #1664c8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(248, 180, 0, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e5a700;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(248, 180, 0, 0.5);
+        }
+
+        /* Seção de Oferta e Preço */
+        .offer-card-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--background-color), #d9e2e9);
+        }
+
+        .offer-card-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+            place-items: center;
+        }
+
+        .offer-card {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--highlight-color), var(--secondary-color));
+            border-radius: var(--border-radius);
+            z-index: -1;
+            opacity: 0.6;
+            filter: blur(10px);
+        }
+
+        .offer-card h3 {
+            color: var(--light-text-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Características da oferta */
+        .offer-features {
+            list-style-type: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .offer-features li {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .offer-features li i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            top: 2px;
+        }
+
+        /* Preços */
+        .offer-price {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #ccc;
+            font-size: 0.9rem;
+            display: block;
+            text-align: center;
+        }
+
+        .current-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--highlight-color);
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        .current-price small {
+            font-size: 0.6em;
+            font-weight: 400;
+        }
+
+        .price-condition {
+            font-size: 0.9rem;
+            color: #eee;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        /* Botão de chamada para ação */
+        .offer-card .btn-primary {
+            width: 100%;
+            margin-top: 25px;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+        }
+        
+        /* Animações */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
-            }
-            50% {
-                transform: scale(1.02);
-                box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        /* Hero Section Premium */
-        .hero {
-            background: var(--gradient-primary);
-            position: relative;
-            overflow: hidden;
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .video-wrapper {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto 60px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-2xl);
-            background: var(--gradient-glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px;
-        }
-
-        .video-wrapper iframe {
-            width: 100%;
-            height: 500px;
-            border: 0;
-            border-radius: 12px;
-        }
-
-        .mute-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 160px;
-            height: 160px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 50%;
-            border: 3px solid var(--accent-gold);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            animation: pulse 2s infinite;
-            backdrop-filter: blur(10px);
-        }
-
-        .mute-button:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translate(-50%, -50%) scale(1.05);
-            animation: none;
-        }
-
-        .mute-button i {
-            font-size: 3.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 8px;
-        }
-
-        .mute-button .text {
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #F59E0B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero h2 {
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            font-weight: 400;
-            line-height: 1.4;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* CTA Button Premium */
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gradient-gold);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: var(--transition-smooth);
-            box-shadow: var(--shadow-lg), var(--shadow-glow);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 16px;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl), 0 0 30px rgba(245, 158, 11, 0.5);
-        }
-
-        .cta-small-text {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
-        }
-
-        /* Countdown Timer Premium */
-        .countdown-timer {
-            background: var(--gradient-glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 24px 32px;
-            display: inline-flex;
-            gap: 20px;
-            align-items: center;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .countdown-timer .time-unit {
-            text-align: center;
-            color: var(--accent-gold);
-        }
-
-        .countdown-timer .time-unit .number {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .countdown-timer .time-unit .label {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .countdown-timer .separator {
-            font-size: 2rem;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Sections Premium */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        section:nth-child(even) {
-            background: var(--bg-secondary);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--text-primary);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-gold);
-            margin: 20px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Opportunity Section Premium */
-        .opportunity-section {
-            background: var(--gradient-primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .opportunity-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .opportunity-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .opportunity-section .section-title {
-            color: white;
-        }
-
-        .opportunity-section .section-title::after {
-            background: var(--gradient-gold);
-        }
-
-        .opportunity-section p {
-            font-size: 1.25rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Benefits Grid Premium */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 60px;
-        }
-
-        .benefit-item {
-            background: var(--bg-primary);
-            border-radius: 20px;
-            padding: 40px 32px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-light);
-        }
-
-        .benefit-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-gold);
-            transform: scaleX(0);
-            transition: var(--transition-smooth);
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .benefit-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .benefit-item i {
-            font-size: 3rem;
-            color: var(--primary-blue);
-            margin-bottom: 24px;
-            transition: var(--transition-smooth);
-        }
-
-        .benefit-item:hover i {
-            color: var(--accent-gold);
-            transform: scale(1.1);
-        }
-
-        .benefit-item h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .benefit-item p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Before After Section Premium */
-        .before-after-section {
-            background: var(--bg-secondary);
-        }
-
-        .before-after-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .before-after-card {
-            background: var(--bg-primary);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .before-after-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            transition: var(--transition-smooth);
-        }
-
-        .before-card::before {
-            background: var(--gradient-emerald);
-        }
-
-        .after-card::before {
-            background: var(--gradient-gold);
-        }
-
-        .before-after-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .before-after-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--border-light);
-        }
-
-        .before-card h3 {
-            color: var(--accent-red);
-        }
-
-        .after-card h3 {
-            color: var(--accent-emerald);
-        }
-
-        .before-after-card ul {
-            list-style: none;
-        }
-
-        .before-after-card li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        .before-after-card li i {
-            font-size: 1.25rem;
-            margin-right: 16px;
-            flex-shrink: 0;
-        }
-
-        .before-card li i {
-            color: var(--accent-red);
-        }
-
-        .after-card li i {
-            color: var(--accent-emerald);
-        }
-
-        /* Stats Section Premium */
-        .stats-section {
-            background: var(--gradient-primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-            margin-top: 60px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-item {
-            background: var(--gradient-glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 24px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        
+        .animated-element {
             opacity: 0;
-            transition: var(--transition-smooth);
+            /* O JS vai adicionar a animação quando o elemento for visível */
         }
 
-        .stat-item:hover::before {
-            opacity: 1;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .stat-item .number {
-            display: block;
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-item .label {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Mentors Section Premium */
-        .mentors-section {
-            background: var(--bg-secondary);
-        }
-
-        .mentors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
-
-        .mentor-card {
-            text-align: center;
-            transition: var(--transition-smooth);
-        }
-
-        .mentor-image-wrapper {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 24px;
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--shadow-lg);
-            border: 4px solid var(--accent-gold);
-            transition: var(--transition-smooth);
-        }
-
-        .mentor-card:hover .mentor-image-wrapper {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-xl), var(--shadow-glow);
-        }
-
-        .mentor-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-        }
-
-        .mentor-card:hover .mentor-image-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .mentor-card h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 8px;
-        }
-
-        .mentor-card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        /* Testimonials Premium */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            margin: 60px 0;
-        }
-
-        .testimonial-item {
-            background: var(--bg-primary);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-smooth);
-            position: relative;
-            border-left: 4px solid var(--accent-gold);
-        }
-
-        .testimonial-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .testimonial-item p {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-        }
-
-        .testimonial-item .author {
-            font-weight: 700;
-            color: var(--primary-blue);
-            font-size: 1rem;
-        }
-
-        /* Video Testimonials Premium */
-        .video-testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin: 60px 0;
-        }
-
-        .video-testimonials-grid .video-wrapper {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-smooth);
-            margin: 0;
-        }
-
-        .video-testimonials-grid .video-wrapper:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .video-testimonials-grid iframe {
-            height: 250px;
-        }
-
-        /* Investment Section Premium */
-        .investment-section {
-            background: var(--gradient-primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .investment-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .investment-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .price-details {
-            background: var(--gradient-glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            margin: 60px 0;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .price-details ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .price-details li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.1rem;
-        }
-
-        .price-details li:last-child {
-            border-bottom: none;
-        }
-
-        .price-details li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--accent-emerald);
-            margin-right: 16px;
+        /* Estilos adicionais */
+        .countdown-timer {
+            margin-top: 20px;
+            color: var(--highlight-color);
             font-size: 1.2rem;
-        }
-
-        .price-details .value {
             font-weight: 700;
-            color: var(--accent-gold);
-            font-size: 1.2rem;
         }
 
-        .total-original {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-red);
-            text-decoration: line-through;
-            margin: 32px 0;
-            text-align: center;
-        }
-
-        .price-box {
-            background: var(--gradient-gold);
-            color: var(--primary-dark);
-            border-radius: 24px;
-            padding: 48px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: var(--shadow-2xl), var(--shadow-glow);
-            position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            animation: pulse 3s infinite;
-        }
-
-        .price-box::before {
-            content: 'OFERTA EXCLUSIVA!';
-            position: absolute;
-            top: 20px;
-            left: -40px;
-            background: var(--primary-blue);
-            color: white;
-            padding: 8px 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transform: rotate(-45deg);
-            letter-spacing: 1px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .price-box .installments {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-
-        .price-box .current-price {
-            font-size: 1.75rem;
-            font-weight: 600;
-            opacity: 0.8;
-        }
-
-        /* Guarantee Section Premium */
-        .guarantee-section {
-            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-            border: 2px solid var(--accent-emerald);
-            border-radius: 24px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .guarantee-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .guarantee-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--text-primary);
-        }
-
-        .guarantee-section i {
-            font-size: 4rem;
-            color: var(--accent-emerald);
-            margin-bottom: 24px;
-        }
-
-        .guarantee-section .section-title {
-            color: var(--accent-emerald);
-        }
-
-        .guarantee-section .section-title::after {
-            background: var(--gradient-emerald);
-        }
-
-        /* FAQ Premium */
-        .faq-list {
-            max-width: 900px;
-            margin: 60px auto 0;
-        }
-
-        .faq-item {
-            background: var(--bg-primary);
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            border: 1px solid var(--border-light);
-        }
-
-        .faq-item.active {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-gold);
-        }
-
-        .faq-question {
-            padding: 24px 32px;
-            background: var(--primary-blue);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition-smooth);
-        }
-
-        .faq-question:hover {
-            background: var(--primary-dark);
-        }
-
-        .faq-item.active .faq-question {
-            background: var(--primary-dark);
-        }
-
-        .faq-question i {
-            font-size: 1rem;
-            transition: var(--transition-smooth);
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-            color: var(--accent-gold);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            background: var(--bg-secondary);
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 32px;
-        }
-
-        .faq-answer p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* Footer Premium */
-        footer {
-            background: var(--bg-dark);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 60px 0 40px;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            transition: var(--transition-fast);
-        }
-
-        footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .disclaimer {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 32px;
-            line-height: 1.6;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Responsive Design Premium */
+        /* Media Queries (Responsive) */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
-            .hero {
-                padding: 60px 0;
-                min-height: auto;
-            }
-
-            .video-wrapper iframe {
-                height: 300px;
-            }
-
-            .mute-button {
-                width: 120px;
-                height: 120px;
-            }
-
-            .mute-button i {
-                font-size: 2.5rem;
-            }
-
-            .mute-button .text {
-                font-size: 0.9rem;
-            }
-
-            .benefits-grid,
-            .before-after-items,
-            .stats-grid,
-            .mentors-grid,
-            .testimonials-grid,
-            .video-testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .countdown-timer {
-                flex-wrap: wrap;
-                gap: 16px;
-                padding: 20px;
-            }
-
-            .countdown-timer .time-unit .number {
-                font-size: 2rem;
-            }
-
-            .cta-button {
-                padding: 16px 32px;
-                font-size: 1.1rem;
-            }
-
-            .price-box {
-                padding: 32px 24px;
-            }
-
-            .price-box .installments {
-                font-size: 2.5rem;
-            }
-
-            .faq-question {
-                padding: 20px 24px;
-                font-size: 1rem;
-            }
-
-            .faq-item.active .faq-answer {
-                padding: 24px;
-            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
+            .container { padding: 0 15px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.6rem; }
+            .offer-card { padding: 25px; }
+            .offer-card h3 { font-size: 1.5rem; }
 
-            .hero h2 {
-                font-size: 1.1rem;
+            /* Ajuste para o preço do card de oferta */
+            .current-price {
+                font-size: 1.8rem; /* Reduz o tamanho da fonte para se ajustar melhor em telas menores */
             }
-
-            .section-title {
-                font-size: 1.75rem;
+            .price-condition {
+                font-size: 0.8rem; /* Reduz a fonte da condição para dar mais espaço */
             }
-
-            .countdown-timer .time-unit .number {
-                font-size: 1.75rem;
-            }
-
-            .price-box .installments {
-                font-size: 2rem;
-            }
-
-            .price-box .current-price {
-                font-size: 1.25rem;
+            .offer-card .btn-primary {
+                font-size: 1rem;
+                padding: 15px 25px;
             }
         }
     </style>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-SRTZNPH8ET');
-    </script>
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sosleiks4b");
-    </script>
 </head>
 <body>
-    <header class="hero">
+    <div class="offer-card-section">
         <div class="container">
-            <div class="hero-content">
-                <div class="video-wrapper">
-                    <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="mute-button" title="Clique para ativar o som">
-                        <i class="fas fa-volume-xmark"></i>
-                        <span class="text">Toque Aqui!</span>
-                    </div>
-                </div>
-
-                <h1>Descubra AGORA: A Chave para Operar no Mercado de Ações com o Capital da Maior Mesa Proprietária, Sem Correr nenhum Risco!</h1>
-                <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong>sem arriscar seu próprio capital.</strong></h2>
-                
-                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
-                <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garante o seu!</p>
-                
-                <div class="countdown-timer" id="countdown-timer">
-                    <div class="time-unit">
-                        <span class="number">00</span>
-                        <span class="label">Horas</span>
-                    </div>
-                    <span class="separator">:</span>
-                    <div class="time-unit">
-                        <span class="number">00</span>
-                        <span class="label">Minutos</span>
-                    </div>
-                    <span class="separator">:</span>
-                    <div class="time-unit">
-                        <span class="number">00</span>
-                        <span class="label">Segundos</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="opportunity-section">
-        <div class="container">
-            <div class="opportunity-content">
-                <h3 class="section-title">A Grande Oportunidade Revelada: Opere com o Capital da Atom!</h3>
-                <p>Milhares de pessoas sonham em viver do mercado financeiro, mas esbarram na falta de conhecimento ou, principalmente, na falta de capital. A UNIVERSIDADE ATOM foi criada para superar essas barreiras.</p>
-                <p>Mais do que um curso, é sua chance de se tornar um trader profissional, aprender com os maiores nomes do mercado e, o mais importante, ter a <strong>OPORTUNIDADE de operar com o dinheiro da Atom, a maior mesa proprietária da América Latina, sem arriscar do seu próprio bolso!</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">        
-            <h3 class="section-title">O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h4>Do Zero ao Avançado</h4>
-                    <p>Aprenda a operar no mercado financeiro, desde os conceitos mais básicos até as estratégias mais complexas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h4>Capital da Atom</h4>
-                    <p>Passe por 2 avaliações e, sendo aprovado, opere com o capital da Atom. 80% dos lucros são seus, 100% dos riscos são da Atom!</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>Treinamento Prático</h4>
-                    <p>Aulas focadas na prática com a plataforma Profit Pro para você dominar as operações.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>Conteúdo Exclusivo</h4>
-                    <p>Day trade, swing trade, mini índice, mini dólar, opções e muito mais para diversificar suas estratégias.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-users"></i>
-                    <h4>Mentorias ao Vivo</h4>
-                    <p>Aprenda diretamente com Carol e Joaquim Paiffer em sessões exclusivas e interativas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-question-circle"></i>
-                    <h4>Salas de Dúvidas</h4>
-                    <p>Suporte em tempo real, todas as Segundas, Quartas e Sextas (16h e 20h), para tirar suas dúvidas.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-book-open"></i>
-                    <h4>Material Complementar</h4>
-                    <p>Aprofunde seu conhecimento com PDFs e planilhas em Excel de apoio.</p>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-brain"></i>
-                    <h4>Bônus de Mindset</h4>
-                    <p>Cursos de Psicologia do Trader e Mindset (Atom Talks) para blindar sua mente contra os desafios do mercado.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO SABER MAIS E VER O CURRÍCULO COMPLETO!</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="before-after-section">
-        <div class="container">
-            <h2 class="section-title">Sua Jornada: Antes e Depois da Universidade Atom</h2>
-            <div class="before-after-items">
-                <div class="before-after-card before-card">
-                    <h3>ANTES</h3>
-                    <ul>
-                        <li><i class="fas fa-times-circle"></i> Medo de investir e perder dinheiro</li>
-                        <li><i class="fas fa-times-circle"></i> Dificuldade em entender o mercado financeiro</li>
-                        <li><i class="fas fa-times-circle"></i> Dependência de um único salário</li>
-                        <li><i class="fas fa-times-circle"></i> Falta de tempo para buscar conhecimento</li>
-                        <li><i class="fas fa-times-circle"></i> Insegurança para tomar decisões financeiras</li>
+            <div class="offer-card-grid">
+                <div class="offer-card animated-element">
+                    <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check-circle"></i> Curso Completo do Básico ao Avançado: Torne-se um especialista sem risco!</li>
+                        <li><i class="fas fa-check-circle"></i> Mentorias ao vivo e exclusivas com os Paiffer!</li>
+                        <li><i class="fas fa-check-circle"></i> Comunidade de alunos para networking e suporte diário.</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso Exclusivo à oportunidade de operar com o capital da Atom!</li>
                     </ul>
-                </div>
-                <div class="before-after-card after-card">
-                    <h3>DEPOIS</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Opera com capital da Atom, sem risco próprio</li>
-                        <li><i class="fas fa-check-circle"></i> Entende as movimentações do mercado e lucra</li>
-                        <li><i class="fas fa-check-circle"></i> Liberdade geográfica e de tempo</li>
-                        <li><i class="fas fa-check-circle"></i> Acesso a mentoria e suporte especializado</li>
-                        <li><i class="fas fa-check-circle"></i> Confiança para construir sua carreira de trader</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats-section">
-        <div class="container">
-            <h3 class="section-title">Atom em Números: Uma História de Sucesso e Transformação!</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="number">9 Anos</span>
-                    <span class="label">De Empresa</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number">80.000+</span>
-                    <span class="label">Alunos Formados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number">1ª Mesa Proprietária</span>
-                    <span class="label">Do Brasil</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number">1 Milhão+</span>
-                    <span class="label">Pessoas Impactadas</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number">800+</span>
-                    <span class="label">Aulas Disponíveis</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number">Alunos de Todo o Brasil</span>
-                    <span class="label">Online e Intuitivo</span>
+                    <p class="offer-price">
+                        <span class="old-price">De R$ 2.497 por</span>
+                        <span class="current-price">
+                            <small>12x de</small> R$ 133,02
+                        </span>
+                        <span class="price-condition">ou R$ 1.332,00 à vista</span>
+                    </p>
+                    <a href="https://pay.hotmart.com/E84379417E?checkoutMode=10&bid=1707923483984" class="btn btn-primary">EU QUERO ME TORNAR UM TRADER ATOM!</a>
+                    <p class="countdown-timer">OFERTA VÁLIDA POR TEMPO LIMITADO!</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="mentors-section">
-        <div class="container">
-            <h3 class="section-title">Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
-            <div class="mentors-grid">
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
-                    </div>
-                    <h4>Carol Paiffer</h4>
-                </div>
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="joaquim_paiffer_atom.jpg" alt="Joaquim Paiffer">
-                    </div>
-                    <h4>Joaquim Paiffer</h4>
-                </div>
-                <div class="mentor-card">
-                    <div class="mentor-image-wrapper">
-                        <img src="priscila_atom.jpg" alt="Priscila">
-                    </div>
-                    <h4>Priscila</h4>
-                </div>
-            </div>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 24px;">Aprenda com quem realmente faz o mercado!</p>
-            <p style="text-align: center; font-size: 1rem; line-height: 1.7; max-width: 900px; margin: 0 auto;">A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a Priscila, <strong>focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
-            <p style="text-align: center; font-size: 1rem; line-height: 1.7; max-width: 900px; margin: 24px auto 0;">Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h3 class="section-title">Transformando Vidas: Depoimentos de Quem Já Está no Jogo!</h3>
-            
-            <div class="video-testimonials-grid">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/KXvyvdJrEbo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <p style="text-align: center; margin: 0 0 60px; font-style: italic; color: var(--text-secondary);">
-                "Assista aos depoimentos de quem já está trilhando o caminho do sucesso com a Universidade Atom!"
-            </p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-item">
-                    <p>"Eu não tinha nenhuma experiência e a Universidade Atom me abriu um mundo. As aulas são claras e a oportunidade de operar com o capital deles é inacreditável. Estou focado na qualificação!"</p>
-                    <span class="author">- Ana P., Aluna da Universidade Atom</span>
-                </div>
-                <div class="testimonial-item">
-                    <p>"Sempre quis viver de trade, mas o capital era um problema. O que a Atom oferece é único! O curso é top e as mentorias com os Paiffer são um diferencial gigante."</p>
-                    <span class="author">- Carlos D., Trader em Evolução</span>
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin: 40px 0; font-style: italic; color: var(--text-secondary);">"Na página oficial da Hotmart, você encontrará mais depoimentos e cases de sucesso de alunos da Universidade Atom!"</p>
-            
-            <div style="text-align: center;">
-                <a href="https://www.youtube.com/watch?v=NvMNeM7mj9I&list=PL52D_BpvKwreZUo8LFCQfhJvFZg3Hxmxf" class="cta-button">VER MAIS DEPOIMENTOS E DETALHES NA PÁGINA OFICIAL!</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="investment-section">
-        <div class="container">
-            <div class="investment-content">
-                <h3 class="section-title">Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
-                <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong>CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
-                
-                <div class="price-details">
-                    <p style="font-size: 1.2rem; margin-bottom: 32px;">Veja tudo o que você terá acesso na Universidade Atom:</p>
-                    <ul>
-                        <li>Mentorias com Investidores <span class="value">R$1.997,00</span></li>
-                        <li>Duas Avaliações da Atom <span class="value">R$1.960,00</span></li>
-                        <li>Acesso à Universidade Atom por 12 meses <span class="value">R$750,00</span></li>
-                        <li>Três meses de acesso ao Profit Chart <span class="value">R$750,00</span></li>
-                    </ul>
-                    <p class="total-original">Valor total original: R$6.407,00</p>
-                </div>
-
-                <div class="price-box">
-                    <p class="installments">12x de R$ 199,92</p>
-                    <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
-                </div>
-                
-                <p style="margin: 40px 0;">Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong>Não perca essa oportunidade única!</strong></p>
-                
-                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="guarantee-section">
-        <div class="container">
-            <div class="guarantee-content">
-                <i class="fas fa-shield-alt"></i>
-                <h3 class="section-title">Sua Decisão Sem Riscos: Garantia de Satisfação Total!</h3>
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">Temos total confiança na qualidade e no potencial transformador da UNIVERSIDADE ATOM. Por isso, sua inscrição é protegida por uma garantia incondicional de 7 dias.</p>
-                <p style="font-size: 1.1rem; line-height: 1.7;">Se, por qualquer motivo, você não estiver satisfeito ou o curso não atender às suas expectativas, basta solicitar o reembolso na Hotmart dentro deste período e 100% do seu investimento será devolvido, sem burocracia. Seu sucesso é nosso compromisso!</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h3 class="section-title">Perguntas Frequentes (FAQ)</h3>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>1. Sou iniciante no mercado financeiro. A Universidade Atom é pra mim?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Com certeza! A Universidade Atom foi feita justamente para quem está começando do absoluto zero. Você vai aprender passo a passo, com linguagem simples, exemplos reais e o suporte de quem já formou milhares de traders. Não importa se você nunca operou antes — aqui, você começa do básico e chega ao nível profissional.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>2. Como funciona a oportunidade de operar com o capital da Atom?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Esse é o grande diferencial! Ao final do curso, você poderá realizar 2 avaliações exclusivas. Se for aprovado, você opera com o dinheiro da Atom, a maior mesa proprietária da América Latina. 80% dos lucros vão direto pro seu bolso — e a Atom assume 100% do risco! É a chance real de viver do mercado, mesmo sem ter capital próprio.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>3. O curso ensina só mini índice e mini dólar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Não! A formação é completa e atualizada. Você aprende estratégias de Day Trade, Swing Trade, mini índice, mini dólar, ações, opções e muito mais. O objetivo é que você tenha uma visão ampla do mercado e possa diversificar seus ganhos, mesmo em diferentes cenários econômicos.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>4. Por quanto tempo terei acesso às aulas e mentorias?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Você terá 1 ano de acesso completo, com atualizações constantes. Isso inclui as aulas gravadas, mentorias ao vivo com os Paiffer, salas de dúvidas com suporte ao vivo e bônus complementares. É tempo mais do que suficiente pra você absorver, aplicar e transformar sua vida com consistência.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>5. Onde eu acesso o curso depois da compra?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Assim que o pagamento for aprovado, você recebe um e-mail da Hotmart com todos os dados de acesso. O conteúdo fica disponível em uma plataforma prática e segura, onde você pode assistir às aulas quando e onde quiser — inclusive pelo celular.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>6. Preciso de computador potente ou internet muito rápida para acompanhar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Não precisa de nada além de um computador simples ou celular com internet estável. A plataforma é leve, e os vídeos são otimizados. Você pode começar com o que já tem aí — o mais importante é a sua vontade de aprender.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>7. E se eu não gostar do curso? Tem garantia?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>R: Sim! Você tem 7 dias de garantia incondicional. Se dentro desse prazo achar que o curso não é pra você, é só pedir o reembolso diretamente pela Hotmart. Seu risco é zero, e sua chance é gigante</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">GARANTIR MINHA VAGA NA UNIVERSIDADE ATOM AGORA!</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Atom Trader Afiliado. Todos os direitos reservados.</p>
-            <p>
-                <a href="mailto:movimentodigital2025@gmail.com">Contato</a>
-            </p>
-            <p class="disclaimer">
-                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart.<br><br>
-                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.<br><br>
-                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.<br><br>
-                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Função para carregar o vídeo principal do YouTube
-        function loadMainYouTubeVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; 
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
-        }
-
-        // Função para desmutar o vídeo
-        function unmuteVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const muteButton = document.querySelector('.mute-button');
-            const muteIcon = muteButton.querySelector('i');
-            
-            if (videoFrame && videoFrame.contentWindow) {
-                videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                
-                muteIcon.classList.remove('fa-volume-xmark');
-                muteIcon.classList.add('fa-volume-high');
-                
-                setTimeout(() => {
-                    muteButton.style.display = 'none'; 
-                    muteButton.style.animation = 'none';
-                }, 300);
-            }
-        }
-
-        // Contador Regressivo Premium
-        function startCountdown() {
-            const endTime = new Date();
-            endTime.setDate(endTime.getDate() + 1);
-            endTime.setHours(23, 59, 59, 0);
-
-            const updateCountdown = () => {
-                const now = new Date().getTime();
-                const distance = endTime.getTime() - now;
-
-                if (distance < 0) {
-                    document.getElementById('countdown-timer').innerHTML = '<div style="color: var(--accent-red); font-size: 1.5rem; font-weight: 700;">Oferta Expirada!</div>';
-                    return;
-                }
-
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.querySelector('#countdown-timer .time-unit:nth-child(1) .number').textContent = hours.toString().padStart(2, '0');
-                document.querySelector('#countdown-timer .time-unit:nth-child(3) .number').textContent = minutes.toString().padStart(2, '0');
-                document.querySelector('#countdown-timer .time-unit:nth-child(5) .number').textContent = seconds.toString().padStart(2, '0');
-            };
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        }
-
-        // FAQ Accordion Premium
-        function initFAQ() {
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const faqItem = question.closest('.faq-item');
-                    const isActive = faqItem.classList.contains('active');
-                    
-                    // Fechar todos os outros itens
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== faqItem) {
-                            item.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle do item atual
-                    faqItem.classList.toggle('active');
-                    
-                    // Atualizar aria-expanded
-                    question.setAttribute('aria-expanded', !isActive);
-                });
-            });
-        }
-
-        // Smooth scroll para links internos
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Tracking de eventos
-        function initTracking() {
-            document.querySelectorAll('.cta-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Google Analytics
-                    if (typeof gtag === 'function') {
-                        gtag('event', 'click_cta_hotmart', {
-                            'event_category': 'Call to Action',
-                            'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
-                        });
-                    }
-                    
-                    // Facebook Pixel
-                    if (typeof fbq === 'function') {
-                        fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
-                            button_text: this.innerText
-                        });
-                    }
-                });
-            });
-        }
-
-        // Animações de entrada
-        function initAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = '0.1s';
-                        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                    }
-                });
-            }, observerOptions);
-
-            // Observar elementos para animação
-            document.querySelectorAll('.benefit-item, .before-after-card, .stat-item, .mentor-card, .testimonial-item, .faq-item').forEach(el => {
-                el.style.opacity = '0';
-                observer.observe(el);
-            });
-        }
-
-        // Inicialização quando a página carrega
-        window.addEventListener('load', function() {
-            loadMainYouTubeVideo();
-            startCountdown();
-            initFAQ();
-            initSmoothScroll();
-            initTracking();
-            initAnimations();
-
-            // Mostrar botão de mute após 1 segundo
-            const muteButton = document.querySelector('.mute-button');
-            setTimeout(() => {
-                muteButton.style.display = 'flex';
-            }, 1000);
-
-            muteButton.addEventListener('click', unmuteVideo);
-        });
-    </script>
-</body>
+    </div>
+    </body>
 </html>
-
