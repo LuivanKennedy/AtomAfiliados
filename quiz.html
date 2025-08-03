@@ -304,7 +304,7 @@
             <div class="quiz-header">
                 <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
                 <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
-                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz você ganhará o e-book exclusivo: <span style="color: #006755;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
+                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz você ganhará o e-book exclusivo: <span style="color: #00FF00;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
                 <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
@@ -380,18 +380,8 @@
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
 
-        // NEW: Adicione uma flag para controlar se o quiz já foi iniciado.
+        // NEW: A flag quizStarted agora é usada para controle interno, mas o principal é a mudança no eventListener
         let quizStarted = false;
-
-        document.addEventListener('mouseout', (e) => {
-            // Mouse saiu da janela do navegador
-            // Apenas mostra o pop-up se o quiz já tiver sido iniciado.
-            if (quizStarted && (e.toElement === null || e.relatedTarget === null)) { 
-                if (exitPopup.style.display === 'none') { // Só mostra se não estiver visível
-                    exitPopup.style.display = 'flex';
-                }
-            }
-        });
 
         closePopup.addEventListener('click', () => {
             exitPopup.style.display = 'none';
@@ -457,7 +447,7 @@
         let userName = '';
         let userEmail = '';
         let userWhatsapp = '';
-        let userProfileType = ''; // Nova variável para armazenar o perfil
+        let userProfileType = ''; 
 
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
@@ -471,14 +461,12 @@
         const resultsText = document.getElementById('results-text');
         const finalCtaButton = document.getElementById('final-cta-button');
 
-        // Elementos do formulário de lead
         const leadNameInput = document.getElementById('lead-name');
         const leadEmailInput = document.getElementById('lead-email');
         const leadWhatsappInput = document.getElementById('lead-whatsapp');
         const viewResultsButton = document.getElementById('view-results-button');
         const startQuizButton = document.getElementById('start-quiz-button'); 
 
-        // Função para obter parâmetros UTM da URL atual
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -486,7 +474,6 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         };
 
-        // Função para anexar parâmetros UTM a uma URL
         function appendUtmParameters(url) {
             const urlObj = new URL(url, window.location.origin);
             const params = new URLSearchParams(window.location.search);
@@ -513,8 +500,20 @@
             userAnswers = [];
             loadQuestion();
             updateProgressBar();
-            // NEW: Ao iniciar o quiz, a flag é ativada.
-            quizStarted = true;
+            
+            // --- CÓDIGO CORRIGIDO AQUI: O `mouseout` só é ativado quando o quiz começa ---
+            if (!quizStarted) { // Adiciona o event listener apenas uma vez
+                document.addEventListener('mouseout', (e) => {
+                    if (e.toElement === null || e.relatedTarget === null) {
+                        if (exitPopup.style.display === 'none') {
+                            exitPopup.style.display = 'flex';
+                        }
+                    }
+                });
+                quizStarted = true;
+            }
+            // --- FIM DO CÓDIGO CORRIGIDO ---
+
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
                     quiz_name: 'Trader Atom Profile',
@@ -577,7 +576,6 @@
             return emailRegex.test(email);
         }
 
-        // Função para calcular o tipo de perfil (movida para antes do envio do formulário)
         function calculateProfileType() {
             let profileType = "";
             let mainMotivation = userAnswers[0] || ""; 
@@ -607,7 +605,6 @@
         }
 
 
-        // Função para submeter o formulário de Lead e o perfil
         viewResultsButton.addEventListener('click', async function() {
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
@@ -631,17 +628,14 @@
             userName = name;
             userEmail = email;
             userWhatsapp = whatsapp;
-            userProfileType = calculateProfileType(); // Calcula o perfil ANTES de enviar para o Google Forms
+            userProfileType = calculateProfileType();
 
-            // --- ATENÇÃO: SUBSTITUA ESTAS CONSTANTES PELOS VALORES MAIS RECENTES DO SEU FORMULÁRIO DO GOOGLE ---
-            // Siga as instruções fornecidas para obter a URL de ação e os entry.IDs mais atualizados.
-            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfD4WYOTTZvFubZjRwQA8dloNOWeaznbn8qw3XZ4GG1oo5gwg/formResponse'; // <--- ATUALIZE ESTA URL
-            const NAME_ENTRY_ID = 'entry.752188270';   // <--- ATUALIZE ESTE ID PARA "Nome Completo"
-            const EMAIL_ENTRY_ID = 'entry.1366291081';   // <--- ATUALIZE ESTE ID PARA "Seu Melhor E-mail"
-            const WHATSAPP_ENTRY_ID = 'entry.1192966571'; // <--- ATUALIZE ESTE ID PARA "Seu WhatsApp"
-            const ANSWERS_ENTRY_ID = 'entry.1512222229';  // <--- ATUALIZE ESTE ID PARA "Respostas do Quiz"
-            const PROFILE_ENTRY_ID = 'entry.976247691'; // <--- ATUALIZE ESTE ID PARA "Perfil do Usuário"
-            // --- FIM DA SEÇÃO DE ATUALIZAÇÃO ---
+            const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfD4WYOTTZvFubZjRwQA8dloNOWeaznbn8qw3XZ4GG1oo5gwg/formResponse';
+            const NAME_ENTRY_ID = 'entry.752188270';
+            const EMAIL_ENTRY_ID = 'entry.1366291081';
+            const WHATSAPP_ENTRY_ID = 'entry.1192966571';
+            const ANSWERS_ENTRY_ID = 'entry.1512222229';
+            const PROFILE_ENTRY_ID = 'entry.976247691';
 
             const formData = new FormData();
             formData.append(NAME_ENTRY_ID, userName);
@@ -689,20 +683,18 @@
         });
 
 
-        // A função showResults agora recebe o profileType como argumento
         function showResults(profileTypeToShow) { 
             leadFormScreen.classList.add('hidden'); 
             questionsScreen.classList.add('hidden');
             resultsScreen.classList.remove('hidden');
 
-            // Use o profileType que foi calculado anteriormente e passado como argumento
             let titleText = `Parabéns! Seu Perfil é ${profileTypeToShow} para a Universidade Atom!`;
             let mainMotivation = userAnswers[0] || ""; 
             let mainConcern = userAnswers[1] || "";    
             let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>.`;
             let resultParagraph2 = "";
 
-            switch (profileTypeToShow) { // Use profileTypeToShow aqui
+            switch (profileTypeToShow) {
                 case "Ideal":
                     resultParagraph2 = `Essa é exatamente a combinação que buscamos em nossos alunos na Universidade Atom. Você tem o perfil para se destacar no mercado financeiro, operando com o capital da maior Proprietary Trading da América Latina. Milhares de pessoas com o seu perfil já transformaram suas vidas financeiras, aprendendo do zero e lucrando sem arriscar o próprio dinheiro!`;
                     break;
@@ -720,7 +712,7 @@
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizCompleted', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: profileTypeToShow, // Use profileTypeToShow aqui
+                    profile_type: profileTypeToShow,
                     motivation: mainMotivation,
                     concern: mainConcern,
                     time_dedicated: userAnswers[3] || "",
@@ -735,7 +727,7 @@
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'FinalCTAClicked', { 
                     quiz_name: 'Trader Atom Profile',
-                    profile_type: userProfileType, // Use a variável global do perfil
+                    profile_type: userProfileType,
                     lead_name: userName,
                     lead_email: userEmail,
                     lead_whatsapp: userWhatsapp,
@@ -745,7 +737,6 @@
             }
         });
 
-        // --- Funções para formatação do campo WhatsApp ---
         leadWhatsappInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, ''); 
 
