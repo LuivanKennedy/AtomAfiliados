@@ -376,16 +376,18 @@
     </div>
 
     <script>
+        // JavaScript para o pop-up de saída
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
 
-        // NEW: Adicione uma flag para controlar se o quiz já foi iniciado.
+        // NEW: A flag quizStarted agora é usada para controle interno, mas o principal é a mudança no eventListener
         let quizStarted = false;
 
         closePopup.addEventListener('click', () => {
             exitPopup.style.display = 'none';
         });
 
+        // Adicionei um evento para fechar o pop-up ao clicar fora dele também
         exitPopup.addEventListener('click', (e) => {
             if (e.target === exitPopup) {
                 exitPopup.style.display = 'none';
@@ -491,7 +493,6 @@
             return urlObj.toString();
         }
 
-        // --- CÓDIGO CORRIGIDO AQUI ---
         function startQuiz() {
             startScreen.classList.add('hidden');
             questionsScreen.classList.remove('hidden');
@@ -499,9 +500,9 @@
             userAnswers = [];
             loadQuestion();
             updateProgressBar();
-
-            // Adiciona o event listener de saída do mouse apenas quando o quiz começa
-            if (!quizStarted) {
+            
+            // --- CÓDIGO CORRIGIDO AQUI: O `mouseout` só é ativado quando o quiz começa ---
+            if (!quizStarted) { // Adiciona o event listener apenas uma vez
                 document.addEventListener('mouseout', (e) => {
                     if (e.toElement === null || e.relatedTarget === null) {
                         if (exitPopup.style.display === 'none') {
@@ -511,6 +512,7 @@
                 });
                 quizStarted = true;
             }
+            // --- FIM DO CÓDIGO CORRIGIDO ---
 
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
@@ -519,7 +521,6 @@
                 });
             }
         }
-        // --- FIM DO CÓDIGO CORRIGIDO ---
 
         function loadQuestion() {
             if (currentQuestionIndex < questions.length) {
