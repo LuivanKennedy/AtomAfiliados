@@ -304,7 +304,7 @@
             <div class="quiz-header">
                 <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
                 <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
-                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz você ganhará o e-book exclusivo: <span style="color: #03004A;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
+                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz você ganhará o e-book exclusivo: <span style="color: #006755;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
                 <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
@@ -380,9 +380,13 @@
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
 
+        // NEW: Adicione uma flag para controlar se o quiz já foi iniciado.
+        let quizStarted = false;
+
         document.addEventListener('mouseout', (e) => {
-            if (e.toElement === null || e.relatedTarget === null) {
-                // Mouse saiu da janela do navegador
+            // Mouse saiu da janela do navegador
+            // Apenas mostra o pop-up se o quiz já tiver sido iniciado.
+            if (quizStarted && (e.toElement === null || e.relatedTarget === null)) { 
                 if (exitPopup.style.display === 'none') { // Só mostra se não estiver visível
                     exitPopup.style.display = 'flex';
                 }
@@ -509,6 +513,8 @@
             userAnswers = [];
             loadQuestion();
             updateProgressBar();
+            // NEW: Ao iniciar o quiz, a flag é ativada.
+            quizStarted = true;
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
                     quiz_name: 'Trader Atom Profile',
