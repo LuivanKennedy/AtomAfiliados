@@ -498,15 +498,6 @@
             loadQuestion();
             updateProgressBar();
 
-            // Adiciona o event listener de saída do mouse SOMENTE quando o quiz começa
-            document.addEventListener('mouseleave', (e) => {
-                // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
-                if (e.clientY <= 0 && !hasShownPopup) { 
-                    exitPopup.style.display = 'flex';
-                    hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
-                }
-            });
-
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStarted', { 
                     quiz_name: 'Trader Atom Profile',
@@ -555,6 +546,16 @@
         }
 
         startQuizButton.addEventListener('click', function() {
+            // AQUI ESTÁ A CORREÇÃO PRINCIPAL:
+            // O listener de saída do mouse é adicionado SOMENTE neste momento.
+            document.addEventListener('mouseleave', (e) => {
+                // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
+                if (e.clientY <= 0 && !hasShownPopup) { 
+                    exitPopup.style.display = 'flex';
+                    hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
+                }
+            });
+
             startQuiz(); 
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStartClicked', { 
