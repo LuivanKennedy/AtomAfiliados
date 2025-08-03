@@ -6,1092 +6,1177 @@
     <title>Universidade Atom: O Caminho para Operar com o Capital da Maior Mesa Proprietária!</title>
     <meta name="description" content="Descubra a Universidade Atom e a chance única de operar no mercado financeiro com o capital da maior mesa proprietária da América Latina. Aprenda do zero ao avançado com os Paiffer!">
     <link rel="canonical" href="https://atom-afiliados.vercel.app/">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9R2iW42q9FjI9S+W4w6t5oN7r2F5B6Xz7hFm+q+uQ8J+K0iPz2N7l7i2/v1W8zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --primary-color: #0056b3; /* Azul Atom */
-            --secondary-color: #28a745; /* Verde Sucesso */
-            --accent-color: #ffc107; /* Amarelo Destaque */
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --dark-bg: #343a40;
-            --white: #fff;
-            --red-alert: #dc3545;
-            --faq-answer-bg: #e0f2ff; /* Um azul muito claro para o fundo da resposta */
-            --premium-dark-bg: #212529; /* Novo: Um cinza bem escuro para seções premium */
-            --premium-light-bg: #e9ecef; /* Novo: Um cinza claro para seções premium */
-            --gradient-blue: linear-gradient(135deg, #0056b3, #003366);
-            --gradient-gold: linear-gradient(135deg, #ffc107, #e0a800);
+            /* Paleta de cores premium */
+            --primary-dark: #0B1426;
+            --primary-blue: #1E3A8A;
+            --accent-gold: #F59E0B;
+            --accent-emerald: #10B981;
+            --accent-red: #EF4444;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --bg-dark: #111827;
+            --border-light: #E5E7EB;
+            --border-medium: #D1D5DB;
+            
+            /* Gradientes premium */
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #0B1426 100%);
+            --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            --gradient-emerald: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            /* Sombras premium */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.3);
+            
+            /* Transições premium */
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
         }
 
-        /* Hero Section */
+        /* Animações premium */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Hero Section Premium */
         .hero {
-            background: var(--gradient-blue); /* Usando variável de gradiente */
-            color: var(--white);
-            padding: 50px 20px;
-            text-align: center;
+            background: var(--gradient-primary);
             position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            line-height: 1.2;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .hero h2 {
-            font-size: 1.5em;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 30px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
         }
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            border-radius: 20px;
             overflow: hidden;
-            background-color: #000;
-            margin: 0 auto 30px;
-            max-width: 800px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-2xl);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px;
         }
 
         .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: 500px;
             border: 0;
+            border-radius: 12px;
         }
 
-        /* Ícone de Desmutar com Texto */
         .mute-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            display: none; /* Inicialmente oculto, JS o mostra */
-            
-            /* Ajustes para o botão e seu conteúdo */
-            width: 140px; /* Largura do círculo maior para caber texto e ícone */
-            height: 140px; /* Altura do círculo */
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
-            border-radius: 50%; /* Redondo */
-            border: 2px solid var(--accent-color); /* Borda destacada */
-            box-shadow: 0 0 15px rgba(255,193,7,0.8); /* Sombra que "pulsa" */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            animation: pulse 1.5s infinite ease-in-out; /* Animação de pulso */
-
-            /* Flexbox para alinhar ícone e texto verticalmente */
-            display: flex;
-            flex-direction: column; /* Organiza itens em coluna */
-            justify-content: center;
+            width: 160px;
+            height: 160px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            display: none;
+            flex-direction: column;
             align-items: center;
-            box-sizing: border-box;
-            padding: 10px; /* Espaçamento interno */
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            animation: pulse 2s infinite;
+            backdrop-filter: blur(10px);
         }
 
         .mute-button:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translate(-50%, -50%) scale(1.05); /* Pequeno aumento ao passar o mouse */
-            animation: none; /* Para a animação ao passar o mouse */
+            background: rgba(0, 0, 0, 0.9);
+            transform: translate(-50%, -50%) scale(1.05);
+            animation: none;
         }
 
         .mute-button i {
-            font-size: 3em; /* Tamanho do ícone */
-            color: var(--white); /* Cor do ícone */
-            margin-bottom: 5px; /* Espaço entre ícone e texto */
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
         }
 
         .mute-button .text {
-            font-size: 0.9em; /* Tamanho do texto */
-            color: var(--white); /* Cor do texto */
+            font-size: 1rem;
             font-weight: 600;
+            color: white;
             text-align: center;
             line-height: 1.2;
         }
 
-        /* Keyframes para a animação de pulso */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
-            50% { box-shadow: 0 0 20px rgba(255,193,7,1), 0 0 30px rgba(255,193,7,0.8); }
-            100% { box-shadow: 0 0 5px rgba(255,193,7,0.4), 0 0 10px rgba(255,193,7,0.2); }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
+        .hero h2 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Button Premium */
         .cta-button {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 18px 35px;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-gold);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 60px;
             text-decoration: none;
-            font-size: 1.4em;
+            font-size: 1.25rem;
             font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(245, 158, 11, 0.5);
         }
 
-        /* Contador Regressivo */
-        .countdown-timer {
-            margin-top: 25px;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 15px 20px;
-            border-radius: 10px;
-            display: inline-block;
-            color: var(--accent-color);
-            font-size: 1.6em;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .countdown-timer span {
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-        .countdown-timer .label {
-            font-size: 0.5em;
-            display: block;
-            font-weight: 400;
+        .cta-small-text {
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Sections General */
-        section {
-            padding: 50px 20px;
-            background-color: var(--white);
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        section h3, section h2 { /* Adicionado h2 aqui também para o antes e depois */
-            font-family: 'Roboto', sans-serif;
-            font-size: 2em;
-            color: var(--primary-color);
-            text-align: center;
             margin-bottom: 40px;
+        }
+
+        /* Countdown Timer Premium */
+        .countdown-timer {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 24px 32px;
+            display: inline-flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .countdown-timer .time-unit {
+            text-align: center;
+            color: var(--accent-gold);
+        }
+
+        .countdown-timer .time-unit .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .countdown-timer .time-unit .label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-timer .separator {
+            font-size: 2rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Sections Premium */
+        section {
+            padding: 100px 0;
             position: relative;
         }
 
-        section h3::after, section h2::after { /* Adicionado h2::after */
+        section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 10px auto 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-gold);
+            margin: 20px auto 0;
+            border-radius: 2px;
         }
 
-        /* Oportunidade Revelada */
+        /* Opportunity Section Premium */
         .opportunity-section {
-            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
-            color: var(--white);
-            text-align: center;
-            padding: 60px 20px; /* Mais padding */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-        .opportunity-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .opportunity-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
-        }
-
-        .opportunity-section p {
-            font-size: 1.1em;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Testimonials Grid (Textual) - Efeito de Flutuação */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .testimonial-item {
-            background-color: var(--light-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
-        }
-
-        .testimonial-item:hover {
-            transform: translateY(-8px); /* Sobe um pouco */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
-        }
-
-        .testimonial-item p {
-            font-style: italic;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .testimonial-item .author {
-            display: block;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        /* Benefits Grid - Efeito de Flutuação */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 25px;
-            border-radius: 8px;
-            background-color: var(--light-bg);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para flutuação */
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-8px); /* Sobe um pouco */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais intensa */
-        }
-
-        .benefit-item i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .benefit-item h4 {
-            font-size: 1.3em;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .benefit-item p {
-            font-size: 0.95em;
-            color: var(--text-color);
-        }
-
-        /* Estilos para a seção "Antes e Depois" */
-        #before-after {
-            background-color: var(--light-bg); /* Um fundo claro para a seção */
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        #before-after h2 {
-            font-size: 2.8em;
-            margin-bottom: 40px;
-        }
-        
-        /* Container dos cards Antes e Depois */
-        .before-after-items {
-            display: flex; /* Habilita o Flexbox */
-            flex-wrap: wrap; /* Permite que os cards quebrem para a linha de baixo em telas menores */
-            justify-content: center; /* Centraliza os cards horizontalmente */
-            gap: 30px; /* Espaço entre os cards */
-            align-items: stretch; /* Garante que os cards tenham a mesma altura */
-        }
-
-        /* Estilo para cada card individual (Antes/Depois) */
-        .before-after-items .card {
-            background-color: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra aprimorada */
-            padding: 30px;
-            flex: 1; /* Permite que os cards cresçam e encolham */
-            min-width: 300px; /* Largura mínima antes de quebrar para a próxima linha */
-            max-width: 48%; /* Ocupa quase metade da largura do container, deixando espaço para o outro card */
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .before-after-items .card:hover {
-            transform: translateY(-8px); /* Efeito de elevação no hover */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-        }
-
-        .before-after-items .card h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .before-after-items .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .before-after-items .card ul li {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            color: #555;
-            line-height: 1.4;
-        }
-
-        .before-after-items .card ul li i {
-            font-size: 1.3em;
-            margin-right: 12px;
-        }
-
-        /* Cores específicas para ícones de Antes e Depois */
-        .before-after-items .card.before-card h3 {
-            color: #dc3545; /* Vermelho para o "Antes" */
-            border-bottom-color: #dc3545;
-        }
-        .before-after-items .card.before-card ul li i {
-            color: #dc3545;
-        }
-
-        .before-after-items .card.after-card h3 {
-            color: var(--secondary-color); /* Verde para o "Depois" */
-            border-bottom-color: var(--secondary-color);
-        }
-        .before-after-items .card.after-card ul li i {
-            color: var(--secondary-color);
-        }
-
-
-        /* Mentors Section */
-        .mentor-section {
-            text-align: center;
-        }
-
-        .mentor-images {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            margin-bottom: 60px; /* Ajustado para dar mais espaço e evitar sobreposição */
-            flex-wrap: wrap; /* Permite que as imagens quebrem a linha em telas menores */
-        }
-
-        /* Novo estilo para cada cartão de mentor */
-        .mentor-card {
-            display: flex;
-            flex-direction: column; /* Empilha o conteúdo (imagem, nome, descrição) verticalmente */
-            align-items: center; /* Centraliza horizontalmente o conteúdo */
-            text-align: center; /* Centraliza o texto */
-            margin-bottom: 20px; /* Espaço entre os cartões quando há quebra de linha */
-        }
-
-        .mentor-image-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 150px; /* Tamanho fixo para o contêiner, garantindo consistência */
-            height: 150px; 
-            overflow: hidden; /* Garante que nada saia do wrapper */
-            border-radius: 50%; /* Garante que o wrapper também é circular */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra no wrapper */
-            background-color: var(--light-bg); /* Fundo para o wrapper */
-        }
-
-        .mentor-image-wrapper img {
-            width: 100%;
-            height: 100%; 
-            border-radius: 50%; /* Imagens circulares */
-            border: 4px solid var(--accent-color);
-            object-fit: cover; /* ESSENCIAL: Garante que a imagem preencha o contêiner mantendo a proporção, cortando o que exceder */
-            object-position: 50% 0%; /* Ajuste para o posicionamento da imagem, movendo o foco verticalmente para cima */
-            transition: transform 0.3s ease; /* Transição para o hover */
-        }
-        
-        .mentor-image-wrapper:hover img {
-            transform: scale(1.05); /* Pequeno zoom no hover */
-            border-color: var(--primary-color); /* Muda a cor da borda no hover */
-        }
-
-        /* Estilos para o h4 e p DENTRO do mentor-card */
-        .mentor-card h4 {
-            margin-top: 15px; /* Espaço acima do nome */
-            margin-bottom: 5px;
-            color: var(--primary-color);
-            font-size: 1.1em;
-        }
-
-        .mentor-card p {
-            font-size: 0.8em;
-            margin-top: 5px; /* Espaço acima da descrição */
-            color: var(--text-color);
-        }
-
-        /* Investment Section - ESTILOS REVISADOS PARA PREMIUM */
-        .investment-section {
-            text-align: center;
-            background: var(--premium-dark-bg); /* Fundo escuro premium */
-            color: var(--white);
-            padding: 60px 20px; /* Mais padding */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-
-        .investment-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .investment-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
-        }
-
-        .investment-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1em;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .price-details {
-            margin-bottom: 40px; /* Aumentar margem */
-            font-size: 1.1em;
-            color: var(--white);
-        }
-
-        .price-details ul {
-            list-style: none;
-            padding: 0;
-            max-width: 500px; /* Aumentado para melhor legibilidade */
-            margin: 20px auto 15px auto;
-            text-align: left;
-            background-color: rgba(255,255,255,0.08); /* Fundo transparente */
-            border-radius: 12px; /* Mais arredondado */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Sombra mais intensa */
-            overflow: hidden; /* Para garantir bordas arredondadas */
-            backdrop-filter: blur(5px); /* Efeito de vidro fosco, se o browser suportar */
-            border: 1px solid rgba(255,255,255,0.2); /* Borda sutil */
-        }
-
-        .price-details ul li {
-            padding: 15px 25px; /* Mais padding */
-            border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
-            display: flex; /* Usar flexbox para alinhar ícone e texto */
-            align-items: center; /* Alinha verticalmente */
-            justify-content: space-between;
-            font-size: 1em;
-            position: relative;
-            background-color: rgba(255,255,255,0.05); /* Fundo ligeiramente visível */
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
-        }
-
-        .price-details ul li:hover {
-            background-color: rgba(255,255,255,0.15); /* Fundo mais visível no hover */
-            transform: translateY(-3px); /* Pequena flutuação */
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais intensa */
-        }
-
-        .price-details ul li::before {
-            content: "\f00c"; /* Ícone de check */
-            font-family: "Font Awesome 6 Free"; /* Certifique-se de que a fonte está carregada e que é a versão 6 */
-            font-weight: 900; /* Para ícones sólidos */
-            color: var(--secondary-color); /* Cor verde para o check */
-            margin-right: 15px; /* Espaço para o check */
-            font-size: 1.2em; /* Ícone um pouco maior */
-            text-shadow: 0 0 5px rgba(40,167,69,0.5); /* Sombra no check */
-            flex-shrink: 0; /* Impede que o ícone encolha */
-        }
-
-        .price-details ul li:last-child {
-            border-bottom: none;
-        }
-
-        .price-details ul li .value {
-            font-weight: 700;
-            color: var(--accent-color); /* Cor de destaque */
-            font-size: 1.1em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra no valor */
-        }
-
-        .price-details .total-original {
-            font-size: 1.4em; /* Maior destaque */
-            font-weight: 700;
-            color: var(--red-alert);
-            text-decoration: line-through;
-            margin-top: 25px; /* Mais espaço */
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Sombra no texto */
-        }
-
-        .price-box {
-            background: var(--gradient-gold); /* Gradiente dourado para destaque */
-            color: var(--premium-dark-bg); /* Texto escuro no fundo claro */
-            padding: 35px; /* Mais padding */
-            border-radius: 15px; /* Mais arredondado */
-            margin: 40px auto; /* Mais margem */
-            max-width: 450px; /* Maior */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-color); /* Sombra intensa e brilho */
+            background: var(--gradient-primary);
+            color: white;
             position: relative;
             overflow: hidden;
-            border: 3px solid var(--white); /* Borda branca para destacar */
-            transform: scale(1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .price-box:hover {
-            transform: scale(1.02); /* Levemente maior no hover */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px var(--accent-color); /* Sombra e brilho mais intensos */
-        }
-
-        .price-box::before {
-            content: 'OFERTA EXCLUSIVA!'; /* Texto mais premium */
-            position: absolute;
-            top: 15px; /* Ajuste da posição */
-            left: -40px; /* Ajuste da posição */
-            background-color: var(--primary-color); /* Cor diferente */
-            color: var(--white);
-            padding: 8px 40px; /* Mais padding */
-            font-weight: 700;
-            font-size: 1em; /* Tamanho maior */
-            transform: rotate(-45deg);
-            transform-origin: 0% 0%;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-            letter-spacing: 1px; /* Espaçamento entre letras */
-        }
-
-        /* Ajustes para a nova ordem e destaque */
-        .price-box .installments { /* Agora esta é a principal */
-            font-size: 2.8em; /* Aumento significativo */
-            font-weight: 800; /* Mais negrito */
-            margin-top: 10px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
-            color: var(--primary-color); /* Cor de destaque para o preço principal */
-        }
-
-        .price-box .current-price { /* Agora esta é a secundária */
-            font-size: 1.6em; /* Aumento */
-            font-weight: 600; /* Mais negrito */
-            margin-bottom: 10px;
-            color: rgba(0,0,0,0.7); /* Cor mais suave */
-        }
-
-
-        /* Guarantee Section */
-        .guarantee-section {
-            text-align: center;
-            background-color: #e6ffee; /* Um verde bem claro */
-            border: 1px solid var(--secondary-color);
-            color: #218838;
-        }
-
-        .guarantee-section i {
-            font-size: 3.5em;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-
-        .guarantee-section h3 {
-            color: var(--secondary-color);
-        }
-
-        .guarantee-section h3::after {
-            background-color: var(--secondary-color);
-        }
-
-        /* Atom Stats Section - ESTILOS REVISADOS PARA PREMIUM */
-        .atom-stats-section {
-            background-color: var(--premium-dark-bg); /* Fundo escuro premium */
-            padding: 60px 20px; /* Mais padding */
-            text-align: center;
-            color: var(--white); /* Texto branco */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
-        }
-        .atom-stats-section h3 {
-            color: var(--accent-color); /* Título em destaque */
-        }
-        .atom-stats-section h3::after {
-            background-color: var(--white); /* Linha branca sob o título */
-        }
-
-        .atom-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Minmax ligeiramente maior */
-            gap: 25px; /* Mais espaçamento */
-            margin-top: 40px;
-        }
-        .atom-stat-item {
-            background-color: var(--white); /* Fundo branco para os itens */
-            padding: 35px 20px 25px 20px; /* Aumentado o padding vertical, adicionado bottom padding */
-            border-radius: 12px; /* Mais arredondado */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
-            text-align: center;
-            border-bottom: 5px solid var(--primary-color); /* Borda mais grossa */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Adicionando transição para borda */
-            color: var(--text-color); /* Restaura cor do texto dentro do item */
-            position: relative;
-            overflow: hidden;
-            
-            /* Ajustes para centralização de conteúdo */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centraliza horizontalmente o conteúdo flex */
-            justify-content: center; /* Centraliza verticalmente o conteúdo flex */
-        }
-        .atom-stat-item::before {
+        .opportunity-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .opportunity-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .opportunity-section .section-title {
+            color: white;
+        }
+
+        .opportunity-section .section-title::after {
+            background: var(--gradient-gold);
+        }
+
+        .opportunity-section p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Benefits Grid Premium */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .benefit-item {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .benefit-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-item i {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            transition: var(--transition-smooth);
+        }
+
+        .benefit-item:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .benefit-item h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .benefit-item p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Before After Section Premium */
+        .before-after-section {
+            background: var(--bg-secondary);
+        }
+
+        .before-after-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .before-after-card {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .before-after-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .before-card::before {
+            background: var(--gradient-emerald);
+        }
+
+        .after-card::before {
+            background: var(--gradient-gold);
+        }
+
+        .before-after-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .before-after-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .before-card h3 {
+            color: var(--accent-red);
+        }
+
+        .after-card h3 {
+            color: var(--accent-emerald);
+        }
+
+        .before-after-card ul {
+            list-style: none;
+        }
+
+        .before-after-card li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .before-after-card li i {
+            font-size: 1.25rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .before-card li i {
+            color: var(--accent-red);
+        }
+
+        .after-card li i {
+            color: var(--accent-emerald);
+        }
+
+        /* Stats Section Premium */
+        .stats-section {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 24px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-item .number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item .label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Mentors Section Premium */
+        .mentors-section {
+            background: var(--bg-secondary);
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .mentor-card {
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .mentor-image-wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .mentor-card:hover .mentor-image-wrapper {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+        }
+
+        .mentor-image-wrapper img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(0,86,179,0.05), rgba(255,193,7,0.05)); /* Gradiente sutil */
-            z-index: 0;
+            object-fit: cover;
+            transition: var(--transition-smooth);
         }
 
-        .atom-stat-item:hover {
-            transform: translateY(-8px); /* Levanta mais */
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3); /* Sombra mais intensa no hover */
-            border-color: var(--accent-color); /* Borda muda para amarelo */
-        }
-        .atom-stat-item strong {
-            display: block;
-            font-size: 2.5em; /* Maior */
-            font-weight: 800; /* Mais negrito */
-            color: var(--primary-color); /* Cor principal para os números */
-            margin-bottom: 0px; /* Ajustado para não cortar escrita */
-            line-height: 1.1; /* Ajustado para não cortar escrita */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            position: relative; /* Para ficar acima do ::before */
-            z-index: 1;
-        }
-        .atom-stat-item span {
-            font-size: 1.1em; /* Ligeiramente maior */
-            color: var(--dark-bg); /* Cor mais escura para o texto */
-            font-weight: 600;
-            position: relative; /* Para ficar acima do ::before */
-            z-index: 1;
-            line-height: 1.5; /* Aumentado para dar mais espaço e evitar corte */
-            padding-bottom: 5px; /* Adicionado padding bottom para evitar corte */
+        .mentor-card:hover .mentor-image-wrapper img {
+            transform: scale(1.1);
         }
 
-        /* FAQ */
-        .faq-item {
-            background-color: var(--light-bg);
-            margin-bottom: 15px;
-            border-radius: 8px;
+        .mentor-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .mentor-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Testimonials Premium */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .testimonial-item {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            position: relative;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-item .author {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+        }
+
+        /* Video Testimonials Premium */
+        .video-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .video-testimonials-grid .video-wrapper {
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: box-shadow 0.3s ease; /* Transição para a sombra do item ativo */
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+            margin: 0;
         }
 
-        /* Efeito de "luz" na borda/sombra do item ativo */
+        .video-testimonials-grid .video-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-testimonials-grid iframe {
+            height: 250px;
+        }
+
+        /* Investment Section Premium */
+        .investment-section {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .investment-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-details {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 60px 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .price-details ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-details li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .price-details li:last-child {
+            border-bottom: none;
+        }
+
+        .price-details li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-emerald);
+            margin-right: 16px;
+            font-size: 1.2rem;
+        }
+
+        .price-details .value {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .total-original {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-decoration: line-through;
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .price-box {
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: var(--shadow-2xl), var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 3s infinite;
+        }
+
+        .price-box::before {
+            content: 'OFERTA EXCLUSIVA!';
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transform: rotate(-45deg);
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .price-box .installments {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .price-box .current-price {
+            font-size: 1.75rem;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* Guarantee Section Premium */
+        .guarantee-section {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+            border: 2px solid var(--accent-emerald);
+            border-radius: 24px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .guarantee-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .guarantee-section i {
+            font-size: 4rem;
+            color: var(--accent-emerald);
+            margin-bottom: 24px;
+        }
+
+        .guarantee-section .section-title {
+            color: var(--accent-emerald);
+        }
+
+        .guarantee-section .section-title::after {
+            background: var(--gradient-emerald);
+        }
+
+        /* FAQ Premium */
+        .faq-list {
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border: 1px solid var(--border-light);
+        }
+
         .faq-item.active {
-            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.25); /* Sombra mais pronunciada e com cor primária */
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-gold);
         }
 
         .faq-question {
-            padding: 18px 25px; /* Aumentado o padding */
-            background-color: var(--primary-color);
-            color: var(--white);
+            padding: 24px 32px;
+            background: var(--primary-blue);
+            color: white;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1.15em; /* Aumentado o tamanho da fonte */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Transição para background e cor */
-            box-sizing: border-box; /* Adicionado */
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
         }
 
         .faq-question:hover {
-            background-color: #004085;
+            background: var(--primary-dark);
         }
 
-        /* Estilo para a pergunta ativa */
         .faq-item.active .faq-question {
-            background-color: #003366; /* Cor mais escura para a pergunta ativa */
-            border-bottom: 2px solid var(--accent-color); /* Linha abaixo da pergunta ativa */
+            background: var(--primary-dark);
         }
 
-        .faq-answer {
-            padding: 0 25px; /* Ajustado o padding para corresponder à pergunta */
-            max-height: 0;
-            overflow: hidden;
-            background-color: var(--faq-answer-bg); /* Fundo azul claro para a resposta */
-            color: var(--text-color); /* Garante que o texto tenha a cor correta */
-            transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out, background-color 0.4s ease; /* Transição mais longa e suave, e para o fundo */
-            box-sizing: border-box; /* Adicionado */
-        }
-
-        .faq-answer p {
-            padding-top: 15px; /* Espaçamento superior para o parágrafo */
-            padding-bottom: 15px;
-            margin: 0; /* Remove a margem padrão do parágrafo */
-            line-height: 1.7; /* Melhorar legibilidade */
-        }
-
-        /* Estilo para listas dentro das respostas (se você usar <ul>) */
-        .faq-answer ul {
-            list-style: disc; /* ou circle, square */
-            padding-left: 25px; /* Alinha com o texto do parágrafo */
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .faq-answer ul li {
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 2000px; /* Aumentado o valor para garantir que o conteúdo caiba */
-            padding-top: 15px; /* Adiciona padding ao expandir */
-            padding-bottom: 15px; /* Adiciona padding ao expandir */
+        .faq-question i {
+            font-size: 1rem;
+            transition: var(--transition-smooth);
         }
 
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
-            color: var(--accent-color); /* Ícone muda para a cor de destaque quando ativo */
+            color: var(--accent-gold);
         }
 
-        .faq-question i {
-            font-size: 0.9em; /* Ícone um pouco menor */
-            transition: transform 0.5s ease, color 0.3s ease; /* Transição para o ícone e sua cor */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Footer */
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 32px;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Footer Premium */
         footer {
-            background-color: var(--dark-bg);
-            color: rgba(255,255,255,0.8);
+            background: var(--bg-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 0 40px;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9em;
         }
 
         footer p {
-            margin: 5px 0;
+            margin: 8px 0;
+            font-size: 0.9rem;
         }
 
         footer a {
-            color: var(--accent-color);
+            color: var(--accent-gold);
             text-decoration: none;
-            margin: 0 10px;
+            transition: var(--transition-fast);
         }
 
         footer a:hover {
+            color: white;
             text-decoration: underline;
         }
 
         .disclaimer {
-            font-size: 0.8em;
-            color: rgba(255,255,255,0.6);
-            margin-top: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 32px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Estilos para a grade de vídeos de depoimento */
-        .video-testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cria colunas flexíveis */
-            gap: 25px; /* Espaço entre os vídeos */
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .video-testimonials-grid .video-wrapper {
-            margin: 0; /* Remove a margem individual que estava puxando o vídeo principal */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Sombra mais suave para os depoimentos */
-            border-radius: 8px; /* Cantos arredondados */
-        }
-
-        /* Responsive */
+        /* Responsive Design Premium */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
+            .container {
+                padding: 0 16px;
             }
-            .hero h2 {
-                font-size: 1.2em;
+
+            section {
+                padding: 60px 0;
             }
-            .cta-button {
-                font-size: 1.2em;
-                padding: 15px 25px;
+
+            .hero {
+                padding: 60px 0;
+                min-height: auto;
             }
-            section h3, section h2 { /* Adicionado h2 */
-                font-size: 1.7em;
+
+            .video-wrapper iframe {
+                height: 300px;
             }
-            /* No mobile, mentor-images já é column, então mentor-card não precisa mudar */
-            .mentor-images {
-                flex-direction: column; /* Empilha os cartões de mentores em telas pequenas */
-                align-items: center;
-            }
-            .mentor-image-wrapper {
-                width: 120px; /* Ajusta o tamanho da imagem em mobile */
-                height: 120px; 
-            }
+
             .mute-button {
-                width: 120px; /* Ajusta tamanho do botão em mobile */
+                width: 120px;
                 height: 120px;
             }
+
             .mute-button i {
-                font-size: 2.5em; /* Ajusta tamanho do ícone em mobile */
+                font-size: 2.5rem;
             }
+
             .mute-button .text {
-                font-size: 0.8em; /* Ajusta tamanho do texto em mobile */
+                font-size: 0.9rem;
             }
+
+            .benefits-grid,
+            .before-after-items,
+            .stats-grid,
+            .mentors-grid,
+            .testimonials-grid,
+            .video-testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
             .countdown-timer {
-                font-size: 1.2em;
-                padding: 10px 15px;
+                flex-wrap: wrap;
+                gap: 16px;
+                padding: 20px;
             }
-            /* FAQ em mobile */
-            .faq-question {
-                font-size: 1em; /* Ajusta o tamanho da fonte da pergunta em mobile */
-                padding: 15px 20px;
+
+            .countdown-timer .time-unit .number {
+                font-size: 2rem;
             }
-            .faq-answer {
-                padding: 0 20px;
+
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1.1rem;
             }
-            .faq-answer p {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            .faq-answer ul {
-                padding-left: 20px; /* Ajusta padding para listas em mobile */
-            }
-            .atom-stats-grid {
-                grid-template-columns: 1fr; /* Empilha as estatísticas em telas menores */
-            }
-            /* Ajustes para telas menores nas seções premium */
+
             .price-box {
-                padding: 25px;
+                padding: 32px 24px;
             }
+
             .price-box .installments {
-                font-size: 2.2em;
+                font-size: 2.5rem;
             }
+
+            .faq-question {
+                padding: 20px 24px;
+                font-size: 1rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .countdown-timer .time-unit .number {
+                font-size: 1.75rem;
+            }
+
+            .price-box .installments {
+                font-size: 2rem;
+            }
+
             .price-box .current-price {
-                font-size: 1.2em;
-            }
-            .price-details ul li {
-                padding: 12px 20px;
-            }
-            .atom-stat-item strong {
-                font-size: 2em;
-                line-height: 1.1; /* Garantir que não corte em mobile */
-                margin-bottom: 0px;
-            }
-            .atom-stat-item span {
-                font-size: 1em;
-                line-height: 1.4; /* Garantir que não corte em mobile */
-                padding-bottom: 0px; /* Removido em mobile se não for necessário */
-            }
-            /* Antes e Depois em mobile */
-            .before-after-items .card {
-                max-width: 90%; /* Ocupa quase toda a largura em telas menores */
+                font-size: 1.25rem;
             }
         }
     </style>
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
     <script>
-        // Função para carregar o vídeo principal do YouTube (com autoplay e mudo)
-        function loadMainYouTubeVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const youtubeVideoId = 'akPvLjxuGLY'; 
-            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
-        }
-
-        // Mudar o ícone e desmutar
-        function unmuteVideo() {
-            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
-            const muteButton = document.querySelector('.mute-button');
-            const muteIcon = muteButton.querySelector('i');
-            
-            if (videoFrame && videoFrame.contentWindow) {
-                videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                
-                muteIcon.classList.remove('fa-volume-xmark');
-                muteIcon.classList.add('fa-volume-high');
-                
-                setTimeout(() => {
-                    muteButton.style.display = 'none'; 
-                    muteButton.style.animation = 'none';
-                }, 300);
-            }
-        }
-
-        // Contador Regressivo
-        function startCountdown() {
-            const endTime = new Date();
-            endTime.setDate(endTime.getDate() + 1);
-            endTime.setHours(23, 59, 59, 0);
-
-            const countdownElement = document.getElementById('countdown-timer');
-
-            const updateCountdown = () => {
-                const now = new Date().getTime();
-                const distance = endTime.getTime() - now;
-
-                if (distance < 0) {
-                    countdownElement.innerHTML = "Oferta Expirada!";
-                    return;
-                }
-
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                countdownElement.innerHTML = `
-                    <span>${hours.toString().padStart(2, '0')}<span class="label">HORAS</span></span>:
-                    <span>${minutes.toString().padStart(2, '0')}<span class="label">MINUTOS</span></span>:
-                    <span>${seconds.toString().padStart(2, '0')}<span class="label">SEGUNDOS</span></span>
-                `;
-            };
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        }
-
-        window.addEventListener('load', function() {
-            loadMainYouTubeVideo();
-
-            const muteButton = document.querySelector('.mute-button');
-            setTimeout(() => {
-                muteButton.style.display = 'flex';
-            }, 1000);
-
-            muteButton.addEventListener('click', unmuteVideo);
-
-            startCountdown();
-
-            // FAQ Accordion - MOVIDO PARA DENTRO DO load EVENT
-            document.querySelectorAll('.faq-question').forEach(item => {
-                item.addEventListener('click', event => {
-                    const faqItem = item.closest('.faq-item');
-                    faqItem.classList.toggle('active');
-
-                    const isExpanded = faqItem.classList.contains('active');
-                    item.setAttribute('aria-expanded', isExpanded);
-                    const answer = faqItem.querySelector('.faq-answer');
-                    if (answer) {
-                        answer.setAttribute('aria-hidden', !isExpanded);
-                    }
-                });
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'click_cta_hotmart', {
-                        'event_category': 'Call to Action',
-                        'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
-                    });
-                }
-                if (typeof fbq === 'function') {
-                    fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
-                        button_text: this.innerText
-                    });
-                }
-            });
-        });
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SRTZNPH8ET');
     </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-SRTZNPH8ET');
-</script>
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "sosleiks4b");
-</script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sosleiks4b");
+    </script>
 </head>
 <body>
-
     <header class="hero">
         <div class="container">
-            <div class="video-wrapper">
-                <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                
-                <div class="mute-button" title="Clique para ativar o som">
-                    <i class="fas fa-volume-xmark"></i>
-                    <span class="text">Toque Aqui!</span>
+            <div class="hero-content">
+                <div class="video-wrapper">
+                    <iframe src="" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="mute-button" title="Clique para ativar o som">
+                        <i class="fas fa-volume-xmark"></i>
+                        <span class="text">Toque Aqui!</span>
+                    </div>
                 </div>
-            </div>
 
-            <h1>Descubra AGORA: A Chave para Operar no Mercado de Ações com o Capital da Maior Mesa Proprietária, Sem Correr nenhum Risco!</h1>
-            <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong style="text-decoration: underline;">sem arriscar seu próprio capital.</strong></h2>
-            
-            <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
-            <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garanta o seu!</p>
-            
-            <div class="countdown-timer" id="countdown-timer">
-                <span>00<span class="label">HORAS</span></span>:
-                <span>00<span class="label">MINUTOS</span></span>:
-                <span>00<span class="label">SEGUNDOS</span></span>
+                <h1>Descubra AGORA: A Chave para Operar no Mercado de Ações com o Capital da Maior Mesa Proprietária, Sem Correr nenhum Risco!</h1>
+                <h2>A UNIVERSIDADE ATOM é o caminho do zero ao avançado para dominar o mercado financeiro e ter a chance de operar com o dinheiro da Atom, <strong>sem arriscar seu próprio capital.</strong></h2>
+                
+                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">SIM! QUERO ACESSAR ESSA OPORTUNIDADE E ME QUALIFICAR AGORA!</a>
+                <p class="cta-small-text">Vagas para qualificação e bônus exclusivo são limitados. Clique e garante o seu!</p>
+                
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="time-unit">
+                        <span class="number">00</span>
+                        <span class="label">Horas</span>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-unit">
+                        <span class="number">00</span>
+                        <span class="label">Minutos</span>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-unit">
+                        <span class="number">00</span>
+                        <span class="label">Segundos</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <section class="opportunity-section">
         <div class="container">
-            <h3>A Grande Oportunidade Revelada: Opere com o Capital da Atom!</h3>
-            <p>Milhares de pessoas sonham em viver do mercado financeiro, mas esbarram na falta de conhecimento ou, principalmente, na falta de capital. A UNIVERSIDADE ATOM foi criada para superar essas barreiras.</p>
-            <p>Mais do que um curso, é sua chance de se tornar um trader profissional, aprender com os maiores nomes do mercado e, o mais importante, ter a <strong style="text-decoration: underline;">OPORTUNIDADE de operar com o dinheiro da Atom, a maior mesa proprietária da América Latina, sem arriscar do seu próprio bolso!</strong></p>
+            <div class="opportunity-content">
+                <h3 class="section-title">A Grande Oportunidade Revelada: Opere com o Capital da Atom!</h3>
+                <p>Milhares de pessoas sonham em viver do mercado financeiro, mas esbarram na falta de conhecimento ou, principalmente, na falta de capital. A UNIVERSIDADE ATOM foi criada para superar essas barreiras.</p>
+                <p>Mais do que um curso, é sua chance de se tornar um trader profissional, aprender com os maiores nomes do mercado e, o mais importante, ter a <strong>OPORTUNIDADE de operar com o dinheiro da Atom, a maior mesa proprietária da América Latina, sem arriscar do seu próprio bolso!</strong></p>
+            </div>
         </div>
     </section>
 
     <section>
         <div class="container">        
-            <h3>O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
+            <h3 class="section-title">O Que a UNIVERSIDADE ATOM Oferece para Sua Liberdade Financeira:</h3>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <i class="fas fa-graduation-cap"></i>
@@ -1134,17 +1219,17 @@
                     <p>Cursos de Psicologia do Trader e Mindset (Atom Talks) para blindar sua mente contra os desafios do mercado.</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
+            <div style="text-align: center; margin-top: 60px;">
                 <a href="https://go.hotmart.com/M100311843U?dp=1" class="cta-button">QUERO SABER MAIS E VER O CURRÍCULO COMPLETO!</a>
             </div>
         </div>
     </section>
 
-    <section id="before-after">
+    <section class="before-after-section">
         <div class="container">
-            <h2>Sua Jornada: Antes e Depois da Universidade Atom</h2>
+            <h2 class="section-title">Sua Jornada: Antes e Depois da Universidade Atom</h2>
             <div class="before-after-items">
-                <div class="card before-card">
+                <div class="before-after-card before-card">
                     <h3>ANTES</h3>
                     <ul>
                         <li><i class="fas fa-times-circle"></i> Medo de investir e perder dinheiro</li>
@@ -1154,7 +1239,7 @@
                         <li><i class="fas fa-times-circle"></i> Insegurança para tomar decisões financeiras</li>
                     </ul>
                 </div>
-                <div class="card after-card">
+                <div class="before-after-card after-card">
                     <h3>DEPOIS</h3>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> Opera com capital da Atom, sem risco próprio</li>
@@ -1168,42 +1253,42 @@
         </div>
     </section>
 
-    <section class="atom-stats-section">
+    <section class="stats-section">
         <div class="container">
-            <h3>Atom em Números: Uma História de Sucesso e Transformação!</h3>
-            <div class="atom-stats-grid">
-                <div class="atom-stat-item">
-                    <strong>9 Anos</strong>
-                    <span>De Empresa</span>
+            <h3 class="section-title">Atom em Números: Uma História de Sucesso e Transformação!</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="number">9 Anos</span>
+                    <span class="label">De Empresa</span>
                 </div>
-                <div class="atom-stat-item">
-                    <strong>80.000+</strong>
-                    <span>Alunos Formados</span>
+                <div class="stat-item">
+                    <span class="number">80.000+</span>
+                    <span class="label">Alunos Formados</span>
                 </div>
-                <div class="atom-stat-item">
-                    <strong>1ª Mesa Proprietária</strong>
-                    <span>Do Brasil</span>
+                <div class="stat-item">
+                    <span class="number">1ª Mesa Proprietária</span>
+                    <span class="label">Do Brasil</span>
                 </div>
-                <div class="atom-stat-item">
-                    <strong>1 Milhão+</strong>
-                    <span>Pessoas Impactadas</span>
+                <div class="stat-item">
+                    <span class="number">1 Milhão+</span>
+                    <span class="label">Pessoas Impactadas</span>
                 </div>
-                <div class="atom-stat-item">
-                    <strong>800+</strong>
-                    <span>Aulas Disponíveis</span>
+                <div class="stat-item">
+                    <span class="number">800+</span>
+                    <span class="label">Aulas Disponíveis</span>
                 </div>
-                <div class="atom-stat-item">
-                    <strong>Alunos de Todo o Brasil</strong>
-                    <span>Online e Intuitivo</span>
+                <div class="stat-item">
+                    <span class="number">Alunos de Todo o Brasil</span>
+                    <span class="label">Online e Intuitivo</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mentor-section">
+    <section class="mentors-section">
         <div class="container">
-            <h3>Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
-            <div class="mentor-images">
+            <h3 class="section-title">Seus Mentores: Carol e Joaquim Paiffer e o Time Atom</h3>
+            <div class="mentors-grid">
                 <div class="mentor-card">
                     <div class="mentor-image-wrapper">
                         <img src="carol_paiffer_atom.jpg" alt="Carol Paiffer">
@@ -1223,17 +1308,17 @@
                     <h4>Priscila</h4>
                 </div>
             </div>
-            <p>Aprenda com quem realmente faz o mercado!</p>
-            <p>A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a Priscila, <strong style="text-decoration: underline;">focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
-            <p>Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 24px;">Aprenda com quem realmente faz o mercado!</p>
+            <p style="text-align: center; font-size: 1rem; line-height: 1.7; max-width: 900px; margin: 0 auto;">A UNIVERSIDADE ATOM traz para você o conhecimento e a experiência de Carol e Joaquim Paiffer, referências no mercado financeiro brasileiro e líderes da maior mesa proprietária da América Latina. Eles, junto com seu time de especialistas, incluindo a Priscila, <strong>focada no seu autocontrole e consistência</strong>, irão guiar você nessa jornada, compartilhando estratégias e insights que realmente funcionam.</p>
+            <p style="text-align: center; font-size: 1rem; line-height: 1.7; max-width: 900px; margin: 24px auto 0;">Milhares de traders já foram formados pela metodologia Atom. Sua vez chegou de fazer parte desse time de sucesso!</p>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <h3>Transformando Vidas: Depoimentos de Quem Já Está no Jogo!</h3>
+            <h3 class="section-title">Transformando Vidas: Depoimentos de Quem Já Está no Jogo!</h3>
             
-            <div class="video-testimonials-grid" style="margin-bottom: 50px;">
+            <div class="video-testimonials-grid">
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/NvMNeM7mj9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -1244,9 +1329,10 @@
                     <iframe src="https://www.youtube.com/embed/PrH072wnmro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: -30px; margin-bottom: 50px; font-style: italic; color: var(--text-color);">
+            <p style="text-align: center; margin: 0 0 60px; font-style: italic; color: var(--text-secondary);">
                 "Assista aos depoimentos de quem já está trilhando o caminho do sucesso com a Universidade Atom!"
             </p>
+            
             <div class="testimonials-grid">
                 <div class="testimonial-item">
                     <p>"Eu não tinha nenhuma experiência e a Universidade Atom me abriu um mundo. As aulas são claras e a oportunidade de operar com o capital deles é inacreditável. Estou focado na qualificação!"</p>
@@ -1257,8 +1343,10 @@
                     <span class="author">- Carlos D., Trader em Evolução</span>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic;">"Na página oficial da Hotmart, você encontrará mais depoimentos e cases de sucesso de alunos da Universidade Atom!"</p>
-            <div style="text-align: center; margin-top: 30px;">
+            
+            <p style="text-align: center; margin: 40px 0; font-style: italic; color: var(--text-secondary);">"Na página oficial da Hotmart, você encontrará mais depoimentos e cases de sucesso de alunos da Universidade Atom!"</p>
+            
+            <div style="text-align: center;">
                 <a href="https://www.youtube.com/watch?v=NvMNeM7mj9I&list=PL52D_BpvKwreZUo8LFCQfhJvFZg3Hxmxf" class="cta-button">VER MAIS DEPOIMENTOS E DETALHES NA PÁGINA OFICIAL!</a>
             </div>
         </div>
@@ -1266,107 +1354,113 @@
 
     <section class="investment-section">
         <div class="container">
-            <h3>Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
-            <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong style="text-decoration: underline;">CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
-            
-            <div class="price-details">
-                <p>Veja tudo o que você terá acesso na Universidade Atom:</p>
-                <ul>
-                    <li>Mentorias com Investidores <span class="value">R$1.997,00</span></li>
-                    <li>Duas Avaliações da Atom <span class="value">R$1.960,00</span></li>
-                    <li>Acesso à Universidade Atom por 12 meses <span class="value">R$750,00</span></li>
-                    <li>Três meses de acesso ao Profit Chart <span class="value">R$750,00</span></li>
-                </ul>
-                <p class="total-original">Valor total original: R$6.407,00</p>
-            </div>
+            <div class="investment-content">
+                <h3 class="section-title">Seu Investimento Inteligente: Torne-se um Trader Profissional!</h3>
+                <p>O acesso completo à UNIVERSIDADE ATOM, incluindo a formação do zero ao avançado, mentorias com os Paiffer, acesso a ferramentas e a <strong>CHANCE REAL DE OPERAR COM O CAPITAL DA ATOM</strong>, está ao seu alcance.</p>
+                
+                <div class="price-details">
+                    <p style="font-size: 1.2rem; margin-bottom: 32px;">Veja tudo o que você terá acesso na Universidade Atom:</p>
+                    <ul>
+                        <li>Mentorias com Investidores <span class="value">R$1.997,00</span></li>
+                        <li>Duas Avaliações da Atom <span class="value">R$1.960,00</span></li>
+                        <li>Acesso à Universidade Atom por 12 meses <span class="value">R$750,00</span></li>
+                        <li>Três meses de acesso ao Profit Chart <span class="value">R$750,00</span></li>
+                    </ul>
+                    <p class="total-original">Valor total original: R$6.407,00</p>
+                </div>
 
-            <div class="price-box">
-                <p class="installments">12x de R$ 199,92 no cartão de crédito</p>
-                <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
+                <div class="price-box">
+                    <p class="installments">12x de R$ 199,92</p>
+                    <p class="current-price">Ou R$ 2.399,00 à vista no Pix</p>
+                </div>
+                
+                <p style="margin: 40px 0;">Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong>Não perca essa oportunidade única!</strong></p>
+                
+                <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
             </div>
-            <p>Este valor é um investimento no seu futuro e nas suas chances de uma nova profissão ou renda extra. <strong style="text-decoration: underline;">Não perca essa oportunidade única!</strong></p>
-            <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">QUERO GARANTIR MINHA VAGA E INICIAR MINHA JORNADA!</a>
         </div>
     </section>
 
     <section class="guarantee-section">
         <div class="container">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Sua Decisão Sem Riscos: Garantia de Satisfação Total!</h3>
-            <p>Temos total confiança na qualidade e no potencial transformador da UNIVERSIDADE ATOM. Por isso, sua inscrição é protegida por uma garantia incondicional de 7 dias.</p>
-            <p>Se, por qualquer motivo, você não estiver satisfeito ou o curso não atender às suas expectativas, basta solicitar o reembolso na Hotmart dentro deste período e 100% do seu investimento será devolvido, sem burocracia. Seu sucesso é nosso compromisso!</p>
+            <div class="guarantee-content">
+                <i class="fas fa-shield-alt"></i>
+                <h3 class="section-title">Sua Decisão Sem Riscos: Garantia de Satisfação Total!</h3>
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">Temos total confiança na qualidade e no potencial transformador da UNIVERSIDADE ATOM. Por isso, sua inscrição é protegida por uma garantia incondicional de 7 dias.</p>
+                <p style="font-size: 1.1rem; line-height: 1.7;">Se, por qualquer motivo, você não estiver satisfeito ou o curso não atender às suas expectativas, basta solicitar o reembolso na Hotmart dentro deste período e 100% do seu investimento será devolvido, sem burocracia. Seu sucesso é nosso compromisso!</p>
+            </div>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <h3>Perguntas Frequentes (FAQ)</h3>
+            <h3 class="section-title">Perguntas Frequentes (FAQ)</h3>
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-1">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>1. Sou iniciante no mercado financeiro. A Universidade Atom é pra mim?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Com certeza! A Universidade Atom foi feita justamente para quem está começando do absoluto zero. Você vai aprender passo a passo, com linguagem simples, exemplos reais e o suporte de quem já formou milhares de traders. Não importa se você nunca operou antes — aqui, você começa do básico e chega ao nível profissional.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-2">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>2. Como funciona a oportunidade de operar com o capital da Atom?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Esse é o grande diferencial! Ao final do curso, você poderá realizar 2 avaliações exclusivas. Se for aprovado, você opera com o dinheiro da Atom, a maior mesa proprietária da América Latina. 80% dos lucros vão direto pro seu bolso — e a Atom assume 100% do risco! É a chance real de viver do mercado, mesmo sem ter capital próprio.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-3">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>3. O curso ensina só mini índice e mini dólar?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Não! A formação é completa e atualizada. Você aprende estratégias de Day Trade, Swing Trade, mini índice, mini dólar, ações, opções e muito mais. O objetivo é que você tenha uma visão ampla do mercado e possa diversificar seus ganhos, mesmo em diferentes cenários econômicos.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-4">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>4. Por quanto tempo terei acesso às aulas e mentorias?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Você terá 1 ano de acesso completo, com atualizações constantes. Isso inclui as aulas gravadas, mentorias ao vivo com os Paiffer, salas de dúvidas com suporte ao vivo e bônus complementares. É tempo mais do que suficiente pra você absorver, aplicar e transformar sua vida com consistência.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-5">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>5. Onde eu acesso o curso depois da compra?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-5" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Assim que o pagamento for aprovado, você recebe um e-mail da Hotmart com todos os dados de acesso. O conteúdo fica disponível em uma plataforma prática e segura, onde você pode assistir às aulas quando e onde quiser — inclusive pelo celular.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-6">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>6. Preciso de computador potente ou internet muito rápida para acompanhar?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-6" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Não precisa de nada além de um computador simples ou celular com internet estável. A plataforma é leve, e os vídeos são otimizados. Você pode começar com o que já tem aí — o mais importante é a sua vontade de aprender.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-answer-7">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>7. E se eu não gostar do curso? Tem garantia?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-answer" id="faq-answer-7" aria-hidden="true">
+                    <div class="faq-answer">
                         <p>R: Sim! Você tem 7 dias de garantia incondicional. Se dentro desse prazo achar que o curso não é pra você, é só pedir o reembolso diretamente pela Hotmart. Seu risco é zero, e sua chance é gigante</p>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
+            <div style="text-align: center; margin-top: 60px;">
                 <a href="https://pay.hotmart.com/A89981599A?ref=M100311843U&bid=1753216226076" class="cta-button">GARANTIR MINHA VAGA NA UNIVERSIDADE ATOM AGORA!</a>
             </div>
         </div>
@@ -1379,12 +1473,171 @@
                 <a href="mailto:movimentodigital2025@gmail.com">Contato</a>
             </p>
             <p class="disclaimer">
-                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart.<br>
-                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.<br>
-                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.<br>
-                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.<br>
+                <strong>Aviso Legal:</strong> Resultados passados não são garantia de resultados futuros. O investimento no mercado financeiro é volátil e envolve riscos. As informações contidas nesta página são para fins educacionais e promocionais. O produto "Universidade Atom" é de responsabilidade do produtor oficial e todas as transações são processadas pela Hotmart.<br><br>
+                A Atom S.A. não presta serviços de intermediação de operações com valores mobiliários e não está autorizada pela Comissão de Valores Mobiliários a prestar tais serviços. Os cursos e materiais didáticos fornecidos pela Atom têm por finalidade ensinar técnicas para realização de operações no mercado de bolsa, não sendo possível assegurar que o adquirente de tais produtos obterá ganhos em suas operações.<br><br>
+                A Atom é uma empresa com selo RA1000, concedido pelo Reclame AQUI, que se destaca pelos excelentes índices de atendimento.<br><br>
+                Esta página não é a página oficial de vendas do produto, mas sim uma Bridge Page para direcionamento.
             </p>
         </div>
     </footer>
+
+    <script>
+        // Função para carregar o vídeo principal do YouTube
+        function loadMainYouTubeVideo() {
+            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
+            const youtubeVideoId = 'akPvLjxuGLY'; 
+            videoFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&controls=0&modestbranding=1&rel=0&enablejsapi=1&showinfo=0`;
+        }
+
+        // Função para desmutar o vídeo
+        function unmuteVideo() {
+            const videoFrame = document.querySelector('.hero .video-wrapper iframe');
+            const muteButton = document.querySelector('.mute-button');
+            const muteIcon = muteButton.querySelector('i');
+            
+            if (videoFrame && videoFrame.contentWindow) {
+                videoFrame.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                
+                muteIcon.classList.remove('fa-volume-xmark');
+                muteIcon.classList.add('fa-volume-high');
+                
+                setTimeout(() => {
+                    muteButton.style.display = 'none'; 
+                    muteButton.style.animation = 'none';
+                }, 300);
+            }
+        }
+
+        // Contador Regressivo Premium
+        function startCountdown() {
+            const endTime = new Date();
+            endTime.setDate(endTime.getDate() + 1);
+            endTime.setHours(23, 59, 59, 0);
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = endTime.getTime() - now;
+
+                if (distance < 0) {
+                    document.getElementById('countdown-timer').innerHTML = '<div style="color: var(--accent-red); font-size: 1.5rem; font-weight: 700;">Oferta Expirada!</div>';
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.querySelector('#countdown-timer .time-unit:nth-child(1) .number').textContent = hours.toString().padStart(2, '0');
+                document.querySelector('#countdown-timer .time-unit:nth-child(3) .number').textContent = minutes.toString().padStart(2, '0');
+                document.querySelector('#countdown-timer .time-unit:nth-child(5) .number').textContent = seconds.toString().padStart(2, '0');
+            };
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        // FAQ Accordion Premium
+        function initFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.closest('.faq-item');
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // Fechar todos os outros itens
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem) {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle do item atual
+                    faqItem.classList.toggle('active');
+                    
+                    // Atualizar aria-expanded
+                    question.setAttribute('aria-expanded', !isActive);
+                });
+            });
+        }
+
+        // Smooth scroll para links internos
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Tracking de eventos
+        function initTracking() {
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Google Analytics
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'click_cta_hotmart', {
+                            'event_category': 'Call to Action',
+                            'event_label': 'Botao_Compra_Hotmart_Universidade_Atom'
+                        });
+                    }
+                    
+                    // Facebook Pixel
+                    if (typeof fbq === 'function') {
+                        fbq('trackCustom', 'ClickedCTA_UniversidadeAtom', {
+                            button_text: this.innerText
+                        });
+                    }
+                });
+            });
+        }
+
+        // Animações de entrada
+        function initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.1s';
+                        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar elementos para animação
+            document.querySelectorAll('.benefit-item, .before-after-card, .stat-item, .mentor-card, .testimonial-item, .faq-item').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        }
+
+        // Inicialização quando a página carrega
+        window.addEventListener('load', function() {
+            loadMainYouTubeVideo();
+            startCountdown();
+            initFAQ();
+            initSmoothScroll();
+            initTracking();
+            initAnimations();
+
+            // Mostrar botão de mute após 1 segundo
+            const muteButton = document.querySelector('.mute-button');
+            setTimeout(() => {
+                muteButton.style.display = 'flex';
+            }, 1000);
+
+            muteButton.addEventListener('click', unmuteVideo);
+        });
+    </script>
 </body>
 </html>
+

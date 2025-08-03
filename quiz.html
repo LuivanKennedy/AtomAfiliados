@@ -5,306 +5,733 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz do Trader Atom: Seu Perfil para o Mercado Financeiro!</title>
     <meta name="description" content="Descubra se você tem o perfil para operar com o capital da Atom. Faça nosso quiz rápido e receba uma análise personalizada.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* --- NOVAS CORES (Força, Confiabilidade, Segurança, Dinheiro) --- */
-            --primary-color: #0A2342; /* Azul Marinho Profundo / Quase Preto - Força e Segurança */
-            --secondary-color: #FFD700; /* Dourado Vivo - Dinheiro e Destaque */
-            --accent-color: #C0C0C0; /* Prata - Confiabilidade e Premium */
-            --selection-green: #008000; /* Novo Verde para seleção de opção - Transmite Sucesso */
-            --text-color: #333; /* Esta cor será para textos sobre o branco do container */
-            --light-bg: #f8f9fa; /* Fundo leve para detalhes */
-            --white: #fff;
-            --quiz-bg-gradient: linear-gradient(135deg, #0A2342, #1B3A5B); /* Gradiente de Azul Profundo */
-            --button-shadow: 0 4px 10px rgba(0,0,0,0.25); /* Sombra mais intensa para contraste */
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Sombra aprimorada para destaque do container */
+            /* Paleta de cores premium */
+            --primary-dark: #0B1426;
+            --primary-blue: #1E3A8A;
+            --accent-gold: #F59E0B;
+            --accent-emerald: #10B981;
+            --accent-red: #EF4444;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --bg-dark: #111827;
+            --border-light: #E5E7EB;
+            --border-medium: #D1D5DB;
+            
+            /* Gradientes premium */
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #0B1426 100%);
+            --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            --gradient-emerald: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            /* Sombras premium */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.3);
+            
+            /* Transições premium */
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body { 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            background: var(--quiz-bg-gradient); 
-            color: var(--text-color); /* Esta cor será para textos sobre o branco do container */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-primary);
+            color: var(--text-primary);
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
-            overflow-x: hidden; /* Evita scroll horizontal */
-        }
-        .quiz-container { 
-            background-color: var(--white); 
-            border-radius: 16px; /* Mais arredondado */
-            box-shadow: var(--card-shadow); /* Sombra aprimorada */
-            padding: 50px 40px; /* Mais padding */
-            max-width: 650px; /* Levemente mais largo */
-            width: 90%; 
-            text-align: center; 
-            position: relative; 
-            animation: fadeIn 0.8s ease-out; /* Animação de entrada */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .quiz-header h1 { 
-            color: var(--primary-color); 
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.5em; /* Ligeiramente maior */
-            margin-bottom: 20px; 
-            line-height: 1.2;
-        }
-        .quiz-header p { 
-            font-size: 1.2em; /* Maior */
-            color: #555; 
-            margin-bottom: 40px; 
-            font-weight: 300; /* Mais leve */
-        }
-        .quiz-question { 
-            font-size: 1.6em; /* Mais destaque */
-            color: var(--primary-color); 
-            margin-bottom: 30px; 
-            font-weight: 600; 
-            line-height: 1.4;
-        }
-        .quiz-options button { 
-            display: block; 
-            width: 100%; 
-            padding: 20px 25px; /* Mais padding */
-            margin-bottom: 18px; /* Mais espaço */
-            border: 2px solid var(--primary-color); 
-            border-radius: 10px; /* Mais arredondado */
-            background-color: var(--white); 
-            color: var(--primary-color); 
-            font-size: 1.15em; /* Ligeiramente maior */
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            font-weight: 500; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra sutil */
-        }
-        .quiz-options button:hover { 
-            background-color: var(--primary-color); 
-            color: var(--white); 
-            transform: translateY(-5px); /* Mais movimento */
-            box-shadow: var(--button-shadow); /* Sombra aprimorada */
-        }
-        .quiz-options button.selected { 
-            background-color: var(--selection-green); /* VERDE para opção selecionada */
-            color: var(--white); /* Texto branco no verde para melhor contraste */
-            border-color: var(--selection-green); 
-            box-shadow: var(--button-shadow); 
-            transform: translateY(-2px);
+            overflow-x: hidden;
             position: relative;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animações premium */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes progressFill {
+            from {
+                width: 0%;
+            }
+            to {
+                width: var(--progress-width);
+            }
+        }
+
+        /* Container principal premium */
+        .quiz-container { 
+            background: var(--bg-primary);
+            border-radius: 24px;
+            box-shadow: var(--shadow-2xl);
+            padding: 60px 50px;
+            max-width: 800px;
+            width: 95%;
+            position: relative;
+            z-index: 2;
+            animation: fadeInScale 0.8s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Header do quiz premium */
+        .quiz-header h1 { 
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quiz-header p { 
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .quiz-header p:last-of-type {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .quiz-header p:last-of-type span {
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        /* Pergunta do quiz premium */
+        .quiz-question { 
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 1.875rem);
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            font-weight: 700;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Opções do quiz premium */
+        .quiz-options {
+            margin-bottom: 40px;
+        }
+
+        .quiz-options button { 
+            display: block;
+            width: 100%;
+            padding: 24px 32px;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .quiz-options button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .quiz-options button:hover::before {
+            left: 100%;
+        }
+
+        .quiz-options button:hover { 
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+        }
+
+        .quiz-options button.selected { 
+            background: var(--gradient-emerald);
+            color: white;
+            border-color: var(--accent-emerald);
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(16, 185, 129, 0.3);
+            transform: translateY(-4px);
+        }
+
         .quiz-options button.selected::after {
-            content: '\f00c'; /* Checkmark icon */
+            content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            right: 20px;
-            color: var(--white); /* Cor do checkmark (branco) */
-            font-size: 1.2em;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 1.25rem;
         }
-        .quiz-footer { 
-            margin-top: 40px; 
-            font-size: 0.95em; 
-            color: #777; 
-            font-weight: 300;
-        }
-        .quiz-button { 
-            background-color: var(--secondary-color); /* Dourado */
-            color: var(--primary-color); /* Texto azul escuro no dourado */
-            padding: 18px 35px; /* Mais padding */
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-size: 1.3em; /* Maior */
-            font-weight: 700; 
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: var(--button-shadow);
 
-            display: inline-block; /* Permite que margin auto funcione para centralização */
-            max-width: 450px; /* Limita a largura para evitar que ele estique demais em telas grandes */
-            margin: 30px auto 0; /* Centraliza horizontalmente e adiciona margem superior */
-            text-align: center; /* Centraliza o texto dentro do botão */
-            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura total */
-            white-space: normal; /* Permite que o texto quebre linha dentro do botão se for muito longo */
-            line-height: 1.3; /* Ajusta a altura da linha para que o texto não se sobreponha */
+        /* Botão principal premium */
+        .quiz-button { 
+            background: var(--gradient-gold);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .quiz-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .quiz-button:hover::before {
+            left: 100%;
+        }
+
         .quiz-button:hover { 
-            background-color: #DAA520; /* Dourado ligeiramente mais escuro no hover */
-            transform: translateY(-3px); /* Mais movimento */
-            box-shadow: 0 6px 15px rgba(0,0,0,0.35); /* Sombra mais pronunciada */
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(245, 158, 11, 0.5);
         }
+
         .quiz-button:disabled {
-            background-color: #cccccc;
+            background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);
             cursor: not-allowed;
-            box-shadow: none;
+            box-shadow: var(--shadow-sm);
             transform: none;
         }
-        .quiz-button i {
-            margin-left: 10px;
-            color: var(--primary-color); /* Icone na cor principal */
+
+        .quiz-button:disabled:hover {
+            transform: none;
+            box-shadow: var(--shadow-sm);
         }
 
+        .quiz-button i {
+            margin-left: 12px;
+            font-size: 1.125rem;
+        }
+
+        /* Barra de progresso premium */
         .quiz-progress { 
-            height: 12px; /* Mais grosso */
-            background-color: #e9ecef; /* Cor de fundo mais clara */
-            border-radius: 6px; 
-            margin-bottom: 30px; 
-            overflow: hidden; 
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna */
-        }
-        .quiz-progress-bar { 
-            height: 100%; 
-            width: 0%; 
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); /* Gradiente na barra (Prata para Dourado) */
-            border-radius: 6px; 
-            transition: width 0.4s ease-in-out; 
-        }
-        .quiz-results h2 { 
-            color: var(--primary-color); /* Título de resultados em Azul Profundo */
-            font-size: 2.5em; /* Maior */
-            margin-bottom: 25px; 
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.2;
-        }
-        .quiz-results p { 
-            font-size: 1.2em; 
-            line-height: 1.7; 
-            color: #555; 
-            margin-bottom: 30px; 
-            font-weight: 300;
-        }
-        .testimonial-grid {
-            margin-top: 30px;
-            display: grid;
-            gap: 20px;
-        }
-        .testimonial-quote {
-            padding: 25px;
-            background-color: var(--light-bg);
-            border-left: 5px solid var(--secondary-color); /* Borda em Dourado */
-            border-radius: 8px;
-            font-style: italic;
-            font-weight: 500;
-            color: #666;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
-            animation: slideIn 0.6s ease-out;
-            text-align: left; /* Alinhar texto do depoimento à esquerda */
         }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+
+        .quiz-progress-bar { 
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-gold);
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .quiz-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Resultados premium */
+        .quiz-results h2 { 
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 32px;
+            line-height: 1.2;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quiz-results p { 
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        /* Depoimentos premium */
+        .testimonial-grid {
+            margin-top: 40px;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+        }
+
+        .testimonial-quote {
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: var(--transition-smooth);
+            text-align: left;
+        }
+
+        .testimonial-quote:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .testimonial-quote i {
-            font-size: 1.8em;
-            color: var(--secondary-color); /* Ícone em Dourado */
-            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-right: 12px;
             vertical-align: middle;
         }
+
         .testimonial-quote p {
             display: inline;
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #666; /* Cor do texto do depoimento */
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
             margin: 0;
             font-weight: 400;
+            font-style: italic;
         }
+
         .testimonial-quote span {
             display: block;
-            margin-top: 10px;
-            font-weight: 600;
-            color: var(--primary-color); /* Nome do depoimento em Azul Profundo */
-            font-size: 0.95em;
+            margin-top: 16px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            font-style: normal;
         }
 
-        /* Novo estilo para o texto de rodapé abaixo do botão de resultados */
-        .quiz-results-note {
-            font-size: 0.85em; 
-            color: #777; 
-            margin-top: 20px; /* Espaçamento após o botão */
-        }
-
-        /* Estilos para o formulário de coleta de lead */
+        /* Formulário de lead premium */
         .lead-form-container {
-            margin-top: 20px;
-            margin-bottom: 30px;
+            margin: 32px 0;
         }
+
         .lead-input {
-            width: calc(100% - 24px); /* Full width minus padding */
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1em;
-            box-sizing: border-box; /* Include padding in width */
+            width: 100%;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            font-size: 1.125rem;
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            background: var(--bg-primary);
+            color: var(--text-primary);
         }
+
         .lead-input:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(10, 35, 66, 0.2);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+            transform: translateY(-2px);
         }
 
-        .hidden { display: none; }
+        .lead-input::placeholder {
+            color: var(--text-light);
+        }
 
-        /* Responsive */
+        /* Nota de resultados premium */
+        .quiz-results-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 24px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Footer do quiz premium */
+        .quiz-footer { 
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Popup de saída premium */
+        #exit-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        #exit-popup .popup-content {
+            background: var(--bg-primary);
+            padding: 48px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid var(--border-light);
+        }
+
+        #exit-popup .popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        #close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition-fast);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        #close-popup:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        #exit-popup h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        #exit-popup p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        #exit-popup h3 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        /* Oferta do e-book premium */
+        .ebook-offer {
+            margin-top: 48px;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--accent-emerald);
+            text-align: center;
+        }
+
+        .ebook-offer h3 {
+            color: var(--accent-emerald);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .ebook-offer p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .ebook-offer .quiz-button {
+            background: var(--gradient-emerald);
+            margin: 0;
+            max-width: none;
+            width: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-size: 1.125rem;
+        }
+
+        .ebook-offer .quiz-button:hover {
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Classes utilitárias */
+        .hidden { 
+            display: none !important;
+        }
+
+        /* Responsive Design Premium */
         @media (max-width: 768px) {
-            .quiz-container { padding: 30px 20px; }
-            .quiz-header h1 { font-size: 2em; }
-            .quiz-header p { font-size: 1em; }
-            .quiz-question { font-size: 1.3em; }
-            .quiz-options button { padding: 16px 15px; font-size: 1em; }
-            .quiz-button { padding: 15px 25px; font-size: 1.1em; }
-            .quiz-results h2 { font-size: 2em; }
-            .quiz-results p { font-size: 1em; }
-            .quiz-button { max-width: 380px; } /* Ajusta largura máxima em telas menores */
-            .testimonial-grid { grid-template-columns: 1fr; } /* Uma coluna em mobile */
-        }
-        @media (max-width: 480px) {
-            .quiz-container { padding: 25px 15px; }
-            .quiz-header h1 { font-size: 1.6em; }
-            .quiz-header p { font-size: 0.9em; }
-            .quiz-question { font-size: 1.1em; }
-            .quiz-options button { padding: 14px 10px; font-size: 0.9em; }
-            .quiz-button { padding: 12px 20px; font-size: 0.9em; }
-            .quiz-results h2 { font-size: 1.8em; }
-            .quiz-results p { font-size: 0.9em; }
-            .testimonial-quote {
-                padding: 15px;
+            .quiz-container { 
+                padding: 40px 24px;
+                width: 98%;
             }
-            .quiz-button { max-width: 100%; } /* Ocupa toda largura em telas muito pequenas */
+            
+            .quiz-header h1 { 
+                font-size: 1.75rem;
+            }
+            
+            .quiz-header p { 
+                font-size: 1rem;
+            }
+            
+            .quiz-question { 
+                font-size: 1.375rem;
+            }
+            
+            .quiz-options button { 
+                padding: 20px 24px;
+                font-size: 1rem;
+            }
+            
+            .quiz-button { 
+                padding: 18px 32px;
+                font-size: 1.125rem;
+            }
+            
+            .quiz-results h2 { 
+                font-size: 1.75rem;
+            }
+            
+            .quiz-results p { 
+                font-size: 1rem;
+            }
+            
+            .testimonial-quote {
+                padding: 24px;
+            }
+
+            #exit-popup .popup-content {
+                padding: 32px 24px;
+                width: 95%;
+            }
+
+            .ebook-offer {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quiz-container { 
+                padding: 32px 20px;
+            }
+            
+            .quiz-header h1 { 
+                font-size: 1.5rem;
+            }
+            
+            .quiz-header p { 
+                font-size: 0.9rem;
+            }
+            
+            .quiz-question { 
+                font-size: 1.25rem;
+            }
+            
+            .quiz-options button { 
+                padding: 18px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .quiz-button { 
+                padding: 16px 24px;
+                font-size: 1rem;
+            }
+            
+            .quiz-results h2 { 
+                font-size: 1.5rem;
+            }
+            
+            .quiz-results p { 
+                font-size: 0.95rem;
+            }
+            
+            .testimonial-quote {
+                padding: 20px;
+            }
+
+            #exit-popup .popup-content {
+                padding: 24px 20px;
+            }
+
+            #exit-popup h2 {
+                font-size: 1.5rem;
+            }
+
+            #exit-popup p {
+                font-size: 1rem;
+            }
         }
     </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
 
-  gtag("config", "G-SRTZNPH8ET");
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRTZNPH8ET"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "G-SRTZNPH8ET");
+    </script>
 
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "sosleiks4b");
-</script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sosleiks4b");
+    </script>
 </head>
 <body>
     <div class="quiz-container">
         <div id="quiz-start-screen">
             <div class="quiz-header">
                 <h1>Você tem o Perfil para Dominar o Mercado Financeiro e Operar com o Capital da Atom?</h1>
-                <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong style="text-decoration: underline;">sem arriscar o próprio dinheiro.</strong></p>
-                <p style="font-size: 1.1em; color: #0056b3; font-weight: 600; margin-top: 20px;">Ao final do quiz você ganhará o e-book exclusivo: <span style="color: #00FF00;">"O Guia Essencial do Trader de Sucesso"</span>!</p>
+                <p>Descubra em menos de 2 minutos e veja como milhares de alunos estão lucrando <strong>sem arriscar o próprio dinheiro.</strong></p>
+                <p>Ao final do quiz você ganhará o e-book exclusivo: <span>"O Guia Essencial do Trader de Sucesso"</span>!</p>
                 <button class="quiz-button" id="start-quiz-button">FAZER O TESTE AGORA! <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
@@ -319,7 +746,7 @@
         <div id="quiz-lead-form-screen" class="hidden">
             <div class="quiz-results">
                 <h2 class="quiz-question">Quase lá! Para ver seu perfil e o próximo passo ideal...</h2>
-                <p class="quiz-header" style="margin-bottom: 30px;">Preencha seus dados para receber seu resultado personalizado e o acesso exclusivo à oportunidade que preparamos para você:</p>
+                <p style="margin-bottom: 32px;">Preencha seus dados para receber seu resultado personalizado e o acesso exclusivo à oportunidade que preparamos para você:</p>
                 <div class="lead-form-container">
                     <input type="text" id="lead-name" placeholder="Seu Nome Completo" class="lead-input" required>
                     <input type="email" id="lead-email" placeholder="Seu Melhor E-mail" class="lead-input" required>
@@ -329,6 +756,7 @@
                 <p class="quiz-results-note">Seus dados estão 100% seguros e não serão compartilhados. Respeitamos sua privacidade.</p>
             </div>
         </div>
+
         <div id="quiz-results-screen" class="hidden">
             <div class="quiz-results">
                 <h2 id="results-title"></h2>
@@ -348,13 +776,14 @@
                         <span>- Carlos P., Novo Trader</span>
                     </div>
                 </div>
+                
                 <a href="/index.html" class="quiz-button" id="final-cta-button">QUERO DESCOBRIR COMO OPERAR SEM ARRISCAR MEU DINHEIRO!</a>
                 <p class="quiz-results-note">Vagas para a próxima turma são limitadas. Garanta seu futuro agora.</p>
 
-                <div class="ebook-offer" style="margin-top: 40px; padding: 25px; background-color: #e0f2ff; border-radius: 10px; border: 1px solid #0056b3;">
-                    <h3 style="color: #0056b3; font-size: 1.5em; margin-bottom: 15px;">🎁 Bônus Exclusivo: Seu Guia Essencial do Trader de Sucesso!</h3>
-                    <p style="font-size: 1.1em; color: #333; margin-bottom: 20px;">Como agradecimento por completar o quiz e dar o primeiro passo, preparamos um e-book completo para você aprofundar seus conhecimentos no mercado financeiro.</p>
-                    <a href="OGuiaEssencialdoTraderdeSucesso.pdf" download="OGuiaEssencialdoTraderdeSucesso.pdf" class="quiz-button" style="background-color: #28a745; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2em;">BAIXAR MEU E-BOOK AGORA! <i class="fas fa-download"></i></a>
+                <div class="ebook-offer">
+                    <h3>🎁 Bônus Exclusivo: Seu Guia Essencial do Trader de Sucesso!</h3>
+                    <p>Como agradecimento por completar o quiz e dar o primeiro passo, preparamos um e-book completo para você aprofundar seus conhecimentos no mercado financeiro.</p>
+                    <a href="OGuiaEssencialdoTraderdeSucesso.pdf" download="OGuiaEssencialdoTraderdeSucesso.pdf" class="quiz-button">BAIXAR MEU E-BOOK AGORA! <i class="fas fa-download"></i></a>
                 </div>
             </div>
         </div>
@@ -364,23 +793,27 @@
         </div>
     </div>
 
-    <div id="exit-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 9999; display: flex; justify-content: center; align-items: center;">
-        <div style="background-color: white; padding: 40px; border-radius: 10px; text-align: center; max-width: 500px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-            <button id="close-popup" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5em; cursor: pointer; color: #333;">&times;</button>
-            <h2 style="color: #0A2342; font-size: 1.8em; margin-bottom: 20px;">Não vá ainda!</h2>
-            <p style="font-size: 1.2em; color: #555; margin-bottom: 25px;">Lembre-se que ao final do quiz você garante seu e-book exclusivo:</p>
-            <h3 style="color: #FFD700; font-size: 1.6em; margin-bottom: 30px; font-weight: 700;">"O Guia Essencial do Trader de Sucesso"</h3>
-            <p style="font-size: 1.1em; color: #555; margin-bottom: 30px;">Não perca essa oportunidade de aprofundar seus conhecimentos no mercado financeiro!</p>
-            <button class="quiz-button" style="background-color: #28a745; color: white; padding: 15px 30px; border-radius: 50px; font-size: 1.2em; cursor: pointer;" onclick="document.getElementById('exit-popup').style.display='none';">CONTINUAR NO QUIZ</button>
+    <!-- POPUP DE SAÍDA PREMIUM -->
+    <div id="exit-popup">
+        <div class="popup-content">
+            <button id="close-popup">&times;</button>
+            <h2>Não vá ainda!</h2>
+            <p>Lembre-se que ao final do quiz você garante seu e-book exclusivo:</p>
+            <h3>"O Guia Essencial do Trader de Sucesso"</h3>
+            <p>Não perca essa oportunidade de aprofundar seus conhecimentos no mercado financeiro!</p>
+            <button class="quiz-button" onclick="document.getElementById('exit-popup').style.display='none';">CONTINUAR NO QUIZ</button>
         </div>
     </div>
 
     <script>
+        // Elementos do popup de saída
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
 
+        // Flag para controlar se o popup já foi mostrado
         let hasShownPopup = false; 
 
+        // Event listeners para fechar o popup
         closePopup.addEventListener('click', () => {
             exitPopup.style.display = 'none';
         });
@@ -391,11 +824,11 @@
             }
         });
 
+        // Perguntas do quiz
         const questions = [
             {
                 question: "Qual sua principal motivação para aprender sobre o mercado financeiro?",
                 options: [
-                 
                     "Ter uma nova fonte de renda",
                     "Atingir liberdade geográfica e de tempo",
                     "Construir uma carreira sólida como trader",
@@ -439,6 +872,7 @@
             }
         ];
 
+        // Variáveis globais do quiz
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let userName = '';
@@ -446,6 +880,7 @@
         let userWhatsapp = '';
         let userProfileType = ''; 
 
+        // Elementos da interface
         const startScreen = document.getElementById('quiz-start-screen');
         const questionsScreen = document.getElementById('quiz-questions-screen');
         const leadFormScreen = document.getElementById('quiz-lead-form-screen');
@@ -464,6 +899,7 @@
         const viewResultsButton = document.getElementById('view-results-button');
         const startQuizButton = document.getElementById('start-quiz-button'); 
 
+        // Funções utilitárias
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -490,6 +926,7 @@
             return urlObj.toString();
         }
 
+        // Função para iniciar o quiz
         function startQuiz() {
             startScreen.classList.add('hidden');
             questionsScreen.classList.remove('hidden');
@@ -506,6 +943,7 @@
             }
         }
 
+        // Função para carregar uma pergunta
         function loadQuestion() {
             if (currentQuestionIndex < questions.length) {
                 const q = questions[currentQuestionIndex];
@@ -526,6 +964,7 @@
             }
         }
 
+        // Função para selecionar uma opção
         function selectOption(selectedOption, clickedButton) {
             userAnswers[currentQuestionIndex] = selectedOption;
             document.querySelectorAll('.quiz-options button').forEach(button => {
@@ -535,28 +974,34 @@
             nextButton.disabled = false;
         }
 
+        // Função para ir para a próxima pergunta
         function nextQuestion() {
             currentQuestionIndex++;
             loadQuestion();
         }
 
+        // Função para atualizar a barra de progresso
         function updateProgressBar() {
             const progress = ((currentQuestionIndex) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
 
+        // CORREÇÃO PRINCIPAL: Event listener do botão de iniciar quiz
+        // O listener de mouseleave é adicionado APENAS quando o usuário clica no botão
         startQuizButton.addEventListener('click', function() {
-            // AQUI ESTÁ A CORREÇÃO PRINCIPAL:
-            // O listener de saída do mouse é adicionado SOMENTE neste momento.
+            // AQUI ESTÁ A CORREÇÃO: O listener de saída do mouse é adicionado SOMENTE neste momento
             document.addEventListener('mouseleave', (e) => {
-                // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
+                // Verifica se o mouse saiu da janela pela parte superior E se o popup ainda não foi mostrado
                 if (e.clientY <= 0 && !hasShownPopup) { 
                     exitPopup.style.display = 'flex';
                     hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
                 }
             });
 
+            // Inicia o quiz
             startQuiz(); 
+            
+            // Tracking do Facebook Pixel
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStartClicked', { 
                     quiz_name: 'Trader Atom Profile',
@@ -565,11 +1010,13 @@
             }
         });
 
+        // Função para validar email
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
 
+        // Função para calcular o tipo de perfil
         function calculateProfileType() {
             let profileType = "";
             let mainMotivation = userAnswers[0] || ""; 
@@ -598,7 +1045,7 @@
             return profileType;
         }
 
-
+        // Event listener do botão "Ver Resultados"
         viewResultsButton.addEventListener('click', async function() {
             const name = leadNameInput.value.trim();
             const email = leadEmailInput.value.trim();
@@ -624,6 +1071,7 @@
             userWhatsapp = whatsapp;
             userProfileType = calculateProfileType();
 
+            // Configurações do Google Forms
             const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfD4WYOTTZvFubZjRwQA8dloNOWeaznbn8qw3XZ4GG1oo5gwg/formResponse';
             const NAME_ENTRY_ID = 'entry.752188270';
             const EMAIL_ENTRY_ID = 'entry.1366291081';
@@ -654,6 +1102,7 @@
                 alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.');
             }
 
+            // Tracking do Facebook Pixel
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead', {
                     content_name: 'Quiz do Trader Atom Lead',
@@ -676,7 +1125,7 @@
             showResults(userProfileType); 
         });
 
-
+        // Função para mostrar os resultados
         function showResults(profileTypeToShow) { 
             leadFormScreen.classList.add('hidden'); 
             questionsScreen.classList.add('hidden');
@@ -685,7 +1134,7 @@
             let titleText = `Parabéns! Seu Perfil é ${profileTypeToShow} para a Universidade Atom!`;
             let mainMotivation = userAnswers[0] || ""; 
             let mainConcern = userAnswers[1] || "";    
-            let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong style="text-decoration: underline;">${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong style="text-decoration: underline;">${mainConcern.toLowerCase()}</strong>.`;
+            let resultParagraph1 = `Com base nas suas respostas, percebemos que você possui grande interesse em <strong>${mainMotivation.toLowerCase()}</strong> e busca soluções sobre a <strong>${mainConcern.toLowerCase()}</strong>.`;
             let resultParagraph2 = "";
 
             switch (profileTypeToShow) {
@@ -703,6 +1152,7 @@
             resultsTitle.textContent = titleText;
             resultsText.innerHTML = `${resultParagraph1}<br><br>${resultParagraph2}`;
             
+            // Tracking do Facebook Pixel
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizCompleted', { 
                     quiz_name: 'Trader Atom Profile',
@@ -717,6 +1167,7 @@
             finalCtaButton.href = appendUtmParameters(finalCtaButton.href);
         }
 
+        // Event listener do botão final CTA
         finalCtaButton.addEventListener('click', function() {
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'FinalCTAClicked', { 
@@ -731,6 +1182,7 @@
             }
         });
 
+        // Formatação do campo WhatsApp
         leadWhatsappInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, ''); 
 
@@ -766,6 +1218,7 @@
             e.target.value = formattedValue;
         });
 
+        // Validação de entrada do campo WhatsApp
         leadWhatsappInput.addEventListener('keydown', function(e) {
             if ([8, 9, 27, 13, 37, 39, 46].indexOf(e.keyCode) !== -1 ||
                 (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
@@ -779,6 +1232,7 @@
             e.preventDefault();
         });
 
+        // Tratamento de colagem no campo WhatsApp
         leadWhatsappInput.addEventListener('paste', function(e) {
             const pastedData = e.clipboardData.getData('text');
             const cleanedData = pastedData.replace(/\D/g, ''); 
@@ -789,6 +1243,34 @@
             e.target.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
+        // Animações de entrada
+        function initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.1s';
+                        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar elementos para animação
+            document.querySelectorAll('.testimonial-quote').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        }
+
+        // Inicialização quando a página carrega
+        window.addEventListener('load', function() {
+            initAnimations();
+        });
     </script>
 </body>
 </html>
+
