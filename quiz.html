@@ -381,6 +381,8 @@
 
         // NEW: Adicione uma flag para controlar se o quiz já foi iniciado.
         let quizStarted = false;
+        // NEW: Adicione uma flag para controlar se o pop-up de saída já foi exibido.
+        let hasShownPopup = false; 
 
         closePopup.addEventListener('click', () => {
             exitPopup.style.display = 'none';
@@ -503,11 +505,10 @@
             // Adiciona o event listener de saída do mouse apenas quando o quiz começa
             if (!quizStarted) {
                 document.addEventListener('mouseleave', (e) => {
-                    // Verifica se o mouse saiu da janela pela parte superior, o que é um indicador forte de saída
-                    if (e.clientY <= 0) { 
-                        if (exitPopup.style.display === 'none') {
-                            exitPopup.style.display = 'flex';
-                        }
+                    // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
+                    if (e.clientY <= 0 && !hasShownPopup) { 
+                        exitPopup.style.display = 'flex';
+                        hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
                     }
                 });
                 quizStarted = true;
