@@ -378,17 +378,8 @@
     <script>
         const exitPopup = document.getElementById('exit-popup');
         const closePopup = document.getElementById('close-popup');
-        let exitPopupTimeout; // Variável para armazenar o ID do temporizador
 
-        // Função para mostrar o pop-up de saída
-        function showExitPopup() {
-            exitPopup.style.display = 'flex';
-        }
-
-        // Adiciona um temporizador que chama a função showExitPopup após 60 segundos
-        // Isso só acontece UMA VEZ após o carregamento da página, a menos que o quiz comece
-        // O temporizador é cancelado se o usuário interagir com o quiz.
-        exitPopupTimeout = setTimeout(showExitPopup, 60000); // 60 segundos
+        let hasShownPopup = false; 
 
         closePopup.addEventListener('click', () => {
             exitPopup.style.display = 'none';
@@ -500,9 +491,6 @@
         }
 
         function startQuiz() {
-            // Remove o temporizador do pop-up de saída para que ele não apareça depois
-            clearTimeout(exitPopupTimeout);
-
             startScreen.classList.add('hidden');
             questionsScreen.classList.remove('hidden');
             currentQuestionIndex = 0;
@@ -558,6 +546,16 @@
         }
 
         startQuizButton.addEventListener('click', function() {
+            // AQUI ESTÁ A CORREÇÃO PRINCIPAL:
+            // O listener de saída do mouse é adicionado SOMENTE neste momento.
+            document.addEventListener('mouseleave', (e) => {
+                // Verifica se o mouse saiu da janela pela parte superior E se o pop-up ainda não foi mostrado
+                if (e.clientY <= 0 && !hasShownPopup) { 
+                    exitPopup.style.display = 'flex';
+                    hasShownPopup = true; // Define a flag como verdadeira para não mostrar novamente
+                }
+            });
+
             startQuiz(); 
             if (typeof fbq === 'function') {
                 fbq('trackCustom', 'QuizStartClicked', { 
